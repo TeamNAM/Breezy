@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
+		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
+		AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */; };
+		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
+		AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */; };
+		AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAD3B6B71BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Breezy.xcdatamodel; sourceTree = "<group>"; };
+		AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAD3B6BF1BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAD3B6AC1BCCA08E008FBC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAD3B6A61BCCA08E008FBC01 = {
+			isa = PBXGroup;
+			children = (
+				AAD3B6B11BCCA08E008FBC01 /* Breezy */,
+				AAD3B6B01BCCA08E008FBC01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAD3B6B01BCCA08E008FBC01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAD3B6B11BCCA08E008FBC01 /* Breezy */ = {
+			isa = PBXGroup;
+			children = (
+				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
+				AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */,
+				AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */,
+				AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */,
+				AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */,
+				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
+				AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */,
+			);
+			path = Breezy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAD3B6AE1BCCA08E008FBC01 /* Breezy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD3B6C41BCCA08E008FBC01 /* Build configuration list for PBXNativeTarget "Breezy" */;
+			buildPhases = (
+				AAD3B6AB1BCCA08E008FBC01 /* Sources */,
+				AAD3B6AC1BCCA08E008FBC01 /* Frameworks */,
+				AAD3B6AD1BCCA08E008FBC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Breezy;
+			productName = Breezy;
+			productReference = AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAD3B6A71BCCA08E008FBC01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = TeamNAM;
+				TargetAttributes = {
+					AAD3B6AE1BCCA08E008FBC01 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = AAD3B6AA1BCCA08E008FBC01 /* Build configuration list for PBXProject "Breezy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAD3B6A61BCCA08E008FBC01;
+			productRefGroup = AAD3B6B01BCCA08E008FBC01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAD3B6AE1BCCA08E008FBC01 /* Breezy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAD3B6AD1BCCA08E008FBC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
+				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
+				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAD3B6AB1BCCA08E008FBC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
+				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
+				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD3B6B71BCCA08E008FBC01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD3B6BF1BCCA08E008FBC01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAD3B6C21BCCA08E008FBC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAD3B6C31BCCA08E008FBC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAD3B6C51BCCA08E008FBC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Breezy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AAD3B6C61BCCA08E008FBC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Breezy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAD3B6AA1BCCA08E008FBC01 /* Build configuration list for PBXProject "Breezy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD3B6C21BCCA08E008FBC01 /* Debug */,
+				AAD3B6C31BCCA08E008FBC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD3B6C41BCCA08E008FBC01 /* Build configuration list for PBXNativeTarget "Breezy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD3B6C51BCCA08E008FBC01 /* Debug */,
+				AAD3B6C61BCCA08E008FBC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */,
+			);
+			currentVersion = AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */;
+			path = Breezy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AAD3B6A71BCCA08E008FBC01 /* Project object */;
+}
