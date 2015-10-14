@@ -6,9 +6,16 @@ Breezy makes weather about *you*. In cities like San Francisco with microclimate
 
 ## Wireframes
 
+### Setup
 ![Setup view](Setup.png)
+
+### Current weather
 ![Weather view](Weather.png)
+
+### Trip planning
 ![Trip view](Trip.png)
+
+### Daily notifications
 ![Notification view](Notification.png)
 
 ## User Stories
