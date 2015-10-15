@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import ForecastIOClient
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var temperatureLabel: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    // San Francisco
+    let lat = 37.7833
+    let long = 122.4167
+    
+    ForecastIOClient.sharedInstance.forecast(lat, longitude: long) { (forecast, forecastAPICalls) -> Void in
+      let currentTemperature = Int(round(forecast.currently!.temperature!))
+      self.temperatureLabel.text = "\(currentTemperature)°"
+      
+      print("\(1000 - forecastAPICalls!) API calls left today")
+    }
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
 }
 

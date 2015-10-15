@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ForecastIOClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    // Set ForecastIOClient API Key from Credentials.plist file
+    ForecastIOClient.apiKey = Credentials.apiKey
     return true
   }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA328DF11BD0642B00ECFAAC /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA328DF01BD0642B00ECFAAC /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
+		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
 		AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA328DF01BD0642B00ECFAAC /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
+		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 		AAD3B6B11BCCA08E008FBC01 /* Breezy */ = {
 			isa = PBXGroup;
 			children = (
+				AA328DF01BD0642B00ECFAAC /* Credentials.plist */,
 				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
 				AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */,
 				AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */,
@@ -63,6 +68,7 @@
 				AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */,
 				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
 				AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */,
+				AA328DF21BD064AD00ECFAAC /* Credentials.swift */,
 			);
 			path = Breezy;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
+				AA328DF11BD0642B00ECFAAC /* Credentials.plist in Resources */,
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
 			);
@@ -139,6 +146,7 @@
 			files = (
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
+				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +295,7 @@
 				AAD3B6C61BCCA08E008FBC01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

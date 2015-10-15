@@ -1,0 +1,6 @@
+framework module ForecastIOClient {
+  umbrella header "ForecastIOClient-umbrella.h"
+
+  export *
+  module * { export * }
+}
