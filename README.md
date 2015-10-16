@@ -22,7 +22,6 @@ Breezy makes weather about *you*. In cities like San Francisco with microclimate
 
 ### Required
 - User can enter their home and work address(es)
-  - User can connect their Google account to retrieve home/work addresses and starred places
 - User can see daily weather conditions at their home and work address on the “Today” screen
 - User can see clothing/item recommendations based on weather (e.g. umbrella, sunglasses, sweater) on the “Today” screen
 - User will get a push notification every morning with summarized details for weather conditions
@@ -32,8 +31,12 @@ Breezy makes weather about *you*. In cities like San Francisco with microclimate
 - User can navigate between Today, Map and Trip screens with a tab menu.
 
 ### Optional
-- (Stretch) User can share weather conditions with others
-- (Stretch) User can change the settings on if and when they get the push notification
-- (Stretch) User can share trip weather conditions with others.
-- (Stretch Stretch) Once the user gets to a location and stays there for a while, we send them a push notification asking them to describe the weather at that location
+- User can share weather conditions with others
+- User can change the settings on if and when they get the push notification
+- User can share trip weather conditions with others.
+- Fetch the user's frequent locations from the phone
+- Fetch trips from the phone's calendar events
+
+### Bonus
+- Once the user gets to a location and stays there for a while, we send them a push notification asking them to describe the weather at that location. 
   - We then display that information on the map, or send as a push to others using the app.
