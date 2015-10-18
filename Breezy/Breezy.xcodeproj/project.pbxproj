@@ -18,11 +18,12 @@
 		CBAED2FC1BD1DC36001993E3 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FB1BD1DC36001993E3 /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CBAED3021BD1DC96001993E3 /* NewTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3011BD1DC96001993E3 /* NewTripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
+		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +39,12 @@
 		CBAED2FB1BD1DC36001993E3 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		CBAED2FE1BD1DC83001993E3 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
-		CBAED3011BD1DC96001993E3 /* NewTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripCell.swift; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripsViewController.xib; sourceTree = "<group>"; };
 		CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTripViewController.xib; sourceTree = "<group>"; };
+		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
+		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
 		E6AFAE4023E97270ABAD6826 /* Pods-Breezy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.debug.xcconfig"; sourceTree = "<group>"; };
 		EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2228CF0FF26FD09B6A4677 /* Pods-Breezy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,7 +112,8 @@
 			children = (
 				CBAED2FD1BD1DC83001993E3 /* TripCell.swift */,
 				CBAED2FE1BD1DC83001993E3 /* TripCell.xib */,
-				CBAED3011BD1DC96001993E3 /* NewTripCell.swift */,
+				CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */,
+				CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
@@ -263,10 +267,10 @@
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
+				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
-				CBAED3021BD1DC96001993E3 /* NewTripCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,18 @@ class ViewController: UIViewController {
       
       print("\(1000 - forecastAPICalls!) API calls left today")
     }
+    
+    let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
+    addSubView(vc)
   }
+    
+    func addSubView(viewController: UIViewController) {
+        
+        self.addChildViewController(viewController)
+//        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+//        viewController.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        viewController.didMoveToParentViewController(self)
+        self.view.addSubview(viewController.view)
+    }
 }
 

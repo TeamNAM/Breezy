@@ -1,5 +1,5 @@
 //
-//  NewTripCell.swift
+//  AddTripCell.swift
 //  Breezy
 //
 //  Created by Matthew Goo on 10/16/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTripCell: UITableViewCell {
+class AddTripCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +20,5 @@ class NewTripCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

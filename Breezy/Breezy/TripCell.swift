@@ -9,6 +9,15 @@
 import UIKit
 
 class TripCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    var place:NSDictionary! {
+        didSet {
+            nameLabel.text = place["name"] as! String
+            addressLabel.text = place["address"]as! String
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
