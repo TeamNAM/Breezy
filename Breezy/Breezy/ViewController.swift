@@ -27,8 +27,8 @@ class ViewController: UIViewController {
       print("\(1000 - forecastAPICalls!) API calls left today")
     }
     
-    let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
-    addSubView(vc)
+//    let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
+//    addSubView(vc)
   }
     
     func addSubView(viewController: UIViewController) {
