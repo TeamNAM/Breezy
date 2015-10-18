@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
-		AA67199D1BD4559200C911BF /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199B1BD4559200C911BF /* DummyViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AA67199E1BD4559200C911BF /* DummyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA67199C1BD4559200C911BF /* DummyViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -21,7 +19,6 @@
 		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
 		AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */; };
 		AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */; };
-		CB1262081BD4555500BA11A7 /* crazyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1262071BD4555500BA11A7 /* crazyViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -38,8 +35,6 @@
 
 /* Begin PBXFileReference section */
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
-		AA67199B1BD4559200C911BF /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
-		AA67199C1BD4559200C911BF /* DummyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyViewController.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
 		AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +47,6 @@
 		AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6BF1BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB1262071BD4555500BA11A7 /* crazyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crazyViewController.swift; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		CBAED2FE1BD1DC83001993E3 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
@@ -147,13 +141,10 @@
 			children = (
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
 				AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */,
-				AA67199B1BD4559200C911BF /* DummyViewController.swift */,
-				AA67199C1BD4559200C911BF /* DummyViewController.xib */,
 				AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */,
 				CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
-				CB1262071BD4555500BA11A7 /* crazyViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -242,7 +233,6 @@
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
-				AA67199E1BD4559200C911BF /* DummyViewController.xib in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
@@ -306,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
-				AA67199D1BD4559200C911BF /* DummyViewController.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
@@ -314,7 +303,6 @@
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
 				AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */,
-				CB1262081BD4555500BA11A7 /* crazyViewController.swift in Sources */,
 				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
