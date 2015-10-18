@@ -11,7 +11,7 @@ import CoreData
 import ForecastIOClient
 import GoogleMaps
 
-var appData: NSDictionary? = ["Initialized": false]
+var appData: NSMutableDictionary?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let myDict = NSDictionary(contentsOfFile: path)
         if let dict = myDict {
             //loading values
-            appData = dict
+            appData = dict.mutableCopy() as! NSMutableDictionary
             print(dict)
         } else {
             print("WARNING: Couldn't create dictionary from AppData.plist! Default values will be used!")

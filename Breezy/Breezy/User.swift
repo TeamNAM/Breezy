@@ -51,12 +51,14 @@ class User{
     
     func setPlaceForKey(key: String, lat: Double, lng: Double, addressDescription: String) {
         let dict = ["lat": lat, "lng": lng, "addressDescription": addressDescription]
-        let placesData = appData!["Places"] as! NSDictionary
+        var placesData = appData!["Places"]?.mutableCopy() as! NSMutableDictionary
         if key == "Other" {
             var otherPlaces = placesData["Other"] as! Array<NSDictionary>
             otherPlaces.append(dict)
             placesData.setValue(otherPlaces, forKey: "Other")
         } else {
+            print(key)
+            print(dict)
             placesData.setValue(dict, forKey: key)
         }
         appData?.setValue(placesData, forKey: "Places")
