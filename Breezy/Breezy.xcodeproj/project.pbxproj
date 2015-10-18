@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
+		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
+		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		AAADA9F81BD4267D00715557 /* PlaceLookupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
 		AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */; };
@@ -28,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
+		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
+		AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
+		AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceLookupViewController.xib; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +122,9 @@
 				CBAED2FE1BD1DC83001993E3 /* TripCell.xib */,
 				CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */,
 				CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */,
+				CBAED3011BD1DC96001993E3 /* NewTripCell.swift */,
+				AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */,
+				AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -122,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
+				AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */,
+				AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */,
 				CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
@@ -200,10 +213,12 @@
 				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
+				AAADA9F81BD4267D00715557 /* PlaceLookupViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
 				CBAED2FC1BD1DC36001993E3 /* Credentials.plist in Resources */,
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
+				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,12 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
+				AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 			);
@@ -384,6 +401,47 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Breezy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"ForecastIOClient\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -396,6 +454,47 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Breezy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"ForecastIOClient\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

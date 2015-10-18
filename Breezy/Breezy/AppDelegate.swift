@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import ForecastIOClient
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Set ForecastIOClient API Key from Credentials.plist file
-    ForecastIOClient.apiKey = Credentials.apiKey
+    // Set API keys from Credentials.plist file
+    let credentials = Credentials.defaultCredentials
+    ForecastIOClient.apiKey = credentials.forecastKey
+    GMSServices.provideAPIKey(credentials.googleKey)
+    
+    // To show your view controller when the app launches, set `vc` to an instance of your view controller
+//    let vc = PlaceLookupViewController()
+//    let rootVC = UINavigationController(rootViewController: vc)
+//    window?.rootViewController = rootVC
+//    
     return true
   }
 

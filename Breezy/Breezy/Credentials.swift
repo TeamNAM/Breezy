@@ -10,11 +10,16 @@ import Foundation
 
 struct Credentials {
   static let fileName = "Credentials"
-  static let apiKey = Credentials.loadApiKeyFromPropertyListNamed(fileName)
+  static let defaultCredentials = Credentials.loadFromPropertyListNamed(fileName)
   
-  private static func loadApiKeyFromPropertyListNamed(name: String) -> String {
+  let forecastKey: String
+  let googleKey: String
+  
+  private static func loadFromPropertyListNamed(name: String) -> Credentials {
     let path = NSBundle.mainBundle().pathForResource(name, ofType: "plist")!
     let dictionary = NSDictionary(contentsOfFile: path)!
-    return dictionary["ApiKey"] as! String
+    let forecastKey = dictionary["ForecastApiKey"] as! String
+    let googleKey = dictionary["GoogleApiKey"] as! String
+    return Credentials(forecastKey: forecastKey, googleKey: googleKey)
   }
 }

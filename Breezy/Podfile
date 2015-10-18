@@ -3,5 +3,6 @@ use_frameworks!
 
 target 'Breezy' do
   pod 'ForecastIOClient'
+  pod 'GoogleMaps'
 end
 
