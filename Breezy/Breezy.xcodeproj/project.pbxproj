@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
+		AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199F1BD4572900C911BF /* GetStartedViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6719A01BD4572900C911BF /* GetStartedViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AA67199F1BD4572900C911BF /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		AA6719A01BD4572900C911BF /* GetStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetStartedViewController.xib; sourceTree = "<group>"; };
+		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
 		AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */,
 				8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,10 +146,12 @@
 		CBAED2FA1BD1DC25001993E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA67199F1BD4572900C911BF /* GetStartedViewController.swift */,
+				AA6719A01BD4572900C911BF /* GetStartedViewController.xib */,
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
+				CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */,
 				AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */,
 				AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */,
-				CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
 			);
@@ -152,6 +161,7 @@
 		DC89DEBB808658D544372665 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA6719A31BD459C800C911BF /* CoreLocation.framework */,
 				EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */,
 			);
 			name = Frameworks;
@@ -237,6 +247,7 @@
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
+				AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
