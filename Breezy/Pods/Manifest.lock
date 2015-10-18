@@ -23,14 +23,17 @@ PODS:
   - ForecastIOClient (0.1.0):
     - AFNetworking (~> 2.3)
     - SwiftyJSON
+  - GoogleMaps (1.10.4)
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
   - ForecastIOClient
+  - GoogleMaps
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   ForecastIOClient: 6e05ea0b011df040fb2fcc334798fff427446805
+  GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
 
 COCOAPODS: 0.38.2
