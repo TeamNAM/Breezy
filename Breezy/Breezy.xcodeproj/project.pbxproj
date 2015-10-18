@@ -19,7 +19,6 @@
 		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
 		AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */; };
 		AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */; };
-		CBAED2FC1BD1DC36001993E3 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FB1BD1DC36001993E3 /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,6 +27,10 @@
 		CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
+		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; settings = {ASSET_TAGS = (); }; };
+		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; settings = {ASSET_TAGS = (); }; };
+		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +47,6 @@
 		AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6BF1BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBAED2FB1BD1DC36001993E3 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		CBAED2FE1BD1DC83001993E3 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTripViewController.xib; sourceTree = "<group>"; };
 		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
 		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
+		DE35ABA01BD44B0E00FD4035 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
+		DE35ABA31BD44C4800FD4035 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		DE35ABA51BD44C7400FD4035 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DE35ABA71BD44CFA00FD4035 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		E6AFAE4023E97270ABAD6826 /* Pods-Breezy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.debug.xcconfig"; sourceTree = "<group>"; };
 		EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2228CF0FF26FD09B6A4677 /* Pods-Breezy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 		AAD3B6B11BCCA08E008FBC01 /* Breezy */ = {
 			isa = PBXGroup;
 			children = (
+				DE35ABA21BD44C3B00FD4035 /* Models */,
 				CBAED2FA1BD1DC25001993E3 /* View Controllers */,
 				CBAED2F91BD1DC20001993E3 /* Views */,
 				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
@@ -110,7 +117,8 @@
 				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
 				AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */,
 				AA328DF21BD064AD00ECFAAC /* Credentials.swift */,
-				CBAED2FB1BD1DC36001993E3 /* Credentials.plist */,
+				DE35ABA71BD44CFA00FD4035 /* Credentials.plist */,
+				DE35ABA01BD44B0E00FD4035 /* AppData.plist */,
 			);
 			path = Breezy;
 			sourceTree = "<group>";
@@ -122,7 +130,6 @@
 				CBAED2FE1BD1DC83001993E3 /* TripCell.xib */,
 				CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */,
 				CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */,
-				CBAED3011BD1DC96001993E3 /* NewTripCell.swift */,
 				AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */,
 				AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */,
 			);
@@ -148,6 +155,15 @@
 				EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE35ABA21BD44C3B00FD4035 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE35ABA31BD44C4800FD4035 /* Place.swift */,
+				DE35ABA51BD44C7400FD4035 /* User.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +232,8 @@
 				AAADA9F81BD4267D00715557 /* PlaceLookupViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
-				CBAED2FC1BD1DC36001993E3 /* Credentials.plist in Resources */,
+				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
+				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
@@ -286,7 +303,9 @@
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
 				AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */,
+				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
+				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
