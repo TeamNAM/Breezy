@@ -27,15 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(credentials.googleKey)
         
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
-//            let vc = GetStartedViewController()
-            let vc = TripsViewController()
-            let rootVC = UINavigationController(rootViewController: vc)
-            window?.rootViewController = rootVC
-        
-        //    let vc = PlaceLookupViewController()
-        //    let rootVC = UINavigationController(rootViewController: vc)
-        //    window?.rootViewController = rootVC
-        //
+//        let vc = GetStartedViewController()
+//        let vc = PlaceLookupViewController()
+//        let vc = TripsViewController()
+//        let rootVC = UINavigationController(rootViewController: vc)
+//        window?.rootViewController = rootVC
 
         return true
     }
@@ -110,7 +106,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        saveApplicationData(appData!)
+        if let data = appData {
+            saveApplicationData(data)
+        }
         self.saveContext()
     }
     

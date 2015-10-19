@@ -12,6 +12,8 @@
 		AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199F1BD4572900C911BF /* GetStartedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6719A01BD4572900C911BF /* GetStartedViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
+		AA7587D01BD4A158009764DB /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CE1BD4A158009764DB /* Contacts.framework */; };
+		AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CF1BD4A158009764DB /* ContactsUI.framework */; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -42,6 +44,8 @@
 		AA67199F1BD4572900C911BF /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		AA6719A01BD4572900C911BF /* GetStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetStartedViewController.xib; sourceTree = "<group>"; };
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AA7587CE1BD4A158009764DB /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
 		AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7587D01BD4A158009764DB /* Contacts.framework in Frameworks */,
+				AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */,
 				AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */,
 				8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */,
 			);
@@ -120,9 +126,9 @@
 				CBAED2FA1BD1DC25001993E3 /* View Controllers */,
 				CBAED2F91BD1DC20001993E3 /* Views */,
 				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
+				AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */,
 				AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */,
 				AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */,
-				AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */,
 				AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */,
 				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
 				AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */,
@@ -172,6 +178,8 @@
 		DC89DEBB808658D544372665 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA7587CE1BD4A158009764DB /* Contacts.framework */,
+				AA7587CF1BD4A158009764DB /* ContactsUI.framework */,
 				AA6719A31BD459C800C911BF /* CoreLocation.framework */,
 				EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */,
 			);

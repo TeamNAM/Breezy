@@ -8,12 +8,15 @@
 
 import UIKit
 import CoreLocation
+import Contacts
 
 class GetStartedViewController: UIViewController {
     
     // MARK: Properties
     
     var locationManager: CLLocationManager!
+    var contactStore: CNContactStore!
+    
     
     // MARK: View Life Cycle
 
@@ -21,9 +24,23 @@ class GetStartedViewController: UIViewController {
         super.viewDidLoad()
 
         self.locationManager = CLLocationManager()
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
-            self.locationManager.requestAlwaysAuthorization()
+        switch CLLocationManager.authorizationStatus() {
+            case .Denied, .NotDetermined, .Restricted:
+                self.locationManager.requestAlwaysAuthorization()
+            default: ()
+        }
+
+        self.contactStore = CNContactStore()
+        switch CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts) {
+            case .Denied, .NotDetermined, .Restricted:
+                self.contactStore.requestAccessForEntityType(CNEntityType.Contacts) { (granted: Bool, error: NSError?) -> Void in
+                    if let error = error {
+                        print("Access denied: \(error)")
+                    } else {
+                        print("Got access")
+                    }
+                }
+            default: ()
         }
     }
-
 }

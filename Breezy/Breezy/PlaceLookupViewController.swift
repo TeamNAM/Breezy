@@ -76,6 +76,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
                 }
                 debounceTimer = NSTimer(timeInterval: 0.25, target: self, selector: Selector("callAutoCompleteAndTableReload:"), userInfo: trimmedText, repeats: false)
                 NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
+                return
             }
         }
         self.tableView.hidden = true
