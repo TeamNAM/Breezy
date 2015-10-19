@@ -40,8 +40,7 @@ class User{
         get {
             if _currentUser == nil {
                 var user:NSManagedObject?
-                let application = UIApplication.sharedApplication().delegate as! AppDelegate
-                let managedObjectContext = application.managedObjectContext
+                let managedObjectContext = AppDelegate.sharedDelegate().managedObjectContext
                 let fetchRequest = NSFetchRequest(entityName: "User")
                 let entityUser = NSEntityDescription.entityForName("User", inManagedObjectContext: managedObjectContext)
                 do {
@@ -70,8 +69,7 @@ class User{
     }
     
     func setPlace(key: String, place: Place){
-        let application = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = application.managedObjectContext
+        let managedObjectContext = AppDelegate.sharedDelegate().managedObjectContext
         let placeEntity = NSEntityDescription.entityForName("Place", inManagedObjectContext: managedObjectContext)
         let placeObject = NSManagedObject.init(entity: placeEntity!, insertIntoManagedObjectContext: managedObjectContext)
         placeObject.setValue(place.lat, forKey: "lat")
