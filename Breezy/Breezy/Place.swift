@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 enum PlaceType {
     case Home
@@ -16,11 +18,14 @@ enum PlaceType {
 
 class Place:NSObject {
     
-    var latitude:Double?
-    var longitude:Double?
+    var lat:Double?
+    var lng:Double?
     var addressDescription:String?
     var placeType: PlaceType?
     
-    init(dictionary: NSDictionary) {
+    init(lat: Double, lng: Double, addressDescription: String) {
+        self.lat = lat
+        self.lng = lng
+        self.addressDescription = addressDescription
     }
 }
