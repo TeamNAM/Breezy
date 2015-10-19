@@ -7,61 +7,87 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
+
+var _currentUser: User?
 
 class User{
-    
-    var home: NSDictionary?
-    var work: NSDictionary?
-    var otherPlaces: [NSDictionary]?
+    var userEntity: NSManagedObject?
+    weak var home: Place?{
+        didSet{
+            if home != nil{
+                setPlace("home", place: home!)
+            }
+        }
+    }
+    weak var work: Place?{
+        didSet{
+            if work != nil{
+                setPlace("work", place: work!)
+            }
+        }
+    }
+
+    var otherPlaces: [Place]?
     var trips: [NSDictionary]?
     
-    init(dict: NSDictionary){
-        let places = dict["Places"] as! NSDictionary
-        self.home = places["Home"] as? NSDictionary
-        self.work = places["Work"] as? NSDictionary
-        self.otherPlaces = (places["Other"] as? [NSDictionary]?)!
+    init(userEntity: NSManagedObject){
+        self.userEntity = userEntity
     }
     
-    class var sharedInstance : User {
-        struct Static {
-            static let instance = User(dict: appData!)
+    class var userData: User? {
+        get {
+            if _currentUser == nil {
+                var user:NSManagedObject?
+                let application = UIApplication.sharedApplication().delegate as! AppDelegate
+                let managedObjectContext = application.managedObjectContext
+                let fetchRequest = NSFetchRequest(entityName: "User")
+                let entityUser = NSEntityDescription.entityForName("User", inManagedObjectContext: managedObjectContext)
+                do {
+                    let results = try managedObjectContext.executeFetchRequest(fetchRequest) as NSArray
+                    if results.count != 0 {
+                        user = results.objectAtIndex(0) as! NSManagedObject
+                        print(user)
+                    } else {
+                        user = NSManagedObject.init(entity: entityUser!, insertIntoManagedObjectContext: managedObjectContext)
+                        do {
+                            try user!.managedObjectContext!.save()
+                        } catch {
+                            print("could not create new user")
+                        }
+                    }
+                    
+                } catch let error as NSError {
+                    print("could not fetch - error")
+                }
+                _currentUser = User(userEntity: user!)
+                _currentUser!.addOtherPlace(Place(lat: 13.4, lng: 12.2, addressDescription: "other place 2"))
+                print(_currentUser?.userEntity?.valueForKey("other")!.count)
+            }
+            return _currentUser
         }
-        return Static.instance
     }
     
-    func setHome(lat: Double, lng: Double, addressDescription: String) {
-        self.home = ["lat": lat, "lng": lng, "addressDescription": addressDescription]
-        setPlaceForKey("Home", lat: lat, lng: lng, addressDescription: addressDescription)
+    func setPlace(key: String, place: Place){
+        let application = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = application.managedObjectContext
+        let placeEntity = NSEntityDescription.entityForName("Place", inManagedObjectContext: managedObjectContext)
+        let placeObject = NSManagedObject.init(entity: placeEntity!, insertIntoManagedObjectContext: managedObjectContext)
+        placeObject.setValue(place.lat, forKey: "lat")
+        placeObject.setValue(place.lng, forKey: "lng")
+        placeObject.setValue(place.addressDescription, forKey: "addressDescription")
+        do {
+            try placeObject.managedObjectContext?.save()
+            _currentUser?.userEntity?.setValue(placeObject, forKey: key)
+            try _currentUser?.userEntity?.managedObjectContext?.save()
+            
+        } catch {
+            print("Error in setting home address")
+        }
     }
     
-    func setWork(lat: Double, lng: Double, addressDescription: String) {
-        self.work = ["lat": lat, "lng": lng, "addressDescription": addressDescription]
-        setPlaceForKey("Work", lat: lat, lng: lng, addressDescription: addressDescription)
-    }
-    
-    func addOther(lat: Double, lng: Double, addressDescription: String) {
-        self.otherPlaces?.append(["lat": lat, "lng": lng, "addressDescription": addressDescription]
-        )
-        setPlaceForKey("Other", lat: lat, lng: lng, addressDescription: addressDescription)
-    }
-    
-    func removeOther() {
+    func addOtherPlace(place: Place){
         //TODO(Anvisha)
-    }
-    
-    func setPlaceForKey(key: String, lat: Double, lng: Double, addressDescription: String) {
-        let dict = ["lat": lat, "lng": lng, "addressDescription": addressDescription]
-        var placesData = appData!["Places"]?.mutableCopy() as! NSMutableDictionary
-        if key == "Other" {
-            var otherPlaces = placesData["Other"] as! Array<NSDictionary>
-            otherPlaces.append(dict)
-            placesData.setValue(otherPlaces, forKey: "Other")
-        } else {
-            print(key)
-            print(dict)
-            placesData.setValue(dict, forKey: key)
-        }
-        appData?.setValue(placesData, forKey: "Places")
-        print(appData)
     }
 }

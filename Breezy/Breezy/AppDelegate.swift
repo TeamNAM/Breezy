@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Set API keys from Credentials.plist file
+        print("initiated")
         let credentials = Credentials.defaultCredentials
         ForecastIOClient.apiKey = credentials.forecastKey
         GMSServices.provideAPIKey(credentials.googleKey)
@@ -30,6 +31,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //    let rootVC = UINavigationController(rootViewController: vc)
         //    window?.rootViewController = rootVC
         //
+        
+//        var user:NSManagedObject?
+//        let fetchRequest = NSFetchRequest(entityName: "User")
+//        let entityUser = NSEntityDescription.entityForName("User", inManagedObjectContext: managedObjectContext)
+//        do {
+//            let results = try managedObjectContext.executeFetchRequest(fetchRequest) as NSArray
+//            print(results)
+//            if results.count != 0 {
+//                user = results.objectAtIndex(0) as! NSManagedObject
+//                print(user)
+//            } else {
+//                user = NSManagedObject.init(entity: entityUser!, insertIntoManagedObjectContext: managedObjectContext)
+//                do {
+//                    try user!.managedObjectContext!.save()
+//                } catch {
+//                    print("could not create new user")
+//                }
+//            }
+//            
+//        } catch let error as NSError {
+//            print("could not fetch - error")
+//        }
+//        
         return true
     }
     
@@ -49,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("AppData.plist not found. Please, make sure it is part of the bundle.")
             }
         } else {
-            print("GameData.plist already exits at path.")
+            print("AppData.plist already exits at path.")
             // use this to delete file from documents directory
             //            try? fileManager.removeItemAtPath(path)
         }
@@ -73,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //writing to GameData.plist
         appData!.writeToFile(path, atomically: false)
         let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        print("Saved GameData.plist file is --> \(resultDictionary?.description)")
+        print("Saved AppData.plist file is --> \(resultDictionary)")
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -108,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.TeamNam.Breezy" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        print(urls)
         return urls[urls.count-1]
         }()
     
