@@ -9,17 +9,17 @@
 import UIKit
 import GoogleMaps
 
-class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
+class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var searchController: UISearchController!
-    var placesClient: GMSPlacesClient!
+    @IBOutlet weak var mapView: GMSMapView!
+
     var debounceTimer: NSTimer?
-    
+    var placesClient: GMSPlacesClient!
     var predictions = [GMSAutocompletePrediction]()
+    var searchController: UISearchController!
     
     // MARK: View Life Cycle
     
@@ -30,6 +30,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
         
         // Set up tableview
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         let resultCellNib = UINib(nibName: "PlacePredictionCell", bundle: nil)
         self.tableView.registerNib(resultCellNib, forCellReuseIdentifier: PlacePredictionCell.reuseIdentifier)
         self.tableView.hidden = true
@@ -51,6 +52,16 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
         
+        // Set up the map
+        var camera: GMSCameraPosition
+        if let currentLocation = AppDelegate.sharedDelegate().locationManager.location {
+            print("Got location")
+            camera = GMSCameraPosition.cameraWithLatitude(currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 10)
+        } else {
+            camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 8)
+        }
+        self.mapView.camera = camera
+        self.mapView.myLocationEnabled = true
     }
     
     // MARK: UITableViewDataSource
@@ -63,6 +74,39 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.predictions.count
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let placeID = self.predictions[indexPath.row].placeID
+        print(placeID)
+        self.placesClient.lookUpPlaceID(placeID) { (place: GMSPlace?, error: NSError?) -> Void in
+            if let error = error {
+                print("lookup place id query error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let place = place {
+                print("Place name \(place.name)")
+                print("Place address \(place.formattedAddress)")
+                print("Place placeID \(place.placeID)")
+                print("Place attributions \(place.attributions)")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.mapView.camera = GMSCameraPosition.cameraWithLatitude(place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 12)
+                    let marker = GMSMarker()
+                    marker.position = place.coordinate
+                    marker.map = self.mapView
+                    self.tableView.hidden = true
+                    self.searchController.searchBar.hidden = true
+                    self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "onCancelConfirmPlace:")
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "onFinishConfirmPlace:")
+                }
+            } else {
+                print("No place details for \(placeID)")
+            }
+        }
     }
     
     // MARK: UISearchResultsUpdating
@@ -79,7 +123,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
                 return
             }
         }
-        self.tableView.hidden = true
+        self.tableView?.hidden = true
     }
     
     // MARK: API Calls

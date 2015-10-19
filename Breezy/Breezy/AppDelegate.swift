@@ -6,18 +6,24 @@
 //  Copyright © 2015 TeamNAM. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import CoreLocation
 import ForecastIOClient
 import GoogleMaps
+import UIKit
 
 var appData: NSMutableDictionary?
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+    
+    // MARK: Properties
     
     var window: UIWindow?
     var plistPathInDocument:String = String()
+    var locationManager: CLLocationManager!
+    
+    // MARK: App Life Cycle
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Set API keys from Credentials.plist file
@@ -25,6 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let credentials = Credentials.defaultCredentials
         ForecastIOClient.apiKey = credentials.forecastKey
         GMSServices.provideAPIKey(credentials.googleKey)
+        
+        // Set up location manager
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.distanceFilter = 500;
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways {
+            locationManager.requestAlwaysAuthorization()
+        }
+        locationManager.startUpdatingLocation()
         
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
 //        let vc = GetStartedViewController()
@@ -180,6 +196,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static func sharedDelegate() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error getting location \(error)")
+        self.currentLocation = nil
     }
 }
 
