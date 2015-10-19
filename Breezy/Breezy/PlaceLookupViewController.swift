@@ -86,7 +86,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
     func callAutoCompleteAndTableReload(timer: NSTimer) {
         if let userInfo = timer.userInfo {
             let trimmedText = userInfo as! String
-            placeAutocomplete(trimmedText) { (predictions, error) -> Void in
+            MapHelpers.placeAutocomplete(placesClient, query: trimmedText) { (predictions, error) -> Void in
                 if let predictions = predictions {
                     self.predictions = predictions
                     dispatch_async(dispatch_get_main_queue()) {
@@ -97,24 +97,4 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UISear
             }
         }
     }
-    
-    func placeAutocomplete(query: String, completionHandler: (predictions: [GMSAutocompletePrediction]?, error: NSError?) -> ()) {
-        let filter = GMSAutocompleteFilter()
-        self.placesClient.autocompleteQuery(query, bounds: nil, filter: filter, callback: { (results, error: NSError?) -> Void in
-            if let error = error {
-                completionHandler(predictions: nil, error: error)
-                print("Autocomplete error \(error)")
-            } else {
-                var predictions = [GMSAutocompletePrediction]()
-                for result in results! {
-                    if let result = result as? GMSAutocompletePrediction {
-                        predictions.append(result)
-                    }
-                }
-                print("got predictions for query \(query)")
-                completionHandler(predictions: predictions, error: nil)
-            }
-        })
-    }
-    
 }

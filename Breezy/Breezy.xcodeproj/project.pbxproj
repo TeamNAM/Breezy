@@ -22,6 +22,7 @@
 		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
 		AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */; };
 		AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */; };
+		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +54,7 @@
 		AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6BF1BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		CBAED2FE1BD1DC83001993E3 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		AAD3B6B11BCCA08E008FBC01 /* Breezy */ = {
 			isa = PBXGroup;
 			children = (
+				CB1262091BD45A7F00BA11A7 /* Helpers */,
 				DE35ABA21BD44C3B00FD4035 /* Models */,
 				CBAED2FA1BD1DC25001993E3 /* View Controllers */,
 				CBAED2F91BD1DC20001993E3 /* Views */,
@@ -128,6 +131,14 @@
 				DE35ABA01BD44B0E00FD4035 /* AppData.plist */,
 			);
 			path = Breezy;
+			sourceTree = "<group>";
+		};
+		CB1262091BD45A7F00BA11A7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		CBAED2F91BD1DC20001993E3 /* Views */ = {
@@ -317,6 +328,7 @@
 				AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */,
 				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
+				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 			);

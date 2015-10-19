@@ -37,8 +37,8 @@ class ViewController: UIViewController {
     User.sharedInstance.addOther(2.3, lng: 2.3, addressDescription: "Other 2")
     appDelegate.saveApplicationData(appData!)
     
-  //  let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
-  //  addSubView(vc)
+    let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
+    addSubView(vc)
   }
     
     func addSubView(viewController: UIViewController) {

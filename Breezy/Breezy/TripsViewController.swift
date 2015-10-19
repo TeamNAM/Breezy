@@ -11,7 +11,7 @@ import UIKit
 let apiTrips = [["name": "Mexico", "address": "1800 Paradise Dr. Hermosillo Mx 02932"]]
 
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tripTableView: UITableView!
     var trips = apiTrips
     
@@ -47,16 +47,20 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if tableView.cellForRowAtIndexPath(indexPath) is AddTripCell {
+            let newTripController = NewTripViewController(nibName: "NewTripViewController", bundle: NSBundle.mainBundle())
+            self.presentViewController(newTripController, animated: true, completion:nil)
+        }
     }
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
