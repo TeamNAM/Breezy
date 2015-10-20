@@ -9,72 +9,71 @@
 import UIKit
 import GoogleMaps
 
-class NewTripViewController: UIViewController, CLLocationManagerDelegate, UISearchResultsUpdating {
+class NewTripViewController: UIViewController {
+    
+    
+    var dateFormatter: NSDateFormatter!
+    var currentDatePickerView: UIDatePicker?
 
-    @IBOutlet weak var googleMapView: GMSMapView!
-    var locationManager: CLLocationManager?
-    var searchController: UISearchController!
-    var debounceTimer: NSTimer?
+    @IBOutlet weak var endDateTextField: UITextField!
+    @IBOutlet weak var beginDateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        //        addCurrentLocationButton()
-        addSearch()
         
-        MapHelpers.triggerCurrentLocation(locationManager, delegate: self)
-        
-        
+        dateFormatter =  NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+    }
+   
+    @IBAction func beginDateEdit(input: UITextField) {
+        let datePickerView = getDatePickerView(input)
+        currentDatePickerView = datePickerView
+        datePickerView.addTarget(self, action: Selector("beginDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func addSearch() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.sizeToFit()
-        self.navigationItem.titleView = searchController.searchBar
+    @IBAction func endDateEdit(input: UITextField) {
+        let datePickerView = getDatePickerView(input)
+        currentDatePickerView = datePickerView
+        datePickerView.addTarget(self, action: Selector("endDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func addCurrentLocationButton() {
-        let button = UIImageView(image: UIImage(named: "location"))
-        let views = ["button": button, "googleMapView": googleMapView]
-        googleMapView.addSubview(button)
-//        button.frame.height = 50
-//        button.frame.width = 50
+    func beginDateValueChanged(datePicker:UIDatePicker) {
+        beginDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
+    }
+    
+    func endDateValueChanged(datePicker:UIDatePicker) {
+        endDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
+    }
+    
+    func closeDatePicker(sender: UIBarButtonItem) {
+        // todo: Do I need both?
+        endDateTextField.resignFirstResponder()
+        beginDateTextField.resignFirstResponder()
+    }
+    
+    private func getDatePickerView(input: UITextField) -> UIDatePicker {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        input.inputView = datePickerView
+        input.inputAccessoryView = getUiToolbar()
+        return datePickerView
+    }
+    
+    private func getUiToolbar() -> UIToolbar {
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 40))
+        toolbar.barStyle = UIBarStyle.Default
+        toolbar.tintColor = UIColor.blackColor()
+        toolbar.backgroundColor = UIColor.greenColor()
+        
+        let toolbarClose = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "closeDatePicker:")
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let toolbarToday = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Done, target: self, action: "selectToday:")
+        
+        toolbar.items = [toolbarClose, flexSpace, toolbarToday]
+        return toolbar
+    }
 
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:|[button]-50-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: views)
-        let verticalConstraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|[button]-50-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: views)
-        googleMapView.addConstraints(verticalConstraint)
-        googleMapView.addConstraints(horizontalConstraint)
-    }
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
-            let trimmedText = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            if trimmedText.characters.count > 0 {
-                if let timer = debounceTimer {
-                    timer.invalidate()
-                }
-                debounceTimer = NSTimer(timeInterval: 0.25, target: self, selector: Selector("callAutoCompleteAndLoadMap:"), userInfo: trimmedText, repeats: false)
-                NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
-            }
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let lat = locations[0].coordinate.latitude
-        let long = locations[0].coordinate.longitude
-        print("lat \(lat) long \(long)")
-        MapHelpers.setMap(googleMapView, location: locations[0])
-        locationManager!.stopUpdatingLocation()
-    }
-    
-//    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-//        print("Error while updating location " + error.localizedDescription)
-//    }
 
 
     /*x

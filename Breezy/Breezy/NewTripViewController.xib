@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTripViewController" customModule="Breezy" customModuleProvider="target">
             <connections>
-                <outlet property="googleMapView" destination="Yp5-ai-WU8" id="hib-ED-eVw"/>
+                <outlet property="beginDateTextField" destination="kj6-fA-ZDe" id="Lsf-3E-MxZ"/>
+                <outlet property="endDateTextField" destination="dWS-tg-EXR" id="mDv-h9-YMq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,23 +17,57 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDg-PS-mGH">
-                    <rect key="frame" x="12" y="12" width="84" height="21"/>
+                    <rect key="frame" x="12" y="12" width="83.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yp5-ai-WU8" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" red="1" green="0.022075365204853314" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Begin Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwI-c4-wRk">
+                    <rect key="frame" x="12" y="56" width="88.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvH-ah-BHI">
+                    <rect key="frame" x="12" y="101" width="79" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kj6-fA-ZDe">
+                    <rect key="frame" x="140" y="52" width="125" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="KmM-Hy-sTa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="beginDateEdit:" destination="-1" eventType="editingDidBegin" id="Com-Tf-qos"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-tg-EXR">
+                    <rect key="frame" x="131" y="97" width="125" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="Rug-5P-bYx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="endDateEdit:" destination="-1" eventType="editingDidBegin" id="gDP-F7-2T2"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Yp5-ai-WU8" secondAttribute="trailing" id="1A5-BP-qdZ"/>
-                <constraint firstItem="Yp5-ai-WU8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CaT-ww-LZ1"/>
-                <constraint firstItem="Yp5-ai-WU8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vl9-e9-PTK"/>
+                <constraint firstItem="dWS-tg-EXR" firstAttribute="centerY" secondItem="kvH-ah-BHI" secondAttribute="centerY" id="298-xo-XO4"/>
+                <constraint firstItem="kvH-ah-BHI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="GEv-r6-h3O"/>
+                <constraint firstItem="dWS-tg-EXR" firstAttribute="leading" secondItem="kvH-ah-BHI" secondAttribute="trailing" constant="40" id="KH9-Ea-fcP"/>
+                <constraint firstItem="mwI-c4-wRk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="Ogr-tk-Ri4"/>
+                <constraint firstItem="kvH-ah-BHI" firstAttribute="top" secondItem="mwI-c4-wRk" secondAttribute="bottom" constant="24" id="ZH7-Sw-wHV"/>
+                <constraint firstItem="kj6-fA-ZDe" firstAttribute="leading" secondItem="mwI-c4-wRk" secondAttribute="trailing" constant="40" id="dYr-Co-zMx"/>
                 <constraint firstItem="YDg-PS-mGH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="ecD-da-ZSh"/>
-                <constraint firstAttribute="bottom" secondItem="Yp5-ai-WU8" secondAttribute="bottom" id="sVc-oi-7LB"/>
+                <constraint firstItem="mwI-c4-wRk" firstAttribute="top" secondItem="YDg-PS-mGH" secondAttribute="bottom" constant="24" id="mO4-UB-70L"/>
+                <constraint firstItem="kj6-fA-ZDe" firstAttribute="centerY" secondItem="mwI-c4-wRk" secondAttribute="centerY" id="nC1-id-cu9"/>
                 <constraint firstItem="YDg-PS-mGH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="xvF-5X-Gva"/>
             </constraints>
         </view>

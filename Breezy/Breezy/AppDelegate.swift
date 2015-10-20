@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
 //        let vc = GetStartedViewController()
-        let vc = PlaceLookupViewController()
-//        let vc = TripsViewController()
+//        let vc = PlaceLookupViewController()
+        let vc = TripsViewController()
         let rootVC = UINavigationController(rootViewController: vc)
         window?.rootViewController = rootVC
 
