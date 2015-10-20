@@ -22,10 +22,6 @@ class GetStartedViewController: UIViewController, PlaceLookupViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let vc = PlaceLookupViewController()
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
 
 //        self.locationManager = CLLocationManager()
 //        switch CLLocationManager.authorizationStatus() {
@@ -48,7 +44,15 @@ class GetStartedViewController: UIViewController, PlaceLookupViewDelegate {
 //        }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let aStoryboard = UIStoryboard(name: "PlaceLookupViewController", bundle: nil)
+        let vc = aStoryboard.instantiateViewControllerWithIdentifier(PlaceLookupViewController.storyboardID) as! PlaceLookupViewController
+        vc.delegate = self
+        presentViewController(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+    }
+    
     // MARK: PlaceLookupViewDelegate
+    
     func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
         print("Selected place!")
         print(selectedPlace)

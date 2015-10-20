@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
+		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
 		AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199F1BD4572900C911BF /* GetStartedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6719A01BD4572900C911BF /* GetStartedViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -16,8 +18,6 @@
 		AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CF1BD4A158009764DB /* ContactsUI.framework */; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AAADA9F81BD4267D00715557 /* PlaceLookupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
 		AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */; };
@@ -40,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceLookupViewController.storyboard; sourceTree = "<group>"; };
+		AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		AA67199F1BD4572900C911BF /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		AA6719A01BD4572900C911BF /* GetStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetStartedViewController.xib; sourceTree = "<group>"; };
@@ -48,8 +50,6 @@
 		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
-		AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
-		AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceLookupViewController.xib; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 				AA6719A01BD4572900C911BF /* GetStartedViewController.xib */,
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
 				CBAED3041BD1DCA8001993E3 /* TripsViewController.xib */,
-				AAADA9F51BD4267D00715557 /* PlaceLookupViewController.swift */,
-				AAADA9F61BD4267D00715557 /* PlaceLookupViewController.xib */,
+				AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */,
+				AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
 			);
@@ -258,11 +258,11 @@
 				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
-				AAADA9F81BD4267D00715557 /* PlaceLookupViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
+				AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */,
 				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
@@ -325,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */,
 				AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
@@ -333,7 +334,6 @@
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
-				AAADA9F71BD4267D00715557 /* PlaceLookupViewController.swift in Sources */,
 				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
