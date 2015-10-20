@@ -6,14 +6,22 @@
 //  Copyright © 2015 TeamNAM. All rights reserved.
 //
 
-import UIKit
+import CoreLocation
 import GoogleMaps
+import UIKit
 
 @objc protocol PlaceLookupViewDelegate {
     optional func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place)
 }
 
-class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, CLLocationManagerDelegate {
+    // MARK: Types
+    
+    // Controller states
+    enum ControllerState: Int {
+        case Searching
+        case Confirming
+    }
     
     // MARK: Properties
     
@@ -22,17 +30,30 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
 
     weak var delegate: PlaceLookupViewDelegate?
     var debounceTimer: NSTimer?
+    var locationManager: CLLocationManager!
     var placesClient: GMSPlacesClient!
     var predictions = [GMSAutocompletePrediction]()
     var searchController: UISearchController!
     var selectedPlace: Place?
+    var state: ControllerState!
+    
+    // MARK:
     
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.state = ControllerState.Searching
+        
         self.placesClient = GMSPlacesClient()
+
+        // Set up the map
+//        self.locationManager = CLLocationManager()
+//        MapHelpers.triggerCurrentLocation(self.locationManager, delegate: self)
+        self.mapView.camera = GMSCameraPosition.cameraWithLatitude(37.785834, longitude: -122.406417, zoom: 10)
+//        self.mapView.myLocationEnabled = true
+//        self.mapView.settings.myLocationButton = true
         
         // Set up tableview
         self.tableView.dataSource = self
@@ -57,17 +78,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
-        
-        // Set up the map
-        var camera: GMSCameraPosition
-        if let currentLocation = AppDelegate.sharedDelegate().locationManager.location {
-            print("Got location")
-            camera = GMSCameraPosition.cameraWithLatitude(currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 10)
-        } else {
-            camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 8)
-        }
-        self.mapView.camera = camera
-        self.mapView.myLocationEnabled = true
     }
     
     // MARK: Action handlers
@@ -86,7 +96,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         self.delegate?.placeLookupViewController?(self, didSelectPlace: self.selectedPlace!)
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
+   
     // MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -38,6 +38,7 @@ class MapHelpers {
             if CLLocationManager.authorizationStatus() == .NotDetermined {
                 locationManager.requestAlwaysAuthorization()
             }
+            print("updating location")
             locationManager.startUpdatingLocation()
         }
     }
