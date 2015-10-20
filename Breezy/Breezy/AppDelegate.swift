@@ -45,9 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
 //        let vc = GetStartedViewController()
 //        let vc = PlaceLookupViewController()
-//        let vc = TripsViewController()
-//        let rootVC = UINavigationController(rootViewController: vc)
-//        window?.rootViewController = rootVC
+        let vc = TripsViewController()
+        let rootVC = UINavigationController(rootViewController: vc)
+        window?.rootViewController = rootVC
 
         return true
     }
@@ -202,7 +202,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error getting location \(error)")
-        self.currentLocation = nil
     }
 }
 

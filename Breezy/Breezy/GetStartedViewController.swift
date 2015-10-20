@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Contacts
 
-class GetStartedViewController: UIViewController {
+class GetStartedViewController: UIViewController, PlaceLookupViewDelegate {
     
     // MARK: Properties
     
@@ -22,25 +22,35 @@ class GetStartedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let vc = PlaceLookupViewController()
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
 
-        self.locationManager = CLLocationManager()
-        switch CLLocationManager.authorizationStatus() {
-            case .Denied, .NotDetermined, .Restricted:
-                self.locationManager.requestAlwaysAuthorization()
-            default: ()
-        }
-
-        self.contactStore = CNContactStore()
-        switch CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts) {
-            case .Denied, .NotDetermined, .Restricted:
-                self.contactStore.requestAccessForEntityType(CNEntityType.Contacts) { (granted: Bool, error: NSError?) -> Void in
-                    if let error = error {
-                        print("Access denied: \(error)")
-                    } else {
-                        print("Got access")
-                    }
-                }
-            default: ()
-        }
+//        self.locationManager = CLLocationManager()
+//        switch CLLocationManager.authorizationStatus() {
+//            case .Denied, .NotDetermined, .Restricted:
+//                self.locationManager.requestAlwaysAuthorization()
+//            default: ()
+//        }
+//
+//        self.contactStore = CNContactStore()
+//        switch CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts) {
+//            case .Denied, .NotDetermined, .Restricted:
+//                self.contactStore.requestAccessForEntityType(CNEntityType.Contacts) { (granted: Bool, error: NSError?) -> Void in
+//                    if let error = error {
+//                        print("Access denied: \(error)")
+//                    } else {
+//                        print("Got access")
+//                    }
+//                }
+//            default: ()
+//        }
+    }
+    
+    // MARK: PlaceLookupViewDelegate
+    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
+        print("Selected place!")
+        print(selectedPlace)
     }
 }

@@ -9,6 +9,10 @@
 import UIKit
 import GoogleMaps
 
+@objc protocol PlaceLookupViewDelegate {
+    optional func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place)
+}
+
 class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     // MARK: Properties
@@ -16,10 +20,12 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: GMSMapView!
 
+    weak var delegate: PlaceLookupViewDelegate?
     var debounceTimer: NSTimer?
     var placesClient: GMSPlacesClient!
     var predictions = [GMSAutocompletePrediction]()
     var searchController: UISearchController!
+    var selectedPlace: Place?
     
     // MARK: View Life Cycle
     
@@ -64,6 +70,23 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         self.mapView.myLocationEnabled = true
     }
     
+    // MARK: Action handlers
+    
+    func onCancelConfirmPlace(sender: AnyObject) {
+        let searchBar = self.searchController.searchBar
+        searchBar.text = ""
+        searchBar.hidden = false
+        searchBar.becomeFirstResponder()
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
+    }
+    
+    func onFinishConfirmPlace(sender: AnyObject) {
+        print("confirm finish")
+        self.delegate?.placeLookupViewController?(self, didSelectPlace: self.selectedPlace!)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     // MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,6 +116,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
                 print("Place address \(place.formattedAddress)")
                 print("Place placeID \(place.placeID)")
                 print("Place attributions \(place.attributions)")
+                
+                self.selectedPlace = Place(lat: place.coordinate.latitude, lng: place.coordinate.longitude, addressDescription: place.formattedAddress)
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     self.mapView.camera = GMSCameraPosition.cameraWithLatitude(place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 12)
                     let marker = GMSMarker()
