@@ -155,8 +155,8 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: API Calls
     
     func callAutoCompleteAndTableReload(timer: NSTimer) {
-        if let userInfo = timer.userInfo {
-            let trimmedText = userInfo as! String
+        if let text = timer.userInfo {
+            let trimmedText = text as! String
             MapHelpers.placeAutocomplete(placesClient, query: trimmedText) { (predictions, error) -> Void in
                 if let predictions = predictions {
                     self.predictions = predictions

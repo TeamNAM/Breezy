@@ -21,18 +21,8 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uin-vC-ZH3">
-                    <rect key="frame" x="20" y="459" width="112" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Find my location">
-                        <color key="titleColor" red="0.93333333330000001" green="0.1902813421" blue="0.32725157440000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="findLocation:" destination="-1" eventType="touchUpInside" id="4wP-i6-Vjq"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yp5-ai-WU8" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="1" green="0.022075365204853314" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
@@ -41,10 +31,8 @@
                 <constraint firstAttribute="trailing" secondItem="Yp5-ai-WU8" secondAttribute="trailing" id="1A5-BP-qdZ"/>
                 <constraint firstItem="Yp5-ai-WU8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CaT-ww-LZ1"/>
                 <constraint firstItem="Yp5-ai-WU8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vl9-e9-PTK"/>
-                <constraint firstItem="Uin-vC-ZH3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="WKX-00-9jl"/>
                 <constraint firstItem="YDg-PS-mGH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="12" id="ecD-da-ZSh"/>
-                <constraint firstAttribute="bottom" secondItem="Yp5-ai-WU8" secondAttribute="bottom" constant="200" id="sVc-oi-7LB"/>
-                <constraint firstAttribute="bottom" secondItem="Uin-vC-ZH3" secondAttribute="bottom" constant="111" id="wma-Hj-BPC"/>
+                <constraint firstAttribute="bottom" secondItem="Yp5-ai-WU8" secondAttribute="bottom" id="sVc-oi-7LB"/>
                 <constraint firstItem="YDg-PS-mGH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="xvF-5X-Gva"/>
             </constraints>
         </view>

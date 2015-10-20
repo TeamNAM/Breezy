@@ -30,7 +30,7 @@ class MapHelpers {
     }
     
     
-    static func getCurrentLocation(locationManager: CLLocationManager?, delegate: CLLocationManagerDelegate) {
+    static func triggerCurrentLocation(locationManager: CLLocationManager?, delegate: CLLocationManagerDelegate) {
         if let locationManager = locationManager {
             locationManager.delegate = delegate;
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -40,5 +40,21 @@ class MapHelpers {
             }
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    static func setMap(map: GMSMapView, location: CLLocation) {
+        let lat = location.coordinate.latitude
+        let long = location.coordinate.longitude
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(lat,
+            longitude: long, zoom: 13)
+        map.myLocationEnabled = true
+        map.camera = camera
+        
+        //        let marker = GMSMarker()
+        //        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
+        //        marker.title = "Sydney"
+        //        marker.snippet = "Australia"
+        //        marker.map = map
     }
 }

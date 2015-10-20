@@ -9,42 +9,72 @@
 import UIKit
 import GoogleMaps
 
-class NewTripViewController: UIViewController, CLLocationManagerDelegate {
+class NewTripViewController: UIViewController, CLLocationManagerDelegate, UISearchResultsUpdating {
 
     @IBOutlet weak var googleMapView: GMSMapView!
     var locationManager: CLLocationManager?
+    var searchController: UISearchController!
+    var debounceTimer: NSTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
-        let camera = GMSCameraPosition.cameraWithLatitude(-33.86,
-            longitude: 151.20, zoom: 6)
-        googleMapView.myLocationEnabled = true
-        googleMapView.camera = camera
+        //        addCurrentLocationButton()
+        addSearch()
         
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = googleMapView
-        MapHelpers.getCurrentLocation(locationManager, delegate: self)
+        MapHelpers.triggerCurrentLocation(locationManager, delegate: self)
+        
+        
     }
     
-    @IBAction func findLocation(sender: UIButton) {
-        MapHelpers.getCurrentLocation(locationManager, delegate:  self)
+    func addSearch() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        self.navigationItem.titleView = searchController.searchBar
     }
     
+    func addCurrentLocationButton() {
+        let button = UIImageView(image: UIImage(named: "location"))
+        let views = ["button": button, "googleMapView": googleMapView]
+        googleMapView.addSubview(button)
+//        button.frame.height = 50
+//        button.frame.width = 50
+
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:|[button]-50-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: views)
+        let verticalConstraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|[button]-50-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: views)
+        googleMapView.addConstraints(verticalConstraint)
+        googleMapView.addConstraints(horizontalConstraint)
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            let trimmedText = searchText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            if trimmedText.characters.count > 0 {
+                if let timer = debounceTimer {
+                    timer.invalidate()
+                }
+                debounceTimer = NSTimer(timeInterval: 0.25, target: self, selector: Selector("callAutoCompleteAndLoadMap:"), userInfo: trimmedText, repeats: false)
+                NSRunLoop.currentRunLoop().addTimer(debounceTimer!, forMode: "NSDefaultRunLoopMode")
+            }
+        }
+    }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.count)
-        print(locations[0].coordinate.latitude)
-        print(locations[0].coordinate.longitude)
-        print("test")
+        let lat = locations[0].coordinate.latitude
+        let long = locations[0].coordinate.longitude
+        print("lat \(lat) long \(long)")
+        MapHelpers.setMap(googleMapView, location: locations[0])
+        locationManager!.stopUpdatingLocation()
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error while updating location " + error.localizedDescription)
-    }
+//    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+//        print("Error while updating location " + error.localizedDescription)
+//    }
 
 
     /*x
