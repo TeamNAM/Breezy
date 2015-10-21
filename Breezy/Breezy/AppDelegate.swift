@@ -24,8 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: App Life Cycle
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        NSLog("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
+        _currentUser = dataFromDisk()
+        
+//EXAMPLE
+//        User.userData?.home = Place(lat: 1.0, lng: 2.0, addressDescription: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello")
+//        print(User.userData!.home?.placeType?.description)
+//        print(User.userData?.home?.recommendationMessage)
+        
         // Set API keys from Credentials.plist file
-        print("initiated")
         let credentials = Credentials.defaultCredentials
         ForecastIOClient.apiKey = credentials.forecastKey
         GMSServices.provideAPIKey(credentials.googleKey)
@@ -38,67 +46,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let vc = UIStoryboard(name: SavedPlacesViewController.storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(SavedPlacesViewController.storyboardID)
         let rootVC = UINavigationController(rootViewController: vc)
         window?.rootViewController = rootVC
-
         return true
     }
     
-    func loadApplicationData() {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-        let documentsDirectory = paths[0] as! NSString
-        let path = documentsDirectory.stringByAppendingPathComponent("AppData.plist")
-        let fileManager = NSFileManager.defaultManager()
-        //check if file exists
-        if(!fileManager.fileExistsAtPath(path)) {
-            // If it doesn't, copy it from the default file in the Bundle
-            if let bundlePath = NSBundle.mainBundle().pathForResource("AppData", ofType: "plist") {
-                let resultDictionary = NSMutableDictionary(contentsOfFile: bundlePath)
-                print("Bundle AppData.plist file is --> \(resultDictionary)")
-                try? fileManager.copyItemAtPath(bundlePath, toPath: path)
-            } else {
-                print("AppData.plist not found. Please, make sure it is part of the bundle.")
-            }
-        } else {
-            print("AppData.plist already exits at path.")
-            // use this to delete file from documents directory
-            //            try? fileManager.removeItemAtPath(path)
-        }
-        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        print("Loaded AppData.plist file is --> \(resultDictionary)")
-        let myDict = NSDictionary(contentsOfFile: path)
-        if let dict = myDict {
-            //loading values
-            appData = dict.mutableCopy() as! NSMutableDictionary
-            print(dict)
-        } else {
-            print("WARNING: Couldn't create dictionary from AppData.plist! Default values will be used!")
-        }
+    func dataFromDisk() -> User {
+        let blah = NSKeyedUnarchiver.unarchiveObjectWithFile(pathForKeyedArchive) as? User
+        //        print(blah!.home)
+        return blah ?? User()
     }
     
-    func saveApplicationData(data:NSDictionary) {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-        let documentsDirectory = paths.objectAtIndex(0) as! NSString
-        let path = documentsDirectory.stringByAppendingPathComponent("AppData.plist")
-        //...
-        //writing to GameData.plist
-        appData!.writeToFile(path, atomically: false)
-        let resultDictionary = NSMutableDictionary(contentsOfFile: path)
-        print("Saved AppData.plist file is --> \(resultDictionary)")
+    private func saveToDisk(){
+        print("saved to disk")
+        NSKeyedArchiver.archiveRootObject(User.userData!, toFile: pathForKeyedArchive)
+    }
+    
+    private var pathForKeyedArchive:String{
+        return (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! as NSString).stringByAppendingPathComponent("archive.plist")
     }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        if let data = appData {
-            saveApplicationData(data)
-        }
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        if let data = appData {
-            saveApplicationData(data)
-        }
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits
+        saveToDisk()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -112,10 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        if let data = appData {
-            saveApplicationData(data)
-        }
-        self.saveContext()
     }
     
     // MARK: - Core Data stack
