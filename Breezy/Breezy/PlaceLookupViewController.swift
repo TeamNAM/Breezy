@@ -63,9 +63,8 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        let resultCellNib = UINib(nibName: "PlacePredictionCell", bundle: nil)
+        let resultCellNib = UINib(nibName: PlacePredictionCell.reuseIdentifier, bundle: nil)
         self.tableView.registerNib(resultCellNib, forCellReuseIdentifier: PlacePredictionCell.reuseIdentifier)
-        self.tableView.hidden = true
         
         // Set up search bar
         

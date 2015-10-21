@@ -6,28 +6,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlacePredictionCell" id="KGk-i7-Jjw" customClass="PlacePredictionCell" customModule="Breezy" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SavedPlaceCell" customModule="Breezy" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-Uc-fTS">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEg-G4-GbT">
                         <rect key="frame" x="8" y="11" width="304" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="AlX-Uc-fTS" secondAttribute="trailing" constant="8" id="2Q0-EI-B3X"/>
-                    <constraint firstItem="AlX-Uc-fTS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="90r-AL-Aom"/>
-                    <constraint firstItem="AlX-Uc-fTS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cv1-OV-jJz"/>
+                    <constraint firstAttribute="trailing" secondItem="oEg-G4-GbT" secondAttribute="trailing" constant="8" id="26w-fo-S8k"/>
+                    <constraint firstItem="oEg-G4-GbT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="9K1-Y6-aae"/>
+                    <constraint firstItem="oEg-G4-GbT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dJ9-EZ-vUv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="predictionLabel" destination="AlX-Uc-fTS" id="ALP-A9-eZN"/>
+                <outlet property="addressLabel" destination="oEg-G4-GbT" id="nk2-QO-TSL"/>
             </connections>
         </tableViewCell>
     </objects>

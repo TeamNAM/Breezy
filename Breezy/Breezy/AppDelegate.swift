@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let vc = GetStartedViewController()
 //        let vc = PlaceLookupViewController()
         let vc = TripsViewController()
+//        let vc = UIStoryboard(name: SavedPlacesViewController.storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(SavedPlacesViewController.storyboardID)
         let rootVC = UINavigationController(rootViewController: vc)
-        window?.rootViewController = vc
+        window?.rootViewController = rootVC
 
         return true
     }

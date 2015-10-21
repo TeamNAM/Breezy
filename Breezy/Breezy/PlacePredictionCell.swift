@@ -12,7 +12,7 @@ import GoogleMaps
 class PlacePredictionCell: UITableViewCell {
   // MARK: Properties
   
-  static let reuseIdentifier = "AddressLookupResultCell"
+  static let reuseIdentifier = "PlacePredictionCell"
   
   @IBOutlet weak var predictionLabel: UILabel!
   
