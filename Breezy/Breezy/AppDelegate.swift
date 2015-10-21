@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
 //        let vc = GetStartedViewController()
 //        let vc = PlaceLookupViewController()
-        let vc = TripsViewController()
+//        let vc = TripsViewController()
+        let vc = TodayViewController()
 //        let vc = UIStoryboard(name: SavedPlacesViewController.storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(SavedPlacesViewController.storyboardID)
         let rootVC = UINavigationController(rootViewController: vc)
         window?.rootViewController = rootVC

@@ -123,7 +123,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func onSavePlace(sender: AnyObject) {
-        let place = Place(lat: self.selectedPlace!.coordinate.latitude, lng: self.selectedPlace!.coordinate.longitude, addressDescription: self.selectedPlace!.formattedAddress)
+        let place = Place(lat: self.selectedPlace!.coordinate.latitude, lng: self.selectedPlace!.coordinate.longitude, addressDescription: self.selectedPlace!.formattedAddress, placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
         self.delegate?.placeLookupViewController?(self, didSelectPlace: place)
         dismissViewControllerAnimated(true, completion: nil)
     }

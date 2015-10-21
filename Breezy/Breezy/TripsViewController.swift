@@ -49,7 +49,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if tableView.cellForRowAtIndexPath(indexPath) is AddTripCell {
             let newTripController = NewTripViewController(nibName: "NewTripViewController", bundle: NSBundle.mainBundle())
-            self.presentViewController(newTripController, animated: true, completion:nil)
+            self.navigationController?.pushViewController(newTripController, animated: true)
         }
     }
     

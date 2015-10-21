@@ -29,8 +29,8 @@ class ViewController: UIViewController {
     }
     
     //example code
-    User.userData?.work = Place(lat: 1.0, lng: 2.0, addressDescription: "10 Downing St")
-    User.userData?.home = Place(lat: 155.5, lng: 12.0, addressDescription: "1 Kennedy St")
+//    User.userData?.work = Place(lat: 1.0, lng: 2.0, addressDescription: "10 Downing St")
+//    User.userData?.home = Place(lat: 155.5, lng: 12.0, addressDescription: "1 Kennedy St")
     
     let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
     addSubView(vc)

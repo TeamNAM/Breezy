@@ -60,8 +60,9 @@ class User{
                 } catch let error as NSError {
                     print("could not fetch - error")
                 }
+                let otherPlace = Place(lat: 13.4, lng: 12.2, addressDescription: "other place 2", placeType: .Other, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
                 _currentUser = User(userEntity: user!)
-                _currentUser!.addOtherPlace(Place(lat: 13.4, lng: 12.2, addressDescription: "other place 2"))
+                _currentUser!.addOtherPlace(otherPlace)
                 print(_currentUser?.userEntity?.valueForKey("other")!.count)
             }
             return _currentUser

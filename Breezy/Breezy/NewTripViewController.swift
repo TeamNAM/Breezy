@@ -17,6 +17,7 @@ class NewTripViewController: UIViewController {
 
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var beginDateTextField: UITextField!
+    @IBOutlet weak var tripNameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +39,19 @@ class NewTripViewController: UIViewController {
         datePickerView.addTarget(self, action: Selector("endDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
+
+    
     func beginDateValueChanged(datePicker:UIDatePicker) {
         beginDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
     }
     
     func endDateValueChanged(datePicker:UIDatePicker) {
         endDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
+    }
+    
+    @IBAction func didEditLocation(sender: UITextField) {
+        let vc = PlaceLookupViewController(nibName: "NewTripViewController", bundle: NSBundle.mainBundle())
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func closeDatePicker(sender: UIBarButtonItem) {

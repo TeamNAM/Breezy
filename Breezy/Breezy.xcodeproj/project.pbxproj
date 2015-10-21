@@ -37,6 +37,10 @@
 		CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		CBE221B11BD755EF003652AB /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE221AF1BD755EF003652AB /* TodayViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		CBE221B41BD756BE003652AB /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221B21BD756BE003652AB /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
+		CBE221B51BD756BE003652AB /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE221B31BD756BE003652AB /* WeatherCell.xib */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +79,10 @@
 		CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTripViewController.xib; sourceTree = "<group>"; };
 		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
 		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
+		CBE221AE1BD755EF003652AB /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CBE221AF1BD755EF003652AB /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		CBE221B21BD756BE003652AB /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		CBE221B31BD756BE003652AB /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		DE35ABA01BD44B0E00FD4035 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
 		DE35ABA31BD44C4800FD4035 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		DE35ABA51BD44C7400FD4035 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -158,6 +166,8 @@
 		CBAED2F91BD1DC20001993E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CBE221B21BD756BE003652AB /* WeatherCell.swift */,
+				CBE221B31BD756BE003652AB /* WeatherCell.xib */,
 				CBAED2FD1BD1DC83001993E3 /* TripCell.swift */,
 				CBAED2FE1BD1DC83001993E3 /* TripCell.xib */,
 				CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */,
@@ -183,6 +193,8 @@
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
 				AAACA1CA1BD72394003E4BC6 /* SavedPlacesViewController.swift */,
 				AAACA1CC1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard */,
+				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
+				CBE221AF1BD755EF003652AB /* TodayViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -267,11 +279,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE221B51BD756BE003652AB /* WeatherCell.xib in Resources */,
 				AAACA1CD1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard in Resources */,
 				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
+				CBE221B11BD755EF003652AB /* TodayViewController.xib in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
@@ -341,11 +355,13 @@
 			files = (
 				AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */,
 				AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */,
+				CBE221B41BD756BE003652AB /* WeatherCell.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */,
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
+				CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */,
 				AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */,
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
