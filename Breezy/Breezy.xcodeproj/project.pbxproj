@@ -35,6 +35,7 @@
 		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
+		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		DE35ABA31BD44C4800FD4035 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		DE35ABA51BD44C7400FD4035 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE35ABA71BD44CFA00FD4035 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
+		DEFB76451BD77F8C002AC372 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		E6AFAE4023E97270ABAD6826 /* Pods-Breezy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.debug.xcconfig"; sourceTree = "<group>"; };
 		EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2228CF0FF26FD09B6A4677 /* Pods-Breezy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				DE35ABA31BD44C4800FD4035 /* Place.swift */,
 				DE35ABA51BD44C7400FD4035 /* User.swift */,
+				DEFB76451BD77F8C002AC372 /* Trip.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */,
 				AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
