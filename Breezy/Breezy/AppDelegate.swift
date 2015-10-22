@@ -38,25 +38,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ForecastIOClient.apiKey = credentials.forecastKey
         GMSServices.provideAPIKey(credentials.googleKey)
         
-        // To show your view controller when the app launches, set `vc` to an instance of your view controller
-//        let vc = GetStartedViewController()
-//        let vc = PlaceLookupViewController()
-        let tripVc = TripsViewController()
-        tripVc.title = "Trips"
-        let todayVc = TodayViewController()
-        todayVc.title = "Today"
-        let placesVc = UIStoryboard(name: SavedPlacesViewController.storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(SavedPlacesViewController.storyboardID)
-        placesVc.title = "Places"
-        let tabBar = UITabBarController()
-        let vcs = [todayVc, tripVc, placesVc]
-        tabBar.viewControllers = vcs.map { (vc) -> UIViewController in
-            
-            let navCtrl = UINavigationController(rootViewController: vc)
-            return navCtrl
+        // Create tab bar controller
+        let todayVC = TodayViewController()
+        todayVC.title = "Today"
+        todayVC.tabBarItem.image = UIImage(named: "calendar icon")
+        let tripsVC = TripsViewController()
+        tripsVC.title = "Trips"
+        tripsVC.tabBarItem.image = UIImage(named: "paper airplane")
+        let tabBarVC = UITabBarController()
+        let viewControllers = [todayVC, tripsVC]
+        let embeddedVCs = viewControllers.map { (vc) -> UINavigationController in
+            return UINavigationController(rootViewController: vc)
         }
+        tabBarVC.viewControllers = embeddedVCs
+        window?.rootViewController = tabBarVC
         
-        let rootVC = UINavigationController(rootViewController: tabBar)
-        window?.rootViewController = rootVC
         return true
     }
     

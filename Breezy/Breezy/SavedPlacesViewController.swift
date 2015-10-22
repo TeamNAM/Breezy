@@ -10,6 +10,12 @@ import UIKit
 
 class SavedPlacesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PlaceLookupViewDelegate {
     
+    // MARK: - Static initializer
+    
+    static func instantiateFromStoryboard() -> UIViewController {
+        return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
+    }
+            
     // MARK: - Properties
     
     static let storyboardID = "SavedPlacesViewController"

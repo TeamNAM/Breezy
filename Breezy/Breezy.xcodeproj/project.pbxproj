@@ -22,11 +22,11 @@
 		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFF4F91BD94C3600349092 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
 		AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */; };
 		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
-		AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */; };
 		AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */; };
 		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -63,12 +63,12 @@
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
+		AACFF4F91BD94C3600349092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AAD3B6B71BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Breezy.xcdatamodel; sourceTree = "<group>"; };
-		AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6BF1BCCA08E008FBC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 				CBAED2FA1BD1DC25001993E3 /* View Controllers */,
 				CBAED2F91BD1DC20001993E3 /* Views */,
 				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
-				AAD3B6BC1BCCA08E008FBC01 /* Assets.xcassets */,
 				AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */,
+				AACFF4F91BD94C3600349092 /* Assets.xcassets */,
 				AAD3B6B61BCCA08E008FBC01 /* Main.storyboard */,
 				AAD3B6BE1BCCA08E008FBC01 /* LaunchScreen.storyboard */,
 				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
@@ -294,9 +294,9 @@
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
 				AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */,
 				AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */,
-				AAD3B6BD1BCCA08E008FBC01 /* Assets.xcassets in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AAD3B6B81BCCA08E008FBC01 /* Main.storyboard in Resources */,
+				AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */,
 				AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
