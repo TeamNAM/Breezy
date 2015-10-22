@@ -20,7 +20,7 @@ class SavedPlaceCell: UITableViewCell {
     var place: Place? {
         didSet {
             if let place = self.place {
-                self.addressLabel.text = place.addressDescription
+                self.addressLabel.text = place.formattedAddress
             } else  {
                 self.addressLabel.text = ""
             }

@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class NewTripViewController: UIViewController {
+class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     
     
     var dateFormatter: NSDateFormatter!
@@ -18,6 +18,7 @@ class NewTripViewController: UIViewController {
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var beginDateTextField: UITextField!
     @IBOutlet weak var tripNameTextField: UITextField!
+    @IBOutlet weak var tripLocationTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +40,6 @@ class NewTripViewController: UIViewController {
         datePickerView.addTarget(self, action: Selector("endDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
-
-    
     func beginDateValueChanged(datePicker:UIDatePicker) {
         beginDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
     }
@@ -50,8 +49,8 @@ class NewTripViewController: UIViewController {
     }
     
     @IBAction func didEditLocation(sender: UITextField) {
-        let vc = PlaceLookupViewController(nibName: "NewTripViewController", bundle: NSBundle.mainBundle())
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard(self)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func closeDatePicker(sender: UIBarButtonItem) {
@@ -81,8 +80,12 @@ class NewTripViewController: UIViewController {
         toolbar.items = [toolbarClose, flexSpace, toolbarToday]
         return toolbar
     }
-
-
+    
+    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
+        // Note: you can also use the short name for the place with selectedPlace.name.
+        // e.g. selectedPlace.name = "Bogota" when selectedPlace.formattedAddress = "Bogotá, Bogota, Colombia"
+        self.tripLocationTextField.text = selectedPlace.formattedAddress
+    }
 
     /*x
     // MARK: - Navigation

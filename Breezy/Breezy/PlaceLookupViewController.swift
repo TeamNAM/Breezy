@@ -15,6 +15,17 @@ import UIKit
 
 class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    // MARK: - Static initializer
+    
+    static func instantiateFromStoryboard(currentViewController: PlaceLookupViewDelegate?) -> UIViewController {
+        let vc = UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID) as! PlaceLookupViewController
+        if let delegate = currentViewController {
+            vc.delegate = delegate
+        }
+        let navigationVC = UINavigationController(rootViewController: vc)
+        return navigationVC
+    }
+    
     // MARK: Static properties
     
     static let storyboardID = "PlaceLookupViewController"
@@ -38,7 +49,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     var placesClient: GMSPlacesClient!
     var predictions = [GMSAutocompletePrediction]()
     var searchBar: UISearchBar!
-    var selectedPlace: GMSPlace?
+    var selectedGMSPlace: GMSPlace?
     var startOverButton: UIBarButtonItem!
     var saveButton: UIBarButtonItem!
     var cancelButton: UIBarButtonItem!
@@ -104,7 +115,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         case .Confirming:
             self.mapView.hidden = false
             self.tableView.hidden = true
-            self.navigationItem.title = self.selectedPlace?.name
+            self.navigationItem.title = self.selectedGMSPlace?.name
             self.navigationItem.titleView = nil
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.leftBarButtonItem = self.startOverButton
@@ -123,8 +134,10 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func onSavePlace(sender: AnyObject) {
-        let place = Place(lat: self.selectedPlace!.coordinate.latitude, lng: self.selectedPlace!.coordinate.longitude, addressDescription: self.selectedPlace!.formattedAddress, placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-        self.delegate?.placeLookupViewController?(self, didSelectPlace: place)
+        if let selectedGMSPlace = self.selectedGMSPlace {
+            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+            self.delegate?.placeLookupViewController?(self, didSelectPlace: selectedPlace)
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -184,7 +197,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
                 print("Place placeID \(place.placeID)")
                 print("Place attributions \(place.attributions)")
                 
-                self.selectedPlace = place
+                self.selectedGMSPlace = place
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.mapView.camera = GMSCameraPosition.cameraWithLatitude(place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 10)

@@ -8,8 +8,8 @@
 
 import UIKit
 let fakePlaces = [
-    Place(lat: 31.32, lng: 124.432, addressDescription: "My Home", placeType: .Home, recommendationIcon: UIImage(named: "airplane"), recommendationMessage: "Wear some shorts!", detailedMessage: "Its gonna be real hot"),
-    Place(lat: 31.32, lng: 124.432, addressDescription: "My jail cell", placeType: .Work, recommendationIcon: UIImage(named: "plus"), recommendationMessage: "Bring a sweater.", detailedMessage: "It'll be cold when you go home.")
+    Place(lat: 31.32, lng: 124.432, name: "Nantucket", formattedAddress: "Nantucket, MA, US", placeType: .Home, recommendationIcon: UIImage(named: "airplane"), recommendationMessage: "Wear some shorts!", detailedMessage: "Its gonna be real hot"),
+    Place(lat: 31.32, lng: 124.432, name: "Roanoke", formattedAddress: "Roanoke, VA, US", placeType: .Work, recommendationIcon: UIImage(named: "plus"), recommendationMessage: "Bring a sweater.", detailedMessage: "It'll be cold when you go home.")
 ]
 class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _currentUser = dataFromDisk()
         
 //EXAMPLE
-//        User.userData?.addHome(Place(lat: 1.0, lng: 2.0, addressDescription: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello"))
+//        User.userData?.addHome(Place(lat: 1.0, lng: 2.0, formattedAddress: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello"))
 //        print(User.userData!.home?.placeType?.rawValue)
 //        print(User.userData?.home?.recommendationMessage)
         

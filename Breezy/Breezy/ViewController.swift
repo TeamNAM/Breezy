@@ -31,11 +31,11 @@ class ViewController: UIViewController {
     //example code
 //    print("hello")
 //    User.userData?.work = 
-//    User.userData?.home = Place(lat: 11.5, lng: 12.0, addressDescription: "1 Kennedy St")
-//    print(User.userData?.work?.addressDescription)
-//    print(User.userData?.home?.addressDescription)
+//    User.userData?.home = Place(lat: 11.5, lng: 12.0, formattedAddress: "1 Kennedy St")
+//    print(User.userData?.work?.formattedAddress)
+//    print(User.userData?.home?.formattedAddress)
 //
-//    User.userData?.home = Place(lat: 1.0, lng: 2.0, addressDescription: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello hello")
+//    User.userData?.home = Place(lat: 1.0, lng: 2.0, formattedAddress: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello hello")
 
     
     let vc = TripsViewController(nibName: "TripsViewController", bundle: NSBundle.mainBundle())
