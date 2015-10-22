@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Today-->
+        <scene sceneID="mQj-LB-OkO">
+            <objects>
+                <viewController storyboardIdentifier="TodayViewController" automaticallyAdjustsScrollViewInsets="NO" id="Mr8-g4-Rhx" customClass="TodayViewController" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hRM-1w-BM8"/>
+                        <viewControllerLayoutGuide type="bottom" id="u1u-T6-o5R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yzX-D4-KJW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JjO-yr-feO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JjO-yr-feO" secondAttribute="trailing" id="7gJ-MV-KoX"/>
+                            <constraint firstItem="u1u-T6-o5R" firstAttribute="top" secondItem="JjO-yr-feO" secondAttribute="bottom" id="8de-RA-mez"/>
+                            <constraint firstItem="JjO-yr-feO" firstAttribute="leading" secondItem="yzX-D4-KJW" secondAttribute="leading" id="Ibu-Q6-X1l"/>
+                            <constraint firstItem="JjO-yr-feO" firstAttribute="top" secondItem="hRM-1w-BM8" secondAttribute="bottom" id="shs-Wv-izq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Today" id="aD1-65-94i">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fdz-GY-6Nv">
+                            <connections>
+                                <action selector="onAddPlace:" destination="Mr8-g4-Rhx" id="mkf-WK-r8R"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="todayWeatherTableView" destination="JjO-yr-feO" id="0iT-aq-QGH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kai-O8-jR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="414"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9Pn-vB-S2x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sVe-5J-MaW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I6O-Kk-tCR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Mr8-g4-Rhx" kind="relationship" relationship="rootViewController" id="wGX-yy-UWE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21V-iW-kkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227" y="414"/>
+        </scene>
+    </scenes>
+</document>

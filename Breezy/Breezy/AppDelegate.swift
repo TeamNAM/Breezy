@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(credentials.googleKey)
         
         // Create tab bar controller
-        let todayVC = TodayViewController()
+        let todayVC = TodayViewController.instantiateFromStoryboard()
         todayVC.title = "Today"
         todayVC.tabBarItem.image = UIImage(named: "calendar icon")
         let tripsVC = TripsViewController()

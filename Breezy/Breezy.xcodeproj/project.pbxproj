@@ -22,6 +22,7 @@
 		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
+		AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFF4F91BD94C3600349092 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6B51BCCA08E008FBC01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B41BCCA08E008FBC01 /* ViewController.swift */; };
@@ -38,7 +39,6 @@
 		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
 		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CBE221B11BD755EF003652AB /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE221AF1BD755EF003652AB /* TodayViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		CBE221B41BD756BE003652AB /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221B21BD756BE003652AB /* WeatherCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBE221B51BD756BE003652AB /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE221B31BD756BE003652AB /* WeatherCell.xib */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; settings = {ASSET_TAGS = (); }; };
@@ -63,6 +63,7 @@
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
 		AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacePredictionCell.xib; sourceTree = "<group>"; };
+		AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TodayViewController.storyboard; sourceTree = "<group>"; };
 		AACFF4F91BD94C3600349092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
 		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
 		CBE221AE1BD755EF003652AB /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		CBE221AF1BD755EF003652AB /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		CBE221B21BD756BE003652AB /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		CBE221B31BD756BE003652AB /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		DE35ABA01BD44B0E00FD4035 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				AAACA1CA1BD72394003E4BC6 /* SavedPlacesViewController.swift */,
 				AAACA1CC1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard */,
 				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
-				CBE221AF1BD755EF003652AB /* TodayViewController.xib */,
+				AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
 				CBAED3061BD1DCA8001993E3 /* TripsViewController.xib in Resources */,
-				CBE221B11BD755EF003652AB /* TodayViewController.xib in Resources */,
+				AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */,
 				AAD3B6C01BCCA08E008FBC01 /* LaunchScreen.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
