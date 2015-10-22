@@ -14,11 +14,33 @@ class SavedPlaceCell: UITableViewCell {
     
     static let reuseIdentifier = "SavedPlaceCell"
     
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     
-    var place: Place! {
+    var place: Place? {
         didSet {
-            self.addressLabel.text = self.place.addressDescription
+            if let place = self.place {
+                self.addressLabel.text = place.addressDescription
+            } else  {
+                self.addressLabel.text = ""
+            }
+
+        }
+    }
+    var placeType: PlaceType? {
+        didSet {
+            if let placeType = self.placeType {
+                var iconName: String
+                switch placeType {
+                case .Home:
+                    iconName = "home"
+                case .Work:
+                    iconName = "briefcase"
+                default:
+                    iconName = "pin"
+                }
+                self.iconImageView.image = UIImage(named: iconName)
+            }
         }
     }
     
@@ -26,7 +48,6 @@ class SavedPlaceCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

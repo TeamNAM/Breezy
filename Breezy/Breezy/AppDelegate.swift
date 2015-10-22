@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _currentUser = dataFromDisk()
         
 //EXAMPLE
-//        User.userData?.home = Place(lat: 1.0, lng: 2.0, addressDescription: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello")
-//        print(User.userData!.home?.placeType?.description)
+//        User.userData?.addHome(Place(lat: 1.0, lng: 2.0, addressDescription: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello"))
+//        print(User.userData!.home?.placeType?.rawValue)
 //        print(User.userData?.home?.recommendationMessage)
         
         // Set API keys from Credentials.plist file
@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To show your view controller when the app launches, set `vc` to an instance of your view controller
 //        let vc = GetStartedViewController()
 //        let vc = PlaceLookupViewController()
-//        let vc = TripsViewController()
-        let vc = TodayViewController()
+        let vc = TripsViewController()
+//        let vc = TodayViewController()
 //        let vc = UIStoryboard(name: SavedPlacesViewController.storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(SavedPlacesViewController.storyboardID)
         let rootVC = UINavigationController(rootViewController: vc)
         window?.rootViewController = rootVC
@@ -67,12 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        self.saveToDisk()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits
-        saveToDisk()
+        self.saveToDisk()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -86,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        self.saveToDisk()
     }
     
     // MARK: - Core Data stack
