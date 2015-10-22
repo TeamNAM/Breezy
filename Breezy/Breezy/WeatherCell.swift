@@ -17,7 +17,7 @@ class WeatherCell: UITableViewCell {
     
     var place: Place? {
         didSet {
-            placeTypeLabel.text = place!.placeType!.description
+            placeTypeLabel.text = place!.placeType!.rawValue
             iconImageView.image = place!.recommendationIcon
             boldMessageLabel.text = place!.recommendationMessage
             detailMessageLabel.text = place!.detailedMessage

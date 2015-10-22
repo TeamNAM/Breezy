@@ -28,6 +28,10 @@ class SavedPlacesViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
+        
+        print(User.userData?.home)
+        print(User.userData?.work)
+        print(User.userData?.other)
     }
     
     // MARK: - Button Handlers
@@ -41,14 +45,25 @@ class SavedPlacesViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - PlaceLookupViewDelegate
     
     func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        print("Saved place")
-        // TODO: Actually save the place
+//        User.userData?.addOtherPlace(selectedPlace)
+        User.userData?.addHome(selectedPlace)
     }
     
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(SavedPlaceCell.reuseIdentifier) as! SavedPlaceCell
+        switch indexPath.row {
+        case 0:
+            cell.placeType = PlaceType.Home
+            cell.place = User.userData?.home
+        case 1:
+            cell.placeType = PlaceType.Work
+            cell.place = User.userData?.work
+        default:
+            cell.placeType = PlaceType.Other
+            cell.place = nil
+        }
         return cell
     }
     

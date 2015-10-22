@@ -18,21 +18,20 @@ class User : NSObject, NSCoding{
     
     var home: Place?
     var work: Place?
-    var other: [Place]?
+    var other: [String: Place]?
     var trips: [Trip]?
     
     override init(){
         self.home = nil
         self.work = nil
-        self.other = [Place]()
+        self.other = [String: Place]()
         self.trips = [Trip]()
-        
     }
     
     required init?(coder aDecoder: NSCoder){
         self.home = aDecoder.decodeObjectForKey(HOME_KEY) as? Place
         self.work = aDecoder.decodeObjectForKey(WORK_KEY) as? Place
-        self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [Place]
+        self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [String: Place]
         self.trips = aDecoder.decodeObjectForKey(TRIPS_KEY) as? [Trip]
         super.init()
         
@@ -45,12 +44,32 @@ class User : NSObject, NSCoding{
         aCoder.encodeObject(self.trips, forKey: TRIPS_KEY)
     }
     
-    func addOtherPlace(place: Place) {
-        self.other?.append(place)
+    func addHome(place: Place) {
+        place.placeType = PlaceType.Home
+        self.home = place
     }
     
-    func removeOtherPlace(index: Int){
-        self.other?.removeAtIndex(index)
+    func removeHome() {
+        self.home = nil
+    }
+    
+    func addWork(place: Place) {
+        place.placeType = PlaceType.Work
+        self.work = place
+    }
+    
+    func removeWork() {
+        self.work = nil
+    }
+    
+    func addOtherPlace(place: Place) {
+        let placeId = NSUUID().UUIDString
+        place.placeType = PlaceType.Other
+        self.other?[placeId] = place
+    }
+    
+    func removeOtherPlace(placeId: String){
+        self.other?.removeValueForKey(placeId)
     }
     
     func addTrip(trip: Trip){
@@ -58,10 +77,9 @@ class User : NSObject, NSCoding{
     }
     
     func removeTrip(index: Int){
-        self.other?.removeAtIndex(index)
+        self.trips?.removeAtIndex(index)
     }
 
-    
     class var userData: User? {
         get {
             return _currentUser ?? User()
