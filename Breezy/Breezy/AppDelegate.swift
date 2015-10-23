@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func saveToDisk(){
         print("saved to disk")
-        NSKeyedArchiver.archiveRootObject(User.userData!, toFile: pathForKeyedArchive)
+        NSKeyedArchiver.archiveRootObject(User.userData, toFile: pathForKeyedArchive)
     }
     
     private var pathForKeyedArchive:String{

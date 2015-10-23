@@ -37,7 +37,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="todayWeatherTableView" destination="JjO-yr-feO" id="0iT-aq-QGH"/>
+                        <outlet property="tableView" destination="JjO-yr-feO" id="ROD-ZS-A4x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kai-O8-jR2" userLabel="First Responder" sceneMemberID="firstResponder"/>

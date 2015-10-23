@@ -18,8 +18,6 @@
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
 		AA7587D01BD4A158009764DB /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CE1BD4A158009764DB /* Contacts.framework */; };
 		AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CF1BD4A158009764DB /* ContactsUI.framework */; };
-		AAACA1CB1BD72394003E4BC6 /* SavedPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1CA1BD72394003E4BC6 /* SavedPlacesViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AAACA1CD1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1CC1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -61,8 +59,6 @@
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA7587CE1BD4A158009764DB /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
-		AAACA1CA1BD72394003E4BC6 /* SavedPlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlacesViewController.swift; sourceTree = "<group>"; };
-		AAACA1CC1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SavedPlacesViewController.storyboard; sourceTree = "<group>"; };
 		AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlaceCell.swift; sourceTree = "<group>"; };
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
@@ -199,8 +195,6 @@
 				AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBAED3081BD1DD01001993E3 /* NewTripViewController.xib */,
-				AAACA1CA1BD72394003E4BC6 /* SavedPlacesViewController.swift */,
-				AAACA1CC1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard */,
 				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
 				AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */,
 			);
@@ -290,7 +284,6 @@
 			files = (
 				AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */,
 				CBE221B51BD756BE003652AB /* WeatherCell.xib in Resources */,
-				AAACA1CD1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard in Resources */,
 				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
 				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				CBAED30A1BD1DD01001993E3 /* NewTripViewController.xib in Resources */,
@@ -379,7 +372,6 @@
 				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
-				AAACA1CB1BD72394003E4BC6 /* SavedPlacesViewController.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
 				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,

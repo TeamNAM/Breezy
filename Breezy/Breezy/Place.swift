@@ -15,6 +15,7 @@ enum PlaceType : String {
     case Other = "Other"
 }
 
+let UUID_KEY = "uuid"
 let LAT_KEY = "lat"
 let LNG_KEY = "lng"
 let ADDRESS_KEY = "formattedAddress"
@@ -26,6 +27,7 @@ let REC_MSG_KEY = "recommendationMessage"
 let DET_MSG_KEY = "detailedMessage"
 
 class Place : NSObject, NSCoding{
+    let uuid: String!
     var lat: Double
     var lng: Double
     var name: String
@@ -37,6 +39,7 @@ class Place : NSObject, NSCoding{
     var detailedMessage: String?
     
     init(lat: Double, lng: Double, name: String, formattedAddress: String, placeType: PlaceType?, recommendationIcon: UIImage?, recommendationMessage: String?, detailedMessage: String?) {
+        self.uuid = NSUUID().UUIDString
         self.lat = lat
         self.lng = lng
         self.name = name
@@ -53,10 +56,10 @@ class Place : NSObject, NSCoding{
         if let detailedMessage = detailedMessage {
             self.detailedMessage = detailedMessage
         }
-        
     }
     
-    required init?(coder aDecoder: NSCoder){
+    required init?(coder aDecoder: NSCoder) {
+        self.uuid = aDecoder.decodeObjectForKey(UUID_KEY) as! String
         self.lat = aDecoder.decodeObjectForKey(LAT_KEY) as! Double
         self.lng = aDecoder.decodeObjectForKey(LNG_KEY) as! Double
         self.name = aDecoder.decodeObjectForKey(NAME_KEY) as! String
@@ -70,10 +73,10 @@ class Place : NSObject, NSCoding{
         self.recommendationMessage = aDecoder.decodeObjectForKey(REC_MSG_KEY) as? String
         self.detailedMessage = aDecoder.decodeObjectForKey(DET_MSG_KEY) as? String
         super.init()
-        
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.uuid, forKey: UUID_KEY)
         aCoder.encodeObject(self.lat, forKey: LAT_KEY)
         aCoder.encodeObject(self.lng, forKey: LNG_KEY)
         aCoder.encodeObject(self.name, forKey: NAME_KEY)

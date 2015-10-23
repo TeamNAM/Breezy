@@ -17,7 +17,13 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - Static initializer
     
-    static func instantiateFromStoryboard(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
+    static func instantiateFromStoryboardForModalSegue(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
+        let vc = self.instantiateFromStoryboardForPushSegue(currentViewController, toSelectPlaceType: placeType)
+        let navigationVC = UINavigationController(rootViewController: vc)
+        return navigationVC
+    }
+    
+    static func instantiateFromStoryboardForPushSegue(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
         let vc = UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID) as! PlaceLookupViewController
         if let delegate = currentViewController {
             vc.delegate = delegate
@@ -25,9 +31,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         if let placeType = placeType {
             vc.selectingPlaceType = placeType
         }
-        let navigationVC = UINavigationController(rootViewController: vc)
-        return navigationVC
+        return vc
     }
+    
     
     // MARK: Static properties
     
@@ -131,7 +137,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Button actions
     
     func onTapCancelButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.goBackToLastViewController()
     }
     
     func onTapStartOver(sender: AnyObject) {
@@ -143,7 +149,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
             let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: self.selectingPlaceType, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
             self.delegate?.placeLookupViewController?(self, didSelectPlace: selectedPlace)
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        self.goBackToLastViewController()
     }
     
     // MARK: UITableViewDataSource
@@ -184,6 +190,18 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         self.setState(ControllerState.SearchStart)
+    }
+    
+    // MARK: Navigation helpers
+    
+    func goBackToLastViewController() {
+        let viewControllerCount = self.navigationController?.viewControllers.count
+        if viewControllerCount == 1 {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let lastVC = self.navigationController?.viewControllers[viewControllerCount! - 2]
+            self.navigationController?.popToViewController(lastVC!, animated: true)
+        }
     }
     
     // MARK: API Calls

@@ -49,8 +49,8 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     }
     
     @IBAction func didEditLocation(sender: UITextField) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboard(self, toSelectPlaceType: nil)
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func closeDatePicker(sender: UIBarButtonItem) {

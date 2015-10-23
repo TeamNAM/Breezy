@@ -12,31 +12,31 @@ var _currentUser: User?
 let HOME_KEY = "home"
 let WORK_KEY = "work"
 let OTHER_KEY = "other"
+let OTHER_PLACES_KEY = "otherPlaces"
 let TRIPS_KEY = "trips"
-let MAX_PLACE_ID = "maxPlaceId"
 
 class User : NSObject, NSCoding{
     
-    var home: Place?
-    var work: Place?
+    private(set) var home: Place?
+    private(set) var work: Place?
     var other: [Int: Place]?
+    private(set) var otherPlaces: [Place]
     var trips: [Trip]?
-    private var maxPlaceId: Int?
     
     override init(){
         self.home = nil
         self.work = nil
         self.other = [Int: Place]()
+        self.otherPlaces = [Place]()
         self.trips = [Trip]()
-        self.maxPlaceId = nil
     }
     
     required init?(coder aDecoder: NSCoder){
         self.home = aDecoder.decodeObjectForKey(HOME_KEY) as? Place
         self.work = aDecoder.decodeObjectForKey(WORK_KEY) as? Place
         self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [Int: Place]
+        self.otherPlaces = aDecoder.decodeObjectForKey(OTHER_PLACES_KEY) as! [Place]
         self.trips = aDecoder.decodeObjectForKey(TRIPS_KEY) as? [Trip]
-        self.maxPlaceId = aDecoder.decodeObjectForKey(MAX_PLACE_ID) as? Int ?? 0
         super.init()
     }
     
@@ -44,47 +44,36 @@ class User : NSObject, NSCoding{
         aCoder.encodeObject(self.home, forKey: HOME_KEY)
         aCoder.encodeObject(self.work, forKey: WORK_KEY)
         aCoder.encodeObject(self.other, forKey: OTHER_KEY)
+        aCoder.encodeObject(self.otherPlaces, forKey: OTHER_PLACES_KEY)
         aCoder.encodeObject(self.trips, forKey: TRIPS_KEY)
-        aCoder.encodeObject(self.maxPlaceId, forKey: MAX_PLACE_ID)
     }
     
-    func addHome(place: Place) {
-        place.placeType = PlaceType.Home
+    func editHome(place: Place?) {
+        if let place = place {
+            place.placeType = PlaceType.Home
+        }
         self.home = place
     }
-    
-    func removeHome() {
-        self.home = nil
-    }
-    
-    func addWork(place: Place) {
-        place.placeType = PlaceType.Work
+
+    func editWork(place: Place?) {
+        if let place = place {
+            place.placeType = PlaceType.Work
+        }
         self.work = place
     }
     
-    func removeWork() {
-        self.work = nil
+    func addOtherPlace(place: Place) {
+        self.otherPlaces.append(place)
     }
     
-    func getOtherPlaces() -> [Place] {
-        var otherPlaces = [Place]()
-        if let places = self.other {
-            for key in Array(self.other!.keys).sort() {
-                otherPlaces.append(places[key]!)
+    func removeOtherPlace(placeUUID: String) {
+        for i in 0...self.otherPlaces.count {
+            let place = self.otherPlaces[i]
+            if place.uuid == placeUUID {
+                self.otherPlaces.removeAtIndex(i)
+                break
             }
         }
-        return otherPlaces
-    }
-    
-    func addOtherPlace(place: Place) {
-        place.placeType = PlaceType.Other
-        self.maxPlaceId! += 1
-        place.placeId = self.maxPlaceId
-        self.other?[self.maxPlaceId!] = place
-    }
-    
-    func removeOtherPlace(placeId: Int){
-        self.other?.removeValueForKey(placeId)
     }
     
     func addTrip(trip: Trip){
@@ -95,7 +84,7 @@ class User : NSObject, NSCoding{
         self.trips?.removeAtIndex(index)
     }
 
-    class var userData: User? {
+    class var userData: User {
         get {
             return _currentUser ?? User()
         }
