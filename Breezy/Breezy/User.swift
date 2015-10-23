@@ -13,28 +13,31 @@ let HOME_KEY = "home"
 let WORK_KEY = "work"
 let OTHER_KEY = "other"
 let TRIPS_KEY = "trips"
+let MAX_PLACE_ID = "maxPlaceId"
 
 class User : NSObject, NSCoding{
     
     var home: Place?
     var work: Place?
-    var other: [String: Place]?
+    var other: [Int: Place]?
     var trips: [Trip]?
+    private var maxPlaceId: Int?
     
     override init(){
         self.home = nil
         self.work = nil
-        self.other = [String: Place]()
+        self.other = [Int: Place]()
         self.trips = [Trip]()
+        self.maxPlaceId = nil
     }
     
     required init?(coder aDecoder: NSCoder){
         self.home = aDecoder.decodeObjectForKey(HOME_KEY) as? Place
         self.work = aDecoder.decodeObjectForKey(WORK_KEY) as? Place
-        self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [String: Place]
+        self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [Int: Place]
         self.trips = aDecoder.decodeObjectForKey(TRIPS_KEY) as? [Trip]
+        self.maxPlaceId = aDecoder.decodeObjectForKey(MAX_PLACE_ID) as? Int ?? 0
         super.init()
-        
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -42,6 +45,7 @@ class User : NSObject, NSCoding{
         aCoder.encodeObject(self.work, forKey: WORK_KEY)
         aCoder.encodeObject(self.other, forKey: OTHER_KEY)
         aCoder.encodeObject(self.trips, forKey: TRIPS_KEY)
+        aCoder.encodeObject(self.maxPlaceId, forKey: MAX_PLACE_ID)
     }
     
     func addHome(place: Place) {
@@ -62,13 +66,24 @@ class User : NSObject, NSCoding{
         self.work = nil
     }
     
-    func addOtherPlace(place: Place) {
-        let placeId = NSUUID().UUIDString
-        place.placeType = PlaceType.Other
-        self.other?[placeId] = place
+    func getOtherPlaces() -> [Place] {
+        var otherPlaces = [Place]()
+        if let places = self.other {
+            for key in Array(self.other!.keys).sort() {
+                otherPlaces.append(places[key]!)
+            }
+        }
+        return otherPlaces
     }
     
-    func removeOtherPlace(placeId: String){
+    func addOtherPlace(place: Place) {
+        place.placeType = PlaceType.Other
+        self.maxPlaceId! += 1
+        place.placeId = self.maxPlaceId
+        self.other?[self.maxPlaceId!] = place
+    }
+    
+    func removeOtherPlace(placeId: Int){
         self.other?.removeValueForKey(placeId)
     }
     

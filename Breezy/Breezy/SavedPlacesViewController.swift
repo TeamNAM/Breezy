@@ -43,8 +43,8 @@ class SavedPlacesViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - Button Handlers
     
     @IBAction func onAddPlace(sender: UIBarButtonItem) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboard(self)
-        presentViewController(vc, animated: true, completion: nil)
+//        let vc = PlaceLookupViewController.instantiateFromStoryboard(self)
+//        presentViewController(vc, animated: true, completion: nil)
     }
     
     // MARK: - PlaceLookupViewDelegate

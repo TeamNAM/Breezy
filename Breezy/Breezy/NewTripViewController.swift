@@ -49,7 +49,7 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     }
     
     @IBAction func didEditLocation(sender: UITextField) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboard(self)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard(self, toSelectPlaceType: nil)
         self.presentViewController(vc, animated: true, completion: nil)
     }
     

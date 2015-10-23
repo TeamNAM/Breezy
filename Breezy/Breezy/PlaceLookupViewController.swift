@@ -17,10 +17,13 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - Static initializer
     
-    static func instantiateFromStoryboard(currentViewController: PlaceLookupViewDelegate?) -> UIViewController {
+    static func instantiateFromStoryboard(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
         let vc = UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID) as! PlaceLookupViewController
         if let delegate = currentViewController {
             vc.delegate = delegate
+        }
+        if let placeType = placeType {
+            vc.selectingPlaceType = placeType
         }
         let navigationVC = UINavigationController(rootViewController: vc)
         return navigationVC
@@ -44,15 +47,17 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: GMSMapView!
     
+    var selectingPlaceType: PlaceType?
     weak var delegate: PlaceLookupViewDelegate?
-    var debounceTimer: NSTimer?
-    var placesClient: GMSPlacesClient!
-    var predictions = [GMSAutocompletePrediction]()
-    var searchBar: UISearchBar!
-    var selectedGMSPlace: GMSPlace?
-    var startOverButton: UIBarButtonItem!
-    var saveButton: UIBarButtonItem!
-    var cancelButton: UIBarButtonItem!
+    
+    private var debounceTimer: NSTimer?
+    private var placesClient: GMSPlacesClient!
+    private var predictions = [GMSAutocompletePrediction]()
+    private var searchBar: UISearchBar!
+    private var selectedGMSPlace: GMSPlace?
+    private var startOverButton: UIBarButtonItem!
+    private var saveButton: UIBarButtonItem!
+    private var cancelButton: UIBarButtonItem!
     
     // MARK: View Life Cycle
     
@@ -135,7 +140,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     func onSavePlace(sender: AnyObject) {
         if let selectedGMSPlace = self.selectedGMSPlace {
-            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: self.selectingPlaceType, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
             self.delegate?.placeLookupViewController?(self, didSelectPlace: selectedPlace)
         }
         dismissViewControllerAnimated(true, completion: nil)

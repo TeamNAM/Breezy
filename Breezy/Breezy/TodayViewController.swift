@@ -7,10 +7,7 @@
 //
 
 import UIKit
-let fakePlaces = [
-    Place(lat: 31.32, lng: 124.432, name: "Nantucket", formattedAddress: "Nantucket, MA, US", placeType: .Home, recommendationIcon: UIImage(named: "airplane"), recommendationMessage: "Wear some shorts!", detailedMessage: "Its gonna be real hot"),
-    Place(lat: 31.32, lng: 124.432, name: "Roanoke", formattedAddress: "Roanoke, VA, US", placeType: .Work, recommendationIcon: UIImage(named: "plus"), recommendationMessage: "Bring a sweater.", detailedMessage: "It'll be cold when you go home.")
-]
+
 class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate {
     
     // MARK: - Static initializer
@@ -24,37 +21,72 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     static let storyboardID = "TodayViewController"
 
     @IBOutlet weak var todayWeatherTableView: UITableView!
-    var places: [Place]?
+    var places = [Place]()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addWeatherCellNib = UINib(nibName: "WeatherCell", bundle: NSBundle.mainBundle())
-        places = fakePlaces
+        self.places = User.userData!.getOtherPlaces()
         
         todayWeatherTableView.delegate = self
         todayWeatherTableView.dataSource = self
-        
-        todayWeatherTableView.registerNib(addWeatherCellNib, forCellReuseIdentifier: "WeatherCell")
+        let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
+        todayWeatherTableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         todayWeatherTableView.rowHeight = UITableViewAutomaticDimension
-        todayWeatherTableView.estimatedRowHeight = 200
+        todayWeatherTableView.estimatedRowHeight = 50
         todayWeatherTableView.reloadData()
-        
     }
+    
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherCell") as! WeatherCell
-        cell.place = places![indexPath.row]
+        print("Section \(indexPath.section)")
+        print("Row \(indexPath.row)")
+        let cell = tableView.dequeueReusableCellWithIdentifier(TodayViewCell.reuseIdentifier) as! TodayViewCell
+        var placeType: PlaceType?
+        var place: Place?
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        if indexPath.section == 0 {
+            // Home/work places
+            if indexPath.row == 0 {
+                placeType = PlaceType.Home
+                place = User.userData?.home
+                print(User.userData?.home?.name)
+                if place == nil {
+                    cell.selectionStyle = .Default
+                }
+            } else {
+                placeType = PlaceType.Work
+                place = User.userData?.work
+                if place == nil {
+                    cell.selectionStyle = .Default
+                }
+            }
+        } else {
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            placeType = PlaceType.Other
+            place = self.places[indexPath.row]
+            print(place?.placeId)
+        }
+        cell.data = ["placeType": placeType, "place": place]
         return cell
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let places = places {
-            return places.count
+        if section == 0 {
+            // Home/work
+            return 2
+        } else {
+            // Other places
+            return self.places.count
         }
-        return 0
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // Section 0 is home/work cells. Section 1 is "other places" cells
+        return 2
     }
     
     // MARK: - UITableViewDelegate
@@ -63,15 +95,31 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.section == 0 && (todayWeatherTableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell).place == nil {
+            return indexPath
+        } else {
+            return nil
+        }
+    }
+    
     // MARK: - Button Actions
     
     @IBAction func onAddPlace(sender: UIBarButtonItem) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboard(self)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard(self, toSelectPlaceType: PlaceType.Other)
         presentViewController(vc, animated: true, completion: nil)
     }
 
     // MARK: - PlaceLookupViewControllerDelegate
     func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        print(selectedPlace.name)
+        if let placeType = selectedPlace.placeType {
+            switch placeType {
+            case .Other:
+                User.userData?.addOtherPlace(selectedPlace)
+                self.places = User.userData!.getOtherPlaces()
+                self.todayWeatherTableView.reloadData()
+            default: ()
+            }
+        }
     }
 }

@@ -11,6 +11,8 @@
 		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
+		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA570E441BD9B08B007F963B /* TodayViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199F1BD4572900C911BF /* GetStartedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6719A01BD4572900C911BF /* GetStartedViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
@@ -52,6 +54,8 @@
 		AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceLookupViewController.storyboard; sourceTree = "<group>"; };
 		AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AA570E431BD9B08B007F963B /* TodayViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewCell.swift; sourceTree = "<group>"; };
+		AA570E441BD9B08B007F963B /* TodayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewCell.xib; sourceTree = "<group>"; };
 		AA67199F1BD4572900C911BF /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		AA6719A01BD4572900C911BF /* GetStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetStartedViewController.xib; sourceTree = "<group>"; };
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -168,6 +172,8 @@
 		CBAED2F91BD1DC20001993E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA570E431BD9B08B007F963B /* TodayViewCell.swift */,
+				AA570E441BD9B08B007F963B /* TodayViewCell.xib */,
 				CBE221B21BD756BE003652AB /* WeatherCell.swift */,
 				CBE221B31BD756BE003652AB /* WeatherCell.xib */,
 				CBAED2FD1BD1DC83001993E3 /* TripCell.swift */,
@@ -282,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */,
 				CBE221B51BD756BE003652AB /* WeatherCell.xib in Resources */,
 				AAACA1CD1BD723AC003E4BC6 /* SavedPlacesViewController.storyboard in Resources */,
 				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
@@ -374,6 +381,7 @@
 				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
 				AAACA1CB1BD72394003E4BC6 /* SavedPlacesViewController.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
+				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
