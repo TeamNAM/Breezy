@@ -6,40 +6,55 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayViewCell" rowHeight="63" id="KGk-i7-Jjw" customClass="TodayViewCell" customModule="Breezy" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodayViewCell" rowHeight="113" id="KGk-i7-Jjw" customClass="TodayViewCell" customModule="Breezy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmV-MQ-f1d">
-                        <rect key="frame" x="32" y="14" width="280" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQ9-3r-miW">
-                        <rect key="frame" x="8" y="15" width="16" height="16"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQ9-3r-miW">
+                        <rect key="frame" x="8" y="42" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="Nhg-Xb-9q7"/>
                             <constraint firstAttribute="height" constant="16" id="Qbw-Sh-AgD"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-91-qVh">
+                        <rect key="frame" x="289" y="39" width="23" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmV-MQ-f1d">
+                        <rect key="frame" x="32" y="39" width="46" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ChN-91-qVh" secondAttribute="trailing" constant="8" id="1Gj-w9-By0"/>
                     <constraint firstAttribute="trailing" secondItem="EmV-MQ-f1d" secondAttribute="trailing" constant="8" id="AQ2-Ui-92A"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="leading" secondItem="pQ9-3r-miW" secondAttribute="trailing" constant="8" id="PCi-C3-m9N"/>
                     <constraint firstItem="pQ9-3r-miW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e0G-Se-jz2"/>
+                    <constraint firstItem="ChN-91-qVh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gP1-Yo-0AF"/>
+                    <constraint firstItem="ChN-91-qVh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EmV-MQ-f1d" secondAttribute="trailing" constant="8" id="paA-q9-eh6"/>
                     <constraint firstItem="pQ9-3r-miW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="qvC-3s-3Nw"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rhC-4D-Y7b"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="AQ2-Ui-92A"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="placeImageView" destination="pQ9-3r-miW" id="XAO-bJ-yb1"/>
                 <outlet property="placeNameLabel" destination="EmV-MQ-f1d" id="1Mj-VZ-Fpn"/>
+                <outlet property="temperatureLabel" destination="ChN-91-qVh" id="NQ1-pu-Vua"/>
             </connections>
-            <point key="canvasLocation" x="352" y="528"/>
+            <point key="canvasLocation" x="352" y="553"/>
         </tableViewCell>
     </objects>
 </document>

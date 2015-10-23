@@ -14,11 +14,13 @@ class TodayViewCell: UITableViewCell {
 
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
     
     var data = Dictionary<String, Any?>() {
         didSet {
             self.placeType = self.data["placeType"] as! PlaceType
             self.place = self.data["place"] as? Place
+            self.temperature = self.data["temperature"] as? Int
             let imageName = self.getPlaceImageViewName(self.placeType)
             self.placeImageView.image = UIImage(named: imageName)
             self.placeNameLabel.text = self.getPlaceNameLabel(self.placeType, place: self.place)
@@ -26,10 +28,19 @@ class TodayViewCell: UITableViewCell {
     }
     var placeType: PlaceType!
     var place: Place?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        print("calling awake from nib")
+    var temperature: Int? {
+        didSet {
+            if let _ = self.place {
+                self.temperatureLabel.hidden = false
+                if let temp = self.temperature {
+                    self.temperatureLabel.text = "\(temp)°"
+                } else {
+                    self.temperatureLabel.text = "--°"
+                }
+            } else {
+                self.temperatureLabel.hidden = true
+            }
+        }
     }
     
     func getPlaceImageViewName(placeType: PlaceType) -> String {
@@ -64,4 +75,9 @@ class TodayViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.layoutIfNeeded()
+    }
+
 }

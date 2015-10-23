@@ -51,7 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return UINavigationController(rootViewController: vc)
         }
         tabBarVC.viewControllers = embeddedVCs
-        window?.rootViewController = tabBarVC
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = tabBarVC
         
         return true
     }
