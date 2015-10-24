@@ -25,13 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        NSLog("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
-        _currentUser = dataFromDisk()
-        
-//EXAMPLE
-//        User.userData?.addHome(Place(lat: 1.0, lng: 2.0, formattedAddress: "hello", placeType: .Home, recommendationIcon: nil, recommendationMessage: "hello", detailedMessage: "hello"))
-//        print(User.userData!.home?.placeType?.rawValue)
-//        print(User.userData?.home?.recommendationMessage)
+        print("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
+        _currentUser = self.dataFromDisk()
         
         // Set API keys from Credentials.plist file
         let credentials = Credentials.defaultCredentials
@@ -61,14 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func dataFromDisk() -> User {
-        let blah = NSKeyedUnarchiver.unarchiveObjectWithFile(pathForKeyedArchive) as? User
-        //        print(blah!.home)
-        return blah ?? User()
+        let archivedUser = NSKeyedUnarchiver.unarchiveObjectWithFile(pathForKeyedArchive) as? User
+        return archivedUser ?? User()
     }
     
     private func saveToDisk(){
         print("saved to disk")
-        NSKeyedArchiver.archiveRootObject(User.userData, toFile: pathForKeyedArchive)
+        NSKeyedArchiver.archiveRootObject(User.sharedInstance, toFile: pathForKeyedArchive)
     }
     
     private var pathForKeyedArchive:String{

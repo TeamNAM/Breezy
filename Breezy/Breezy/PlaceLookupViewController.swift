@@ -34,7 +34,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         return vc
     }
     
-    
     // MARK: Static properties
     
     static let storyboardID = "PlaceLookupViewController"
@@ -97,11 +96,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         self.searchBar.delegate = self
         self.searchBar.sizeToFit()
         self.setState(ControllerState.SearchStart)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     // MARK: State setters
@@ -210,16 +204,14 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         let placeID = self.predictions[placeIndex].placeID
         self.placesClient.lookUpPlaceID(placeID) { (place: GMSPlace?, error: NSError?) -> Void in
             if let error = error {
-                print("lookup place id query error: \(error.localizedDescription)")
+                print("Error looking up place: \(error.localizedDescription)")
                 return
             }
             
             if let place = place {
                 print("Place name \(place.name)")
                 print("Place address \(place.formattedAddress)")
-                print("Place placeID \(place.placeID)")
-                print("Place attributions \(place.attributions)")
-                
+               
                 self.selectedGMSPlace = place
                 
                 dispatch_async(dispatch_get_main_queue()) {
@@ -230,7 +222,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
                     self.setState(ControllerState.Confirming)
                 }
             } else {
-                print("No place details for \(placeID)")
+                print("No place details for placeID: \(placeID)")
             }
         }
     }

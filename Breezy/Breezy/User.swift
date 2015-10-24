@@ -84,7 +84,7 @@ class User : NSObject, NSCoding{
         self.trips?.removeAtIndex(index)
     }
 
-    class var userData: User {
+    static var sharedInstance: User {
         get {
             return _currentUser ?? User()
         }
