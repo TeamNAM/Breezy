@@ -37,9 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let todayVC = TodayViewController.instantiateFromStoryboard()
         todayVC.title = "Today"
         todayVC.tabBarItem.image = UIImage(named: "calendar icon")
-        let tripsVC = TripsViewController()
+        
+        let tripsVC = TripsViewController.instantiateFromStoryboard()
         tripsVC.title = "Trips"
         tripsVC.tabBarItem.image = UIImage(named: "paper airplane")
+        
         let tabBarVC = UITabBarController()
         let viewControllers = [todayVC, tripsVC]
         let embeddedVCs = viewControllers.map { (vc) -> UINavigationController in

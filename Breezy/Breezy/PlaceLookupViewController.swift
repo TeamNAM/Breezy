@@ -194,6 +194,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
             self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             let lastVC = self.navigationController?.viewControllers[viewControllerCount! - 2]
+//            print(lastVC is NewTripViewController)
             self.navigationController?.popToViewController(lastVC!, animated: true)
         }
     }

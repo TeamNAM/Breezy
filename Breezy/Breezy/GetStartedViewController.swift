@@ -46,8 +46,8 @@ class GetStartedViewController: UIViewController, PlaceLookupViewDelegate {
     
     // MARK: PlaceLookupViewDelegate
     
-    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        print("Selected place!")
-        print(selectedPlace)
-    }
+//    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
+//        print("Selected place!")
+//        print(selectedPlace)
+//    }
 }

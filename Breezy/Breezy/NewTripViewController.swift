@@ -7,13 +7,23 @@
 //
 
 import UIKit
-import GoogleMaps
+//import GoogleMaps
 
 class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
-    
+    static let storyboardID = "NewTripViewController"
+    static func instantiateFromStoryboard() -> UIViewController {
+        return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
+    }
     
     var dateFormatter: NSDateFormatter!
     var currentDatePickerView: UIDatePicker?
+    var beginDate: NSDate?
+    var endDate: NSDate?
+    var place: Place? {
+        didSet {
+            setTripLocationTextField()
+        }
+    }
 
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var beginDateTextField: UITextField!
@@ -26,6 +36,13 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         dateFormatter =  NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        
+        setTripLocationTextField()
+    }
+    
+    // MARK: - PlaceLookupViewControllerDelegate
+    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
+        place = selectedPlace
     }
    
     @IBAction func beginDateEdit(input: UITextField) {
@@ -42,21 +59,12 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     
     func beginDateValueChanged(datePicker:UIDatePicker) {
         beginDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
+        beginDate = datePicker.date
     }
     
     func endDateValueChanged(datePicker:UIDatePicker) {
         endDateTextField.text = dateFormatter.stringFromDate(datePicker.date)
-    }
-    
-    @IBAction func didEditLocation(sender: UITextField) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func closeDatePicker(sender: UIBarButtonItem) {
-        // todo: Do I need both?
-        endDateTextField.resignFirstResponder()
-        beginDateTextField.resignFirstResponder()
+        endDate = datePicker.date
     }
     
     private func getDatePickerView(input: UITextField) -> UIDatePicker {
@@ -65,6 +73,18 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         input.inputView = datePickerView
         input.inputAccessoryView = getUiToolbar()
         return datePickerView
+    }
+    
+
+    @IBAction func locationEdit(sender: UITextField) {
+        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func closeDatePicker(sender: UIBarButtonItem) {
+        // todo: mgoo Do I need both?
+        endDateTextField.resignFirstResponder()
+        beginDateTextField.resignFirstResponder()
     }
     
     private func getUiToolbar() -> UIToolbar {
@@ -81,20 +101,19 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         return toolbar
     }
     
-    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        // Note: you can also use the short name for the place with selectedPlace.name.
-        // e.g. selectedPlace.name = "Bogota" when selectedPlace.formattedAddress = "Bogotá, Bogota, Colombia"
-        self.tripLocationTextField.text = selectedPlace.formattedAddress
+    func selectToday(sender: UIBarButtonItem) {
+        let today = NSDate()
+        currentDatePickerView?.setDate(today, animated: true)
+        endDateTextField.resignFirstResponder()
+        beginDateTextField.resignFirstResponder()
     }
-
-    /*x
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func setTripLocationTextField() {
+        if let place = self.place {
+            if let tripLocationTextField = self.tripLocationTextField {
+                tripLocationTextField.text = place.formattedAddress
+            }
+        }
     }
-    */
 
 }
