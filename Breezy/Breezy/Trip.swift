@@ -16,11 +16,15 @@ class Trip : NSObject, NSCoding {
     var startDate: NSDate?
     var endDate: NSDate?
     var place: Place?
+    var name: String?
     
-    init(startDate: NSDate, endDate: NSDate, place: Place){
+    init(startDate: NSDate, endDate: NSDate, place: Place, name: String?){
         self.startDate = startDate
         self.endDate = endDate
         self.place = place
+        if let name = name {
+            self.name = name
+        }
     }
     
     required init?(coder aDecoder: NSCoder){

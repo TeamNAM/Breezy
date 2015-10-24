@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import GoogleMaps
+import GoogleMaps
 
 class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     static let storyboardID = "NewTripViewController"
@@ -25,6 +25,9 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         }
     }
 
+    
+    @IBOutlet weak var mapTapperView: UIView!
+    @IBOutlet weak var locationMapView: GMSMapView!
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var beginDateTextField: UITextField!
     @IBOutlet weak var tripNameTextField: UITextField!
@@ -36,6 +39,12 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         dateFormatter =  NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        
+        locationMapView.userInteractionEnabled = false;
+        
+        mapTapperView.userInteractionEnabled = true
+        let mapTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapMapView:"))
+        mapTapperView.addGestureRecognizer(mapTapGesture)
         
         setTripLocationTextField()
     }
@@ -75,16 +84,27 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         return datePickerView
     }
     
-
-    @IBAction func locationEdit(sender: UITextField) {
+    private func editLocation() {
         let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func locationEdit(sender: UITextField) {
+        editLocation()
+    }
+    
+    func didTapMapView(sender: UIView) {
+        editLocation()
     }
     
     func closeDatePicker(sender: UIBarButtonItem) {
         // todo: mgoo Do I need both?
         endDateTextField.resignFirstResponder()
         beginDateTextField.resignFirstResponder()
+    }
+    
+    @IBAction func saveTrip(sender: AnyObject) {
+        
     }
     
     private func getUiToolbar() -> UIToolbar {
@@ -112,6 +132,13 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         if let place = self.place {
             if let tripLocationTextField = self.tripLocationTextField {
                 tripLocationTextField.text = place.formattedAddress
+                locationMapView.camera = GMSCameraPosition.cameraWithLatitude(place.lat, longitude: place.lng, zoom: 13)
+                
+                let marker = GMSMarker()
+                let coordinates =
+                CLLocationCoordinate2D(latitude: place.lat, longitude: place.lng)
+                marker.position = coordinates
+                marker.map = self.locationMapView
             }
         }
     }

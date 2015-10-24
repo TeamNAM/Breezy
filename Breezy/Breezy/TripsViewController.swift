@@ -9,14 +9,12 @@
 import UIKit
 import ForecastIOClient
 
-let apiTrips = [["name": "Mexico", "address": "1800 Paradise Dr. Hermosillo Mx 02932"]]
-
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate {
     
     // MARK: - Properties
     
     @IBOutlet weak var tripTableView: UITableView!
-    var trips = apiTrips
+    var trips: [Trip]? = createFakeDays()
     
     // MARK: - Static initializer
     
@@ -52,7 +50,10 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trips.count == 0 ? 1 : trips.count+1
+        if let trips = trips {
+            return trips.count + 1
+        }
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -61,7 +62,8 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-            cell.place = trips[indexPath.row - 1]
+            let trip = trips![indexPath.row - 1]
+            cell.place = trip.place
             return cell
         }
     }
@@ -74,8 +76,13 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private func addNewTrip() {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
-        presentViewController(vc, animated: true, completion: nil)
+        let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
+
+        self.navigationController?.pushViewController(newTripController, animated: true)
+        
+        
+//        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
+//        presentViewController(vc, animated: true, completion: nil)
     }
     
     // MARK: - PlaceLookupViewControllerDelegate
@@ -102,8 +109,28 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("he")
 //        let newTripVc = segue.destinationViewController as! NewTripViewController
     }
+
+}
+
+
+
+func createFakeDays() -> [Trip] {
+    let dateFormatter = NSDateFormatter()
+    let startDate1 = NSDate(dateString:"2015-11-06", dateStringFormatter: dateFormatter)
+    let endDate1 = NSDate(dateString:"2015-11-15", dateStringFormatter: dateFormatter)
+    let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", placeType: .Other, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
+    
+    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
+    let endDate2 = NSDate(dateString: "2015-12-24", dateStringFormatter: dateFormatter)
+    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st", placeType: .Other, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
+    
+    var fakeTrips = [Trip]()
+    fakeTrips.append(trip1)
+    fakeTrips.append(trip2)
+    return fakeTrips
 
 }

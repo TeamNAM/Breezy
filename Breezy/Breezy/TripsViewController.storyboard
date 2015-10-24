@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WGs-re-nVi">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WGs-re-nVi" firstAttribute="top" secondItem="qcI-a9-wAw" secondAttribute="bottom" id="2dQ-kM-VQr"/>
                             <constraint firstItem="HeM-Xq-mN2" firstAttribute="top" secondItem="WGs-re-nVi" secondAttribute="bottom" id="70v-cf-lJZ"/>
                             <constraint firstAttribute="trailing" secondItem="WGs-re-nVi" secondAttribute="trailing" id="WDE-s3-z1Q"/>
+                            <constraint firstItem="WGs-re-nVi" firstAttribute="top" secondItem="laG-6Y-Blr" secondAttribute="top" id="Z4A-Hx-c3o"/>
                             <constraint firstItem="WGs-re-nVi" firstAttribute="leading" secondItem="laG-6Y-Blr" secondAttribute="leading" id="x3u-dY-bKW"/>
                         </constraints>
                     </view>

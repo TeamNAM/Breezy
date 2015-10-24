@@ -232,6 +232,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         if let text = timer.userInfo {
             let trimmedText = text as! String
             MapHelpers.placeAutocomplete(placesClient, query: trimmedText) { (predictions, error) -> Void in
+                if error != nil {
+                    print("error autocompleting place object \(error)")
+                }
                 if let predictions = predictions {
                     self.predictions = predictions
                     dispatch_async(dispatch_get_main_queue()) {
