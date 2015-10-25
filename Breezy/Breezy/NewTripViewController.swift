@@ -8,8 +8,13 @@
 
 import UIKit
 import GoogleMaps
+import SwiftValidator
 
-class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
+@objc protocol NewTripViewControllerDelegate {
+    func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip)
+}
+
+class NewTripViewController: UIViewController, PlaceLookupViewDelegate, ValidationDelegate {
     static let storyboardID = "NewTripViewController"
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
@@ -24,6 +29,8 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
             setTripLocationTextField()
         }
     }
+    
+    weak var delegate: NewTripViewControllerDelegate?
 
     
     @IBOutlet weak var mapTapperView: UIView!
@@ -32,6 +39,8 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
     @IBOutlet weak var beginDateTextField: UITextField!
     @IBOutlet weak var tripNameTextField: UITextField!
     @IBOutlet weak var tripLocationTextField: UITextField!
+    
+    let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +55,19 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         let mapTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapMapView:"))
         mapTapperView.addGestureRecognizer(mapTapGesture)
         
+        registerValidationFields()
+        
         setTripLocationTextField()
     }
     
     // MARK: - PlaceLookupViewControllerDelegate
+    
     func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
         place = selectedPlace
     }
    
+    // MARK: - Date Management
+    
     @IBAction func beginDateEdit(input: UITextField) {
         let datePickerView = getDatePickerView(input)
         currentDatePickerView = datePickerView
@@ -84,29 +98,6 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         return datePickerView
     }
     
-    private func editLocation() {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func locationEdit(sender: UITextField) {
-        editLocation()
-    }
-    
-    func didTapMapView(sender: UIView) {
-        editLocation()
-    }
-    
-    func closeDatePicker(sender: UIBarButtonItem) {
-        // todo: mgoo Do I need both?
-        endDateTextField.resignFirstResponder()
-        beginDateTextField.resignFirstResponder()
-    }
-    
-    @IBAction func saveTrip(sender: AnyObject) {
-        
-    }
-    
     private func getUiToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 40))
         toolbar.barStyle = UIBarStyle.Default
@@ -128,6 +119,27 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
         beginDateTextField.resignFirstResponder()
     }
     
+    // MARK: - Location
+    
+    private func editLocation() {
+        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func locationEdit(sender: UITextField) {
+        editLocation()
+    }
+    
+    func didTapMapView(sender: UIView) {
+        editLocation()
+    }
+    
+    func closeDatePicker(sender: UIBarButtonItem) {
+        // todo: mgoo Do I need both?
+        endDateTextField.resignFirstResponder()
+        beginDateTextField.resignFirstResponder()
+    }
+    
     func setTripLocationTextField() {
         if let place = self.place {
             if let tripLocationTextField = self.tripLocationTextField {
@@ -142,5 +154,41 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate {
             }
         }
     }
+    
+    // MARK: - Saving Trip
+    
+    @IBAction func saveTrip(sender: AnyObject) {
+        validator.validate(self)
+    }
+    
+    func validationSuccessful() {
+        self.navigationController?.popViewControllerAnimated(true)
+        let trip = Trip(startDate: beginDate!, endDate: endDate!, place: place!, name: tripNameTextField.text)
+        delegate?.newTripViewController(self, addNewTrip: trip)
+    }
+    
+    func validationFailed(errors:[UITextField:ValidationError]) {
+        // turn the fields to red
+        for (field, error) in validator.errors {
+            field.layer.borderColor = UIColor.redColor().CGColor
+            field.layer.borderWidth = 1.0
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.hidden = false
+        }
+    }
+    
+    func registerValidationFields() {
+        validator.registerField(tripNameTextField, rules: [RequiredRule()])
+        validator.registerField(beginDateTextField, rules: [RequiredRule()])
+        validator.registerField(endDateTextField, rules: [RequiredRule()])
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let tripsVc = segue.destinationViewController as! TripsViewController
+    }
 
+    
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 import ForecastIOClient
 
-class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate {
+class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate, NewTripViewControllerDelegate {
     
     // MARK: - Properties
     
@@ -76,19 +76,17 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private func addNewTrip() {
-        let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
-
-        self.navigationController?.pushViewController(newTripController, animated: true)
-        
-        
-//        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
-//        presentViewController(vc, animated: true, completion: nil)
+//        let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
+//        self.navigationController?.pushViewController(newTripController, animated: true)
+        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     // MARK: - PlaceLookupViewControllerDelegate
     func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
         let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
         newTripController.place = selectedPlace
+        newTripController.delegate = self
         self.navigationController?.pushViewController(newTripController, animated: true)
     }
     
@@ -97,21 +95,22 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast, forecastAPICalls) -> Void in
-            let currentTemperature = Int(round(forecast.currently!.temperature!))
+//            let currentTemperature = Int(round(forecast.currently!.temperature!))
 //            self.temperaturesByUUID[place.uuid] = currentTemperature
-            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
+//            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
 //            dispatch_async(dispatch_get_main_queue()) {
 //                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
 //            }
         }
     }
-
-    // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let newTripVc = segue.destinationViewController as! NewTripViewController
+    // MARK - Add New Trip
+    
+    func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
+        print("new trip added")
+        trips!.append(trip)
+        tripTableView.reloadData()
     }
-
 }
 
 
