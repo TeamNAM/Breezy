@@ -6,6 +6,7 @@
 //  Copyright © 2015 TeamNAM. All rights reserved.
 //
 
+import ForecastIOClient
 import UIKit
 
 class TodayViewCell: UITableViewCell {
@@ -20,7 +21,7 @@ class TodayViewCell: UITableViewCell {
         didSet {
             self.placeType = self.data["placeType"] as! PlaceType
             self.place = self.data["place"] as? Place
-            self.temperature = self.data["temperature"] as? Int
+            self.forecast = self.data["forecast"] as? Forecast
             let imageName = self.getPlaceImageViewName(self.placeType)
             self.placeImageView.image = UIImage(named: imageName)
             self.placeNameLabel.text = self.getPlaceNameLabel(self.placeType, place: self.place)
@@ -28,12 +29,13 @@ class TodayViewCell: UITableViewCell {
     }
     var placeType: PlaceType!
     var place: Place?
-    var temperature: Int? {
+    var forecast: Forecast? {
         didSet {
             if let _ = self.place {
                 self.temperatureLabel.hidden = false
-                if let temp = self.temperature {
-                    self.temperatureLabel.text = "\(temp)°"
+                if let forecast = self.forecast {
+                    let currentTemperature = Int(round(forecast.currently!.temperature!))
+                    self.temperatureLabel.text = "\(currentTemperature)°"
                 } else {
                     self.temperatureLabel.text = "--°"
                 }
