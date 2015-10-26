@@ -36,6 +36,7 @@
 		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
 		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC73F011BDD9C21008BFCC9 /* Weather.swift */; settings = {ASSET_TAGS = (); }; };
 		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; settings = {ASSET_TAGS = (); }; };
 		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +76,7 @@
 		CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
 		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
+		CBC73F011BDD9C21008BFCC9 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CBE221AE1BD755EF003652AB /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		DE35ABA01BD44B0E00FD4035 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
 		DE35ABA31BD44C4800FD4035 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				DE35ABA31BD44C4800FD4035 /* Place.swift */,
 				DE35ABA51BD44C7400FD4035 /* User.swift */,
 				DEFB76451BD77F8C002AC372 /* Trip.swift */,
+				CBC73F011BDD9C21008BFCC9 /* Weather.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
 				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
+				CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */,
 				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 				CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */,

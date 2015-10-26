@@ -26,13 +26,19 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     static let storyboardID = "TripsViewController"
     
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let addTripCellNib = UINib(nibName: "AddTripCell", bundle: NSBundle.mainBundle())
         let tripCellNib = UINib(nibName: "TripCell", bundle: NSBundle.mainBundle())
+        
+        if let trips = trips {
+            for var i = 0; i < trips.count; ++i {
+                let trip = trips[i]
+                loadWeatherForTrip(trip)
+            }
+        }
         
         tripTableView.delegate = self
         tripTableView.dataSource = self
@@ -63,7 +69,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
             let trip = trips![indexPath.row - 1]
-            cell.place = trip.place
+            cell.trip = trip
             return cell
         }
     }
@@ -90,25 +96,29 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationController?.pushViewController(newTripController, animated: true)
     }
     
-    private func loadWeatherForPlace(place: Place, completion: (() -> ())? = nil) {
-//        ForecastIOClient.sharedInstance.forecast(<#T##latitude: Double##Double#>, longitude: <#T##Double#>, time: <#T##NSDate?#>, extendHourly: <#T##Bool?#>, exclude: <#T##[ForecastBlocks]?#>, failure: <#T##FailureClosure?##FailureClosure?##(error: NSError) -> Void#>, success: <#T##SuccessClosure?##SuccessClosure?##(forecast: Forecast, forecastAPICalls: Int?) -> Void#>)
+    private func loadWeatherForTrip(trip: Trip, completion: (() -> ())? = nil) {
+        let place = trip.place
         
-        
-        ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast, forecastAPICalls) -> Void in
-//            let currentTemperature = Int(round(forecast.currently!.temperature!))
-//            self.temperaturesByUUID[place.uuid] = currentTemperature
-//            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-//            }
+        ForecastIOClient.sharedInstance.forecast(place!.lat, longitude: place!.lng, time: trip.startDate, extendHourly: true, exclude: [ForecastBlocks.Currently, ForecastBlocks.Minutely], failure: { (error) -> Void in
+                print(error)
+            }) { (forecast, forecastAPICalls) -> Void in
+                if let daily = forecast.daily {
+                    if let data = daily.data {
+                        for var i=0; i<data.count; i++ {
+                            let point = data[i]
+                            let tripData = Weather(icon: point.icon, precipProb: point.precipProbability, temp: point.temperature, time: point.time)
+                            trip.weather.append(tripData)
+                        }
+                    }
+                }
         }
     }
     
     // MARK - Add New Trip
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
-        print("new trip added")
         trips!.append(trip)
+        loadWeatherForTrip(trip)
         tripTableView.reloadData()
     }
 }

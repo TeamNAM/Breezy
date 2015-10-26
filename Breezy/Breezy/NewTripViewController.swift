@@ -68,16 +68,30 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
    
     // MARK: - Date Management
     
-    @IBAction func beginDateEdit(input: UITextField) {
-        let datePickerView = getDatePickerView(input)
-        currentDatePickerView = datePickerView
-        datePickerView.addTarget(self, action: Selector("beginDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
     @IBAction func endDateEdit(input: UITextField) {
         let datePickerView = getDatePickerView(input)
         currentDatePickerView = datePickerView
+        if endDate == nil {
+            if beginDate != nil {
+                
+            } else {
+                endDateValueChanged(datePickerView)
+            }
+        } else {
+            datePickerView.date = endDate!
+        }
         datePickerView.addTarget(self, action: Selector("endDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    @IBAction func beginDateEdit(input: UITextField) {
+        let datePickerView = getDatePickerView(input)
+        currentDatePickerView = datePickerView
+        if beginDate == nil {
+            beginDateValueChanged(datePickerView)
+        } else {
+            datePickerView.date = beginDate!
+        }
+        datePickerView.addTarget(self, action: Selector("beginDateValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func beginDateValueChanged(datePicker:UIDatePicker) {
@@ -144,6 +158,7 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
         if let place = self.place {
             if let tripLocationTextField = self.tripLocationTextField {
                 tripLocationTextField.text = place.formattedAddress
+                tripNameTextField.text = place.name
                 locationMapView.camera = GMSCameraPosition.cameraWithLatitude(place.lat, longitude: place.lng, zoom: 13)
                 
                 let marker = GMSMarker()
@@ -154,6 +169,20 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
             }
         }
     }
+    
+//    func setWeatherForTrip() {
+//
+//            ForecastIOClient.sharedInstance.forecast(<#T##latitude: Double##Double#>, longitude: <#T##Double#>, time: <#T##NSDate?#>, extendHourly: <#T##Bool?#>, exclude: <#T##[ForecastBlocks]?#>, failure: <#T##FailureClosure?##FailureClosure?##(error: NSError) -> Void#>, success: <#T##SuccessClosure?##SuccessClosure?##(forecast: Forecast, forecastAPICalls: Int?) -> Void#>)
+//
+//
+//            ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast, forecastAPICalls) -> Void in
+//            let currentTemperature = Int(round(forecast.currently!.temperature!))
+//            self.temperaturesByUUID[place.uuid] = currentTemperature
+//            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+//            }
+//    }
     
     // MARK: - Saving Trip
     
@@ -185,9 +214,9 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        let tripsVc = segue.destinationViewController as! TripsViewController
-    }
+//    }
 
     
     

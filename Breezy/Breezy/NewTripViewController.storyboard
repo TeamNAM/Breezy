@@ -24,18 +24,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tiu-D3-IDJ">
-                                <rect key="frame" x="111" y="295" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Cwo-1C-OFc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="endDateEdit:" destination="3Kb-RX-x1F" eventType="touchDown" id="a8X-YO-xmm"/>
-                                    <action selector="endDateEdit:" destination="3Kb-RX-x1F" eventType="editingDidEnd" id="ySh-7k-1Jm"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJQ-7M-RP1">
                                 <rect key="frame" x="111" y="240" width="200" height="30"/>
                                 <constraints>
@@ -44,8 +32,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="beginDateEdit:" destination="3Kb-RX-x1F" eventType="touchDown" id="GDg-8Y-Vks"/>
-                                    <action selector="beginDateEdit:" destination="3Kb-RX-x1F" eventType="editingDidEnd" id="hGH-St-OVZ"/>
+                                    <action selector="beginDateEdit:" destination="3Kb-RX-x1F" eventType="editingDidBegin" id="WW4-Dz-mcp"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqf-8w-gqQ">
@@ -98,6 +85,17 @@
                                     <constraint firstAttribute="height" constant="150" id="U41-pl-yef"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tiu-D3-IDJ">
+                                <rect key="frame" x="111" y="296" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Cwo-1C-OFc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="endDateEdit:" destination="3Kb-RX-x1F" eventType="editingDidBegin" id="OXG-lQ-tru"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

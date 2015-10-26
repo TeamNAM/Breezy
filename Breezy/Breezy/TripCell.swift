@@ -11,11 +11,17 @@ import UIKit
 class TripCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    var place: Place! {
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    let dateFormatter = NSDateFormatter()
+    
+    var trip: Trip! {
         didSet {
-            nameLabel.text = place.name 
-            addressLabel.text = place.formattedAddress
+            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+            
+            nameLabel.text = trip.place!.name
+            dateLabel.text = "\(dateFormatter.stringFromDate(trip.startDate!)) - \(dateFormatter.stringFromDate(trip.endDate!))"
         }
     }
 

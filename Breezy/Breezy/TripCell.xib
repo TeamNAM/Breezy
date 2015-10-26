@@ -10,16 +10,10 @@
             <rect key="frame" x="0.0" y="0.0" width="425" height="198"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="425" height="197"/>
+                <rect key="frame" x="0.0" y="0.0" width="425" height="197.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOI-jr-BTU">
-                        <rect key="frame" x="69" y="112" width="49" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-Wj-g2r">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-Wj-g2r">
                         <rect key="frame" x="12" y="79" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="Gn1-7s-fpL"/>
@@ -27,32 +21,35 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y4-BU-Q4z">
-                        <rect key="frame" x="69" y="79" width="59" height="29"/>
+                        <rect key="frame" x="60" y="62" width="58.5" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOI-jr-BTU">
+                        <rect key="frame" x="60" y="99" width="39.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.463817443" green="0.463817443" blue="0.463817443" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ITX-Wj-g2r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="4aJ-n2-74g"/>
-                    <constraint firstItem="1y4-BU-Q4z" firstAttribute="top" secondItem="ITX-Wj-g2r" secondAttribute="top" id="A8q-6f-McG"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vOI-jr-BTU" secondAttribute="bottom" constant="12" id="LKW-0O-UcU"/>
+                    <constraint firstItem="vOI-jr-BTU" firstAttribute="top" secondItem="1y4-BU-Q4z" secondAttribute="bottom" constant="8" id="70L-bf-CLn"/>
+                    <constraint firstItem="1y4-BU-Q4z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="IBA-dD-BLQ"/>
+                    <constraint firstItem="1y4-BU-Q4z" firstAttribute="leading" secondItem="ITX-Wj-g2r" secondAttribute="trailing" constant="8" id="KnY-KD-dUi"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vOI-jr-BTU" secondAttribute="bottom" constant="8" id="Pmc-Tk-iPp"/>
                     <constraint firstItem="ITX-Wj-g2r" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SeK-59-UJT"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vOI-jr-BTU" secondAttribute="trailing" constant="12" id="ZPY-Ai-n88"/>
-                    <constraint firstItem="vOI-jr-BTU" firstAttribute="leading" secondItem="1y4-BU-Q4z" secondAttribute="leading" id="ams-4o-8tu"/>
-                    <constraint firstItem="1y4-BU-Q4z" firstAttribute="leading" secondItem="ITX-Wj-g2r" secondAttribute="trailing" constant="17" id="cLB-Qd-SP5"/>
-                    <constraint firstItem="1y4-BU-Q4z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="pPn-0J-j7h"/>
-                    <constraint firstItem="vOI-jr-BTU" firstAttribute="top" secondItem="1y4-BU-Q4z" secondAttribute="bottom" constant="4" id="qeo-HD-zMB"/>
+                    <constraint firstItem="vOI-jr-BTU" firstAttribute="bottom" secondItem="ITX-Wj-g2r" secondAttribute="bottom" id="VmI-tb-IY8"/>
+                    <constraint firstItem="vOI-jr-BTU" firstAttribute="leading" secondItem="1y4-BU-Q4z" secondAttribute="leading" id="otW-Mt-fqQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="addressLabel" destination="vOI-jr-BTU" id="J0w-bJ-EZL"/>
+                <outlet property="dateLabel" destination="vOI-jr-BTU" id="TqH-l7-iaA"/>
                 <outlet property="nameLabel" destination="1y4-BU-Q4z" id="rgA-Zf-a6h"/>
+                <outlet property="weatherImageView" destination="ITX-Wj-g2r" id="Efc-Ep-dx8"/>
             </connections>
             <point key="canvasLocation" x="357.5" y="401"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="airplane" width="40" height="40"/>
-    </resources>
 </document>
