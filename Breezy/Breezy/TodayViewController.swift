@@ -25,7 +25,9 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     
-    var temperaturesByUUID = [String: Int]()
+    private let homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+    private let workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+    private var forecastByUUID = [String: Forecast]()
     
     // MARK: - View Life Cycle
     
@@ -44,12 +46,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(animated: Bool) {
         if let home = User.sharedInstance.home {
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            self.loadWeatherForPlace(home, atIndexPath: indexPath)
+            self.loadWeatherForPlace(home, atIndexPath: self.homeIndexPath)
         }
         if let work = User.sharedInstance.work {
-            let indexPath = NSIndexPath(forRow: 1, inSection: 0)
-            self.loadWeatherForPlace(work, atIndexPath: indexPath)
+            self.loadWeatherForPlace(work, atIndexPath: self.workIndexPath)
         }
         for (i, place) in User.sharedInstance.otherPlaces.enumerate() {
             let indexPath = NSIndexPath(forRow: i, inSection: 1)
@@ -60,10 +60,14 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - API Calls
     
     func loadWeatherForPlace(place: Place, atIndexPath indexPath: NSIndexPath, withCompletion completionHandler: (() -> ())? = nil) {
-        // TODO(nikrad): only fetch weather if it's been longer than a certain interval of time (e.g. 5 minutes?)
-        ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast, forecastAPICalls) -> Void in
-            let currentTemperature = Int(round(forecast.currently!.temperature!))
-            self.temperaturesByUUID[place.uuid] = currentTemperature
+        // Only fetch weather if it's been longer than 5 minutes
+        if let storedForecast = forecastByUUID[place.uuid] where NSDate().timeIntervalSince1970 - Double(storedForecast.currently!.time) < (60.0 * 5) {
+            print("Using cached weather info")
+            return
+        }
+        
+        ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast: Forecast, forecastAPICalls) -> Void in
+            self.forecastByUUID[place.uuid] = forecast
             print("\(1000 - forecastAPICalls!) Forecast API calls left today")
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
@@ -75,46 +79,28 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TodayViewCell.reuseIdentifier) as! TodayViewCell
-        var placeType: PlaceType?
+        let placeType = self.getPlaceTypeForIndexPath(indexPath)
         var place: Place?
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.accessoryType = .None
-        if indexPath.section == 0 {
-            // Home/work places
-            if indexPath.row == 0 {
-                placeType = PlaceType.Home
-                place = User.sharedInstance.home
-                if place == nil {
-                    cell.selectionStyle = .Default
-                    cell.accessoryType = .DisclosureIndicator
-                }
-            } else {
-                placeType = PlaceType.Work
-                place = User.sharedInstance.work
-                if place == nil {
-                    cell.selectionStyle = .Default
-                    cell.accessoryType = .DisclosureIndicator
-                }
-            }
+        if indexPath == self.homeIndexPath {
+            place = User.sharedInstance.home
+        } else if indexPath == self.workIndexPath {
+            place = User.sharedInstance.work
         } else {
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            placeType = PlaceType.Other
             place = User.sharedInstance.otherPlaces[indexPath.row]
         }
+        (cell.selectionStyle, cell.accessoryType) = self.getTableViewCellSelectionStyleAndAccessoryType(placeType, place: place)
         cell.data = [
             "placeType": placeType,
             "place": place,
-            "temperature": place != nil ? temperaturesByUUID[place!.uuid] : nil
+            "forecast": place != nil ? forecastByUUID[place!.uuid] : nil
         ]
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            // Home or work
+        if section == self.homeIndexPath.section {
             return 2
         } else {
-            // Other places
             return User.sharedInstance.otherPlaces.count
         }
     }
@@ -129,20 +115,17 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            if indexPath.section == 0 && cell.place != nil {
-                if indexPath.row == 0 {
-                    // Home
-                    User.sharedInstance.editHome(nil)
-                } else {
-                    // Work
-                    User.sharedInstance.editWork(nil)
-                }
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            } else if indexPath.section == 1 {
-                User.sharedInstance.removeOtherPlace(cell.place!.uuid)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            if indexPath == self.homeIndexPath {
+                User.sharedInstance.editHome(nil)
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            } else if indexPath == self.workIndexPath {
+                User.sharedInstance.editWork(nil)
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            } else {
+                let place = User.sharedInstance.otherPlaces[indexPath.row]
+                User.sharedInstance.removeOtherPlace(place.uuid)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
         }
     }
@@ -152,8 +135,8 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.tableViewCellIsEmptyHomeOrWork(indexPath) == true {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
-            let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: cell.placeType)
+            let placeType = self.getPlaceTypeForIndexPath(indexPath)
+            let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: placeType)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -168,15 +151,26 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Table helpers
     
-    func tableViewCellIsEmptyHomeOrWork(indexPath: NSIndexPath) -> Bool {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 && User.sharedInstance.home == nil {
-                return true
-            } else if indexPath.row == 1 && User.sharedInstance.work == nil {
-                return true
-            }
+    func getPlaceTypeForIndexPath(indexPath: NSIndexPath) -> PlaceType {
+        if indexPath == self.homeIndexPath {
+            return PlaceType.Home
+        } else if indexPath == self.workIndexPath {
+            return PlaceType.Work
+        } else {
+            return PlaceType.Other
         }
-        return false
+    }
+    
+    func getTableViewCellSelectionStyleAndAccessoryType(placeType: PlaceType, place: Place?) -> (UITableViewCellSelectionStyle, UITableViewCellAccessoryType) {
+        if [PlaceType.Home, PlaceType.Work].contains(placeType) && place == nil {
+            return (UITableViewCellSelectionStyle.Default, UITableViewCellAccessoryType.DisclosureIndicator)
+        } else {
+            return (UITableViewCellSelectionStyle.None, UITableViewCellAccessoryType.None)
+        }
+    }
+    
+    func tableViewCellIsEmptyHomeOrWork(indexPath: NSIndexPath) -> Bool {
+        return (indexPath == self.homeIndexPath && User.sharedInstance.home == nil) || (indexPath == self.workIndexPath && User.sharedInstance.work == nil)
     }
     
     // MARK: - Button Actions
@@ -193,10 +187,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
             switch placeType {
             case .Home:
                 User.sharedInstance.editHome(selectedPlace)
-                indexPath = NSIndexPath(forRow: 0, inSection: 0)
+                indexPath = self.homeIndexPath
             case .Work:
                 User.sharedInstance.editWork(selectedPlace)
-                indexPath = NSIndexPath(forRow: 1, inSection: 0)
+                indexPath = self.workIndexPath
             case .Other:
                 User.sharedInstance.addOtherPlace(selectedPlace)
                 indexPath = NSIndexPath(forRow: User.sharedInstance.otherPlaces.count - 1, inSection: 1)
