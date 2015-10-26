@@ -32,27 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let credentials = Credentials.defaultCredentials
         ForecastIOClient.apiKey = credentials.forecastKey
         GMSServices.provideAPIKey(credentials.googleKey)
-        
-        // Create tab bar controller
-        let todayVC = TodayViewController.instantiateFromStoryboard()
-        todayVC.title = "Today"
-        todayVC.tabBarItem.image = UIImage(named: "calendar icon")
-        
-        let tripsVC = TripsViewController.instantiateFromStoryboard()
-        tripsVC.title = "Trips"
-        tripsVC.tabBarItem.image = UIImage(named: "paper airplane")
-        
-        let tabBarVC = UITabBarController()
-        let viewControllers = [todayVC, tripsVC]
-        let embeddedVCs = viewControllers.map { (vc) -> UINavigationController in
-            return UINavigationController(rootViewController: vc)
-        }
-        tabBarVC.viewControllers = embeddedVCs
-        
+
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = tabBarVC
+        
+        if User.sharedInstance.hasViewedWelcome {
+            self.showTabViewController()
+        } else {
+            self.window?.rootViewController = WelcomeViewController.instantiateFromStoryboard()
+        }
+        
         
         return true
     }
@@ -159,6 +149,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func showTabViewController() {
+        // Create tab bar controller
+        let todayVC = TodayViewController.instantiateFromStoryboard()
+        todayVC.title = "Today"
+        todayVC.tabBarItem.image = UIImage(named: "calendar icon")
+        
+        let tripsVC = TripsViewController.instantiateFromStoryboard()
+        tripsVC.title = "Trips"
+        tripsVC.tabBarItem.image = UIImage(named: "paper airplane")
+        
+        let tabBarVC = UITabBarController()
+        let viewControllers = [todayVC, tripsVC]
+        let embeddedVCs = viewControllers.map { (vc) -> UINavigationController in
+            return UINavigationController(rootViewController: vc)
+        }
+        tabBarVC.viewControllers = embeddedVCs
+        
+        self.window?.rootViewController = tabBarVC
     }
     
     // MARK: - Delegate access in view controllers

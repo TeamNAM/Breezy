@@ -11,13 +11,11 @@
 		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
 		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
+		AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
+		AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA570E441BD9B08B007F963B /* TodayViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67199F1BD4572900C911BF /* GetStartedViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6719A01BD4572900C911BF /* GetStartedViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
-		AA7587D01BD4A158009764DB /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CE1BD4A158009764DB /* Contacts.framework */; };
-		AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7587CF1BD4A158009764DB /* ContactsUI.framework */; };
 		AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */; settings = {ASSET_TAGS = (); }; };
 		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; settings = {ASSET_TAGS = (); }; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -49,10 +47,10 @@
 		AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceLookupViewController.storyboard; sourceTree = "<group>"; };
 		AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
+		AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AA570E431BD9B08B007F963B /* TodayViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewCell.swift; sourceTree = "<group>"; };
 		AA570E441BD9B08B007F963B /* TodayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewCell.xib; sourceTree = "<group>"; };
-		AA67199F1BD4572900C911BF /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
-		AA6719A01BD4572900C911BF /* GetStartedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetStartedViewController.xib; sourceTree = "<group>"; };
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA7587CE1BD4A158009764DB /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
@@ -93,8 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA7587D01BD4A158009764DB /* Contacts.framework in Frameworks */,
-				AA7587D11BD4A158009764DB /* ContactsUI.framework in Frameworks */,
 				AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */,
 				8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */,
 			);
@@ -177,16 +173,16 @@
 		CBAED2FA1BD1DC25001993E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA67199F1BD4572900C911BF /* GetStartedViewController.swift */,
-				AA6719A01BD4572900C911BF /* GetStartedViewController.xib */,
-				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
 				AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */,
-				AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
+				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
+				AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */,
+				AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */,
 				AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */,
 				CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */,
 				CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */,
+				AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -284,8 +280,8 @@
 				AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */,
 				AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
+				AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */,
 				AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */,
-				AA6719A21BD4572900C911BF /* GetStartedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +342,6 @@
 			files = (
 				AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */,
 				DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */,
-				AA6719A11BD4572900C911BF /* GetStartedViewController.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
@@ -363,6 +358,7 @@
 				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 				CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */,
+				AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

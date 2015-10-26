@@ -11,41 +11,41 @@ import Foundation
 var _currentUser: User?
 let HOME_KEY = "home"
 let WORK_KEY = "work"
-let OTHER_KEY = "other"
 let OTHER_PLACES_KEY = "otherPlaces"
 let TRIPS_KEY = "trips"
+let WELCOME_KEY = "hasViewedWelcome"
 
-class User : NSObject, NSCoding{
+class User : NSObject, NSCoding {
     
     private(set) var home: Place?
     private(set) var work: Place?
-    var other: [Int: Place]?
     private(set) var otherPlaces: [Place]
     var trips: [Trip]?
+    var hasViewedWelcome: Bool
     
-    override init(){
+    override init() {
         self.home = nil
         self.work = nil
-        self.other = [Int: Place]()
         self.otherPlaces = [Place]()
         self.trips = [Trip]()
+        self.hasViewedWelcome = false
     }
     
     required init?(coder aDecoder: NSCoder){
         self.home = aDecoder.decodeObjectForKey(HOME_KEY) as? Place
         self.work = aDecoder.decodeObjectForKey(WORK_KEY) as? Place
-        self.other = aDecoder.decodeObjectForKey(OTHER_KEY) as? [Int: Place]
         self.otherPlaces = aDecoder.decodeObjectForKey(OTHER_PLACES_KEY) as! [Place]
         self.trips = aDecoder.decodeObjectForKey(TRIPS_KEY) as? [Trip]
+        self.hasViewedWelcome = aDecoder.decodeBoolForKey(WELCOME_KEY) ?? false
         super.init()
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.home, forKey: HOME_KEY)
         aCoder.encodeObject(self.work, forKey: WORK_KEY)
-        aCoder.encodeObject(self.other, forKey: OTHER_KEY)
         aCoder.encodeObject(self.otherPlaces, forKey: OTHER_PLACES_KEY)
         aCoder.encodeObject(self.trips, forKey: TRIPS_KEY)
+        aCoder.encodeBool(self.hasViewedWelcome, forKey: WELCOME_KEY)
     }
     
     func editHome(place: Place?) {
