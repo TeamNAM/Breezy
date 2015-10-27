@@ -8,42 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
-		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; settings = {ASSET_TAGS = (); }; };
-		AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
-		AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA570E441BD9B08B007F963B /* TodayViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; };
+		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; };
+		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; };
+		AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */; };
+		AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */; };
+		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; };
+		AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA570E441BD9B08B007F963B /* TodayViewCell.xib */; };
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
-		AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */; settings = {ASSET_TAGS = (); }; };
-		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; settings = {ASSET_TAGS = (); }; };
-		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; settings = {ASSET_TAGS = (); }; };
-		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; settings = {ASSET_TAGS = (); }; };
-		AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
-		AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFF4F91BD94C3600349092 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */; };
+		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; };
+		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; };
+		AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */; };
+		AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */; };
+		AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFF4F91BD94C3600349092 /* Assets.xcassets */; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
 		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
-		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; settings = {ASSET_TAGS = (); }; };
-		CB4EFDE41BDEFC0900C4AA24 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CB4EFDE71BDF01FA00C4AA24 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE51BDF01FA00C4AA24 /* WeatherDayCell.swift */; settings = {ASSET_TAGS = (); }; };
-		CB4EFDE81BDF01FA00C4AA24 /* WeatherDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4EFDE61BDF01FA00C4AA24 /* WeatherDayCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CB59F97E1BDB2760007A2FB1 /* TripsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
-		CB59F9801BDB2B7F007A2FB1 /* NewTripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */; settings = {ASSET_TAGS = (); }; };
-		CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59F9831BDC4986007A2FB1 /* DateHelpers.swift */; settings = {ASSET_TAGS = (); }; };
-		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; settings = {ASSET_TAGS = (); }; };
-		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; settings = {ASSET_TAGS = (); }; };
-		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC73F011BDD9C21008BFCC9 /* Weather.swift */; settings = {ASSET_TAGS = (); }; };
-		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; settings = {ASSET_TAGS = (); }; };
-		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; settings = {ASSET_TAGS = (); }; };
-		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; settings = {ASSET_TAGS = (); }; };
-		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; settings = {ASSET_TAGS = (); }; };
+		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; };
+		CB4EFDE41BDEFC0900C4AA24 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */; };
+		CB4EFDE71BDF01FA00C4AA24 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE51BDF01FA00C4AA24 /* WeatherDayCell.swift */; };
+		CB4EFDE81BDF01FA00C4AA24 /* WeatherDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4EFDE61BDF01FA00C4AA24 /* WeatherDayCell.xib */; };
+		CB59F97E1BDB2760007A2FB1 /* TripsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */; };
+		CB59F9801BDB2B7F007A2FB1 /* NewTripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */; };
+		CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59F9831BDC4986007A2FB1 /* DateHelpers.swift */; };
+		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; };
+		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; };
+		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; };
+		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; };
+		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; };
+		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; };
+		CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC73F011BDD9C21008BFCC9 /* Weather.swift */; };
+		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; };
+		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; };
+		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; };
+		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; };
+		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; };
+		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +57,7 @@
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA7587CE1BD4A158009764DB /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		AA7687801BDF2D4B004BEEBA /* Breezy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Breezy-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlaceCell.swift; sourceTree = "<group>"; };
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 				AA328DF21BD064AD00ECFAAC /* Credentials.swift */,
 				DE35ABA71BD44CFA00FD4035 /* Credentials.plist */,
 				DE35ABA01BD44B0E00FD4035 /* AppData.plist */,
+				AA7687801BDF2D4B004BEEBA /* Breezy-Bridging-Header.h */,
 			);
 			path = Breezy;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 		AAD3B6A71BCCA08E008FBC01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = TeamNAM;
 				TargetAttributes = {
@@ -463,6 +466,8 @@
 			baseConfigurationReference = E6AFAE4023E97270ABAD6826 /* Pods-Breezy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Breezy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -508,6 +513,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Breezy/Breezy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -516,6 +523,8 @@
 			baseConfigurationReference = FF2228CF0FF26FD09B6A4677 /* Pods-Breezy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Breezy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -561,6 +570,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TeamNam.Breezy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Breezy/Breezy-Bridging-Header.h";
 			};
 			name = Release;
 		};
