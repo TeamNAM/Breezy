@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherDayCell" customModule="Breezy" customModuleProvider="target">
+            <connections>
+                <outlet property="temperatureLabel" destination="XBg-HH-gJS" id="CgB-33-GMG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="170" id="KGk-i7-Jjw" customClass="WeatherDayCell" customModule="Breezy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="169"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2vU-us-Mlc">
+                        <rect key="frame" x="12" y="60" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="RnL-SM-s3S"/>
+                            <constraint firstAttribute="width" constant="50" id="m0Q-V1-Lri"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-HH-gJS">
+                        <rect key="frame" x="453" y="68" width="33" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2vU-us-Mlc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="10h-mx-pLz"/>
+                    <constraint firstItem="2vU-us-Mlc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O53-iN-dEf"/>
+                    <constraint firstItem="2vU-us-Mlc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ZVC-1m-DOu"/>
+                    <constraint firstAttribute="trailing" secondItem="XBg-HH-gJS" secondAttribute="trailing" constant="12" id="ekx-4Z-jB9"/>
+                    <constraint firstItem="XBg-HH-gJS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mhI-2M-D64"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XBg-HH-gJS" secondAttribute="bottom" constant="8" id="oxy-aV-dGc"/>
+                    <constraint firstItem="XBg-HH-gJS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="rbk-VU-eyt"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2vU-us-Mlc" secondAttribute="bottom" constant="8" id="swj-Ec-dBr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="493" y="406"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -78,12 +78,13 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if tableView.cellForRowAtIndexPath(indexPath) is AddTripCell {
             addNewTrip()
+        } else {
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            self.performSegueWithIdentifier("TripDetailSegue", sender: cell)
         }
     }
     
     private func addNewTrip() {
-//        let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
-//        self.navigationController?.pushViewController(newTripController, animated: true)
         let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
         presentViewController(vc, animated: true, completion: nil)
     }
@@ -99,18 +100,24 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func loadWeatherForTrip(trip: Trip, completion: (() -> ())? = nil) {
         let place = trip.place
         
-        ForecastIOClient.sharedInstance.forecast(place!.lat, longitude: place!.lng, time: trip.startDate, extendHourly: true, exclude: [ForecastBlocks.Currently, ForecastBlocks.Minutely], failure: { (error) -> Void in
-                print(error)
-            }) { (forecast, forecastAPICalls) -> Void in
-                if let daily = forecast.daily {
-                    if let data = daily.data {
-                        for var i=0; i<data.count; i++ {
-                            let point = data[i]
-                            let tripData = Weather(icon: point.icon, precipProb: point.precipProbability, temp: point.temperature, time: point.time)
-                            trip.weather.append(tripData)
+//        let dateRange = getDateRange(trip.startDate!, endDate: trip.endDate!)
+        
+//        for var i=0; i< dateRange.count; i++ {
+//            
+//        }
+            ForecastIOClient.sharedInstance.forecast(place!.lat, longitude: place!.lng, time: trip.startDate, extendHourly: true, exclude: [ForecastBlocks.Currently, ForecastBlocks.Minutely], failure: { (error) -> Void in
+                    print(error)
+                }) { (forecast, forecastAPICalls) -> Void in
+                    if let daily = forecast.daily {
+                        print(daily.data!.count)
+                        if let data = daily.data {
+                            for var i=0; i<data.count; i++ {
+                                let point = data[i]
+                                let tripData = Weather(icon: point.icon, precipProb: point.precipProbability, temp: point.temperature, time: point.time)
+                                trip.weather.append(tripData)
+                            }
                         }
                     }
-                }
         }
     }
     
@@ -121,6 +128,33 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         loadWeatherForTrip(trip)
         tripTableView.reloadData()
     }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nextVc = segue.destinationViewController
+        if nextVc is TripDetailViewController {
+            let tripDetailVc = nextVc as! TripDetailViewController
+            let cell = sender as! TripCell
+            tripDetailVc.trip = cell.trip
+        }
+        
+    }
+}
+
+private func getDateRange(startDate: NSDate, endDate: NSDate) -> [NSDate] {
+    let cal = NSCalendar.currentCalendar()
+    
+    let components = cal.components(NSCalendarUnit.Day, fromDate: startDate, toDate: endDate, options: NSCalendarOptions.MatchStrictly)
+    
+    var dates = [NSDate]()
+    for var i=0; i<components.day; i++ {
+        let unixDay:NSTimeInterval = Double(86400*i)
+        let date = NSDate(timeInterval: unixDay, sinceDate: startDate)
+        dates.append(date)
+    }
+
+    return dates
 }
 
 
