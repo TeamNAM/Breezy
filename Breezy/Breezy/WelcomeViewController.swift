@@ -89,7 +89,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     func showWorkAddressView() {
         self.workAddressView.hidden = false
         self.workAddressView.frame.origin = CGPoint(x: self.view.frame.width, y: self.view.frame.origin.y)
-        UIView.animateWithDuration(0.25, delay: 0.0, options: [UIViewAnimationOptions.CurveEaseOut], animations: { () -> Void in
+        UIView.animateWithDuration(0.3, delay: 0.0, options: [UIViewAnimationOptions.CurveEaseInOut], animations: { () -> Void in
             self.locationAccessView.frame.origin = CGPoint(x: -self.view.frame.width, y: self.view.frame.origin.y)
             self.workAddressView.frame.origin = CGPoint(x: self.view.frame.origin.x, y: self.view.frame.origin.y)
         }, completion: nil)
