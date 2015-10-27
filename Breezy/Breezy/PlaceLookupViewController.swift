@@ -55,6 +55,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     var selectingPlaceType: PlaceType?
     weak var delegate: PlaceLookupViewDelegate?
     
+    var placeSelectedHandler: ((Place) -> Void)?
+    var lookupCanceledHandler: (() -> Void)?
+    
     private var debounceTimer: NSTimer?
     private var placesClient: GMSPlacesClient!
     private var predictions = [GMSAutocompletePrediction]()
@@ -131,6 +134,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Button actions
     
     func onTapCancelButton(sender: AnyObject) {
+        self.lookupCanceledHandler?()
         self.goBackToLastViewController()
     }
     
@@ -142,6 +146,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
         if let selectedGMSPlace = self.selectedGMSPlace {
             let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: self.selectingPlaceType, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
             self.delegate?.placeLookupViewController?(self, didSelectPlace: selectedPlace)
+            self.placeSelectedHandler?(selectedPlace)
         }
         self.goBackToLastViewController()
     }
