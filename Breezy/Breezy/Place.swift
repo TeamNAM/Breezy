@@ -89,7 +89,38 @@ class Place : NSObject, NSCoding{
         aCoder.encodeObject(self.detailedMessage, forKey: DET_MSG_KEY)
     }
     
-    func suggestionForDataPoint(dataPoint: DataPoint) -> [Suggestion] {
-        return [Suggestion]()
+    func suggestionsForDataPoint(dataPoint: DataPoint) -> [Suggestion] {
+        var suggestions = [Suggestion]()
+        //Temperature
+        let temp = dataPoint.temperature!
+        switch temp {
+            case 0..<40:
+                suggestions.append(Suggestion(name: "freezing"))
+            case 40..<60:
+                suggestions.append(Suggestion(name: "cold"))
+            case 60..<65:
+                suggestions.append(Suggestion(name: "chilly"))
+            case 80..<85:
+                suggestions.append(Suggestion(name: "warm"))
+            case 85...200:
+                suggestions.append(Suggestion(name: "hot"))
+            default:
+                print("No temperature warnings added")
+        }
+        
+        //Precip
+        if let precip = dataPoint.precipType {
+            switch precip {
+                case .Rain:
+                    suggestions.append(Suggestion(name: "rain"))
+                case .Hail:
+                    suggestions.append(Suggestion(name: "hail"))
+                case .Sleet:
+                    suggestions.append(Suggestion(name: "sleet"))
+                case .Snow:
+                    suggestions.append(Suggestion(name: "snow"))
+            }
+        }
+        return suggestions
     }
 }

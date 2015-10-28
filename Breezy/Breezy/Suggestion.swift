@@ -19,8 +19,8 @@ class Suggestion {
     
     init(name: String) {
         self.name = name
-        let data = suggestionData[name]!
-        self.imageName = data["imageName"]
-        self.message = data["message"]
+//        let data = suggestionData[name]!
+//        self.imageName = data["imageName"]
+//        self.message = data["message"]
     }
 }
