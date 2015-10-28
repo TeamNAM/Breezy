@@ -106,4 +106,20 @@ class Place : NSObject, NSCoding{
         }
         return suggestions
     }
+    
+    //Put in an array of data points of hourly data.
+    func suggestionsForHourlyDataPoints(dataPoints: [DataPoint]) -> [Suggestion] {
+        var suggestions = [Suggestion]()
+        for dataPoint in dataPoints {
+            let sugg = suggestionsForDataPoint(dataPoint)
+            for s in sugg {
+                if  suggestions.filter({ el in el.name == s.name}).count > 0{
+                    //do nothing
+                } else {
+                    suggestions.append(s)
+                }
+            }
+        }
+        return suggestions
+    }
 }

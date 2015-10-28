@@ -9,7 +9,7 @@
 import Foundation
 
 //let images = {"rain": {"imageName": "umbrella", "message": "It's going to rain today! Be sure to bring an umbrella"}}
-let suggestionData = ["rain": ["imageName": "umbrella", "message": "It's going to rain today! Be sure to bring an umbrella"]]
+//let suggestionData = ["rain": ["imageName": "umbrella", "message": "It's going to rain today! Be sure to bring an umbrella"]]
 
 class Suggestion {
     
@@ -19,8 +19,6 @@ class Suggestion {
     
     init(name: String) {
         self.name = name
-//        let data = suggestionData[name]!
-//        self.imageName = data["imageName"]
-//        self.message = data["message"]
+        self.imageName = name
     }
 }
