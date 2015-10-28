@@ -140,6 +140,11 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let placeType = self.getPlaceTypeForIndexPath(indexPath)
         guard [PlaceType.Home, PlaceType.Work].contains(placeType) else {
+            let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
+            let place = User.sharedInstance.otherPlaces[indexPath.row]
+            vc.place = place
+            vc.forecast = forecastByUUID[place.uuid]
+            self.navigationController?.pushViewController(vc, animated: true)
             return
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -163,6 +168,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let placeType = self.getPlaceTypeForIndexPath(indexPath)
+        if placeType == PlaceType.Other {
+            return indexPath
+        }
         return self.tableViewCellIsEmptyHomeOrWork(indexPath) ? indexPath : nil
     }
     

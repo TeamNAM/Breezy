@@ -10,6 +10,8 @@
 		8C456B2561AC37F017DA4540 /* Pods_Breezy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */; };
 		AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */; };
+		AA109A701BE07F2100EB8662 /* DailyWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA109A6F1BE07F2100EB8662 /* DailyWeatherDetailViewController.swift */; };
+		AA109A721BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA109A711BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard */; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; };
 		AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */; };
 		AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */; };
@@ -50,14 +52,14 @@
 /* Begin PBXFileReference section */
 		AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceLookupViewController.storyboard; sourceTree = "<group>"; };
 		AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupViewController.swift; sourceTree = "<group>"; };
+		AA109A6F1BE07F2100EB8662 /* DailyWeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWeatherDetailViewController.swift; sourceTree = "<group>"; };
+		AA109A711BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DailyWeatherDetailViewController.storyboard; sourceTree = "<group>"; };
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AA570E431BD9B08B007F963B /* TodayViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewCell.swift; sourceTree = "<group>"; };
 		AA570E441BD9B08B007F963B /* TodayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewCell.xib; sourceTree = "<group>"; };
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		AA7587CE1BD4A158009764DB /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
-		AA7587CF1BD4A158009764DB /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		AA7687801BDF2D4B004BEEBA /* Breezy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Breezy-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlaceCell.swift; sourceTree = "<group>"; };
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
@@ -185,16 +187,18 @@
 		CBAED2FA1BD1DC25001993E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA109A6F1BE07F2100EB8662 /* DailyWeatherDetailViewController.swift */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
 				AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */,
 				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
+				CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */,
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
 				AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */,
+				AA109A711BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard */,
+				CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */,
 				AA0CA53E1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard */,
 				AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */,
 				CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */,
-				CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */,
-				CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */,
 				AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */,
 			);
 			name = "View Controllers";
@@ -203,8 +207,6 @@
 		DC89DEBB808658D544372665 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA7587CE1BD4A158009764DB /* Contacts.framework */,
-				AA7587CF1BD4A158009764DB /* ContactsUI.framework */,
 				AA6719A31BD459C800C911BF /* CoreLocation.framework */,
 				EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */,
 			);
@@ -292,6 +294,7 @@
 				AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				CB4EFDE81BDF01FA00C4AA24 /* WeatherDayCell.xib in Resources */,
+				AA109A721BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
 				AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */,
 				AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */,
@@ -367,6 +370,7 @@
 				AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */,
 				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				CB4EFDE41BDEFC0900C4AA24 /* TripDetailViewController.swift in Sources */,
+				AA109A701BE07F2100EB8662 /* DailyWeatherDetailViewController.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
 				DE35ABA61BD44C7400FD4035 /* User.swift in Sources */,
 				CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */,
