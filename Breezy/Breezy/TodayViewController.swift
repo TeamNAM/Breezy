@@ -46,6 +46,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         tableView.reloadData()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
