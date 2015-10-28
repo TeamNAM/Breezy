@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ForecastIOClient
 
 enum PlaceType : String {
     case Home = "Home"
@@ -86,5 +87,9 @@ class Place : NSObject, NSCoding{
         aCoder.encodeObject(self.recommendationIcon, forKey: REC_ICON_KEY)
         aCoder.encodeObject(self.recommendationMessage, forKey: REC_MSG_KEY)
         aCoder.encodeObject(self.detailedMessage, forKey: DET_MSG_KEY)
+    }
+    
+    func suggestionForDataPoint(dataPoint: DataPoint) -> [Suggestion] {
+        return [Suggestion]()
     }
 }
