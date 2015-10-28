@@ -9,28 +9,13 @@
 import GoogleMaps
 import UIKit
 
-@objc protocol PlaceLookupViewDelegate {
-    optional func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place)
-}
-
 class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // MARK: - Static initializer
     
-    static func instantiateFromStoryboardForModalSegue(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
-        let vc = self.instantiateFromStoryboardForPushSegue(currentViewController, toSelectPlaceType: placeType)
-        let navigationVC = UINavigationController(rootViewController: vc)
-        return navigationVC
-    }
-    
-    static func instantiateFromStoryboardForPushSegue(currentViewController: PlaceLookupViewDelegate?, toSelectPlaceType placeType: PlaceType?) -> UIViewController {
+
+    static func instantiateFromStoryboard() -> PlaceLookupViewController {
         let vc = UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID) as! PlaceLookupViewController
-        if let delegate = currentViewController {
-            vc.delegate = delegate
-        }
-        if let placeType = placeType {
-            vc.selectingPlaceType = placeType
-        }
         return vc
     }
     
@@ -51,9 +36,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: GMSMapView!
-    
-    var selectingPlaceType: PlaceType?
-    weak var delegate: PlaceLookupViewDelegate?
     
     var placeSelectedHandler: ((Place) -> Void)?
     var lookupCanceledHandler: (() -> Void)?
@@ -135,7 +117,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     func onTapCancelButton(sender: AnyObject) {
         self.lookupCanceledHandler?()
-        self.goBackToLastViewController()
     }
     
     func onTapStartOver(sender: AnyObject) {
@@ -144,11 +125,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     func onSavePlace(sender: AnyObject) {
         if let selectedGMSPlace = self.selectedGMSPlace {
-            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, placeType: self.selectingPlaceType, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-            self.delegate?.placeLookupViewController?(self, didSelectPlace: selectedPlace)
+            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
             self.placeSelectedHandler?(selectedPlace)
         }
-        self.goBackToLastViewController()
     }
     
     // MARK: UITableViewDataSource
@@ -189,18 +168,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
         self.setState(ControllerState.SearchStart)
-    }
-    
-    // MARK: Navigation helpers
-    
-    func goBackToLastViewController() {
-        let viewControllerCount = self.navigationController?.viewControllers.count
-        if viewControllerCount == 1 {
-            self.dismissViewControllerAnimated(true, completion: nil)
-        } else {
-            let lastVC = self.navigationController?.viewControllers[viewControllerCount! - 2]
-            self.navigationController?.popToViewController(lastVC!, animated: true)
-        }
     }
     
     // MARK: API Calls

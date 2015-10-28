@@ -9,7 +9,7 @@
 import UIKit
 import ForecastIOClient
 
-class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate, NewTripViewControllerDelegate {
+class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewTripViewControllerDelegate {
     
     // MARK: - Properties
     
@@ -85,16 +85,21 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private func addNewTrip() {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
-        presentViewController(vc, animated: true, completion: nil)
-    }
-    
-    // MARK: - PlaceLookupViewControllerDelegate
-    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
-        newTripController.place = selectedPlace
-        newTripController.delegate = self
-        self.navigationController?.pushViewController(newTripController, animated: true)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard()
+        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+            let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
+            newTripController.place = selectedPlace
+            newTripController.delegate = self
+            print(self.navigationController?.viewControllers)
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.navigationController?.pushViewController(newTripController, animated: true)
+            })
+        }
+        vc.lookupCanceledHandler = {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        let navVC = UINavigationController(rootViewController: vc)
+        presentViewController(navVC, animated: true, completion: nil)
     }
     
     private func loadWeatherForTrip(trip: Trip, completion: (() -> ())? = nil) {
@@ -163,12 +168,12 @@ func createFakeDays() -> [Trip] {
     let dateFormatter = NSDateFormatter()
     let startDate1 = NSDate(dateString:"2015-11-06", dateStringFormatter: dateFormatter)
     let endDate1 = NSDate(dateString:"2015-11-15", dateStringFormatter: dateFormatter)
-    let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", placeType: .Other, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
     let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
     
     let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
     let endDate2 = NSDate(dateString: "2015-12-24", dateStringFormatter: dateFormatter)
-    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st", placeType: .Other, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
     let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
     
     var fakeTrips = [Trip]()

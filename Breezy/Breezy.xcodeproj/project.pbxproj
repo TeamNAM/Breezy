@@ -183,8 +183,8 @@
 		CBAED2FA1BD1DC25001993E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */,
 				CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */,
+				AA0CA5401BD6F26700C643A9 /* PlaceLookupViewController.swift */,
 				CBE221AE1BD755EF003652AB /* TodayViewController.swift */,
 				CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */,
 				AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */,

@@ -9,7 +9,11 @@
 import ForecastIOClient
 import UIKit
 
-class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PlaceLookupViewDelegate {
+enum PlaceType: Int {
+    case Home, Work, Other
+}
+
+class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Static initializer
     
@@ -117,10 +121,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             if indexPath == self.homeIndexPath {
-                User.sharedInstance.editHome(nil)
+                User.sharedInstance.home = nil
                 tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             } else if indexPath == self.workIndexPath {
-                User.sharedInstance.editWork(nil)
+                User.sharedInstance.work = nil
                 tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             } else {
                 let place = User.sharedInstance.otherPlaces[indexPath.row]
@@ -133,12 +137,28 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.tableViewCellIsEmptyHomeOrWork(indexPath) == true {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            let placeType = self.getPlaceTypeForIndexPath(indexPath)
-            let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: placeType)
-            self.navigationController?.pushViewController(vc, animated: true)
+        let placeType = self.getPlaceTypeForIndexPath(indexPath)
+        guard [PlaceType.Home, PlaceType.Work].contains(placeType) else {
+            return
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard()
+        vc.lookupCanceledHandler = {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+            if placeType == PlaceType.Home {
+                User.sharedInstance.home = selectedPlace
+            } else {
+                User.sharedInstance.work = selectedPlace
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.loadWeatherForPlace(selectedPlace, atIndexPath: indexPath)
+            })
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
@@ -176,27 +196,20 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Button Actions
     
     @IBAction func onAddPlace(sender: UIBarButtonItem) {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForModalSegue(self, toSelectPlaceType: PlaceType.Other)
-        presentViewController(vc, animated: true, completion: nil)
-    }
-
-    // MARK: - PlaceLookupViewControllerDelegate
-    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        if let placeType = selectedPlace.placeType {
-            var indexPath: NSIndexPath
-            switch placeType {
-            case .Home:
-                User.sharedInstance.editHome(selectedPlace)
-                indexPath = self.homeIndexPath
-            case .Work:
-                User.sharedInstance.editWork(selectedPlace)
-                indexPath = self.workIndexPath
-            case .Other:
-                User.sharedInstance.addOtherPlace(selectedPlace)
-                indexPath = NSIndexPath(forRow: User.sharedInstance.otherPlaces.count - 1, inSection: 1)
-            }
-            self.tableView.reloadData()
-            self.loadWeatherForPlace(selectedPlace, atIndexPath: indexPath)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard()
+        vc.lookupCanceledHandler = {
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
+        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+            User.sharedInstance.addOtherPlace(selectedPlace)
+            let indexPath = NSIndexPath(forRow: User.sharedInstance.otherPlaces.count - 1, inSection: 1)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.loadWeatherForPlace(selectedPlace, atIndexPath: indexPath)
+            })
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        let navVC = UINavigationController(rootViewController: vc)
+        self.presentViewController(navVC, animated: true, completion: nil)
     }
 }

@@ -17,8 +17,8 @@ let WELCOME_KEY = "hasViewedWelcome"
 
 class User : NSObject, NSCoding {
     
-    private(set) var home: Place?
-    private(set) var work: Place?
+    var home: Place?
+    var work: Place?
     private(set) var otherPlaces: [Place]
     var trips: [Trip]?
     var hasViewedWelcome: Bool
@@ -46,20 +46,6 @@ class User : NSObject, NSCoding {
         aCoder.encodeObject(self.otherPlaces, forKey: OTHER_PLACES_KEY)
         aCoder.encodeObject(self.trips, forKey: TRIPS_KEY)
         aCoder.encodeBool(self.hasViewedWelcome, forKey: WELCOME_KEY)
-    }
-    
-    func editHome(place: Place?) {
-        if let place = place {
-            place.placeType = PlaceType.Home
-        }
-        self.home = place
-    }
-
-    func editWork(place: Place?) {
-        if let place = place {
-            place.placeType = PlaceType.Work
-        }
-        self.work = place
     }
     
     func addOtherPlace(place: Place) {

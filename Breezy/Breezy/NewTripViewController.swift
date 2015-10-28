@@ -14,7 +14,7 @@ import SwiftValidator
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip)
 }
 
-class NewTripViewController: UIViewController, PlaceLookupViewDelegate, ValidationDelegate {
+class NewTripViewController: UIViewController, ValidationDelegate {
     static let storyboardID = "NewTripViewController"
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
@@ -60,12 +60,6 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
         setTripLocationTextField()
     }
     
-    // MARK: - PlaceLookupViewControllerDelegate
-    
-    func placeLookupViewController(placeLookupViewController: PlaceLookupViewController, didSelectPlace selectedPlace: Place) {
-        place = selectedPlace
-    }
-   
     // MARK: - Date Management
     
     @IBAction func endDateEdit(input: UITextField) {
@@ -136,7 +130,14 @@ class NewTripViewController: UIViewController, PlaceLookupViewDelegate, Validati
     // MARK: - Location
     
     private func editLocation() {
-        let vc = PlaceLookupViewController.instantiateFromStoryboardForPushSegue(self, toSelectPlaceType: nil)
+        let vc = PlaceLookupViewController.instantiateFromStoryboard()
+        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+            self.place = selectedPlace
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        vc.lookupCanceledHandler = {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

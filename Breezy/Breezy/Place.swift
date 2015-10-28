@@ -9,18 +9,11 @@
 import Foundation
 import UIKit
 
-enum PlaceType : String {
-    case Home = "Home"
-    case Work = "Work"
-    case Other = "Other"
-}
-
 let UUID_KEY = "uuid"
 let LAT_KEY = "lat"
 let LNG_KEY = "lng"
 let ADDRESS_KEY = "formattedAddress"
 let NAME_KEY = "name"
-let PLACE_TYPE_KEY = "placeType"
 let PLACE_ID_KEY = "placeId"
 let REC_ICON_KEY = "recommendationIcon"
 let REC_MSG_KEY = "recommendationMessage"
@@ -33,20 +26,16 @@ class Place : NSObject, NSCoding{
     var name: String
     var formattedAddress: String
     var placeId: Int?
-    var placeType: PlaceType?
     var recommendationIcon: UIImage?
     var recommendationMessage: String?
     var detailedMessage: String?
     
-    init(lat: Double, lng: Double, name: String, formattedAddress: String, placeType: PlaceType?, recommendationIcon: UIImage?, recommendationMessage: String?, detailedMessage: String?) {
+    init(lat: Double, lng: Double, name: String, formattedAddress: String, recommendationIcon: UIImage?, recommendationMessage: String?, detailedMessage: String?) {
         self.uuid = NSUUID().UUIDString
         self.lat = lat
         self.lng = lng
         self.name = name
         self.formattedAddress = formattedAddress
-        if let placeType = placeType {
-            self.placeType = placeType
-        }
         if let recommendationIcon = recommendationIcon {
             self.recommendationIcon = recommendationIcon
         }
@@ -65,11 +54,6 @@ class Place : NSObject, NSCoding{
         self.name = aDecoder.decodeObjectForKey(NAME_KEY) as! String
         self.formattedAddress = aDecoder.decodeObjectForKey(ADDRESS_KEY) as! String
         self.placeId = aDecoder.decodeObjectForKey(PLACE_ID_KEY) as? Int
-        if let placeTypeRawValue = aDecoder.decodeObjectForKey(PLACE_TYPE_KEY) as? String {
-            self.placeType = PlaceType(rawValue: placeTypeRawValue)
-        } else {
-            self.placeType = nil
-        }
         self.recommendationMessage = aDecoder.decodeObjectForKey(REC_MSG_KEY) as? String
         self.detailedMessage = aDecoder.decodeObjectForKey(DET_MSG_KEY) as? String
         super.init()
@@ -82,7 +66,6 @@ class Place : NSObject, NSCoding{
         aCoder.encodeObject(self.name, forKey: NAME_KEY)
         aCoder.encodeObject(self.formattedAddress, forKey: ADDRESS_KEY)
         aCoder.encodeObject(self.placeId, forKey: PLACE_ID_KEY)
-        aCoder.encodeObject(self.placeType?.rawValue, forKey: PLACE_TYPE_KEY)
         aCoder.encodeObject(self.recommendationIcon, forKey: REC_ICON_KEY)
         aCoder.encodeObject(self.recommendationMessage, forKey: REC_MSG_KEY)
         aCoder.encodeObject(self.detailedMessage, forKey: DET_MSG_KEY)
