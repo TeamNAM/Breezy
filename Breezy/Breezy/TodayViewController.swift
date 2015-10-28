@@ -43,16 +43,6 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         tableView.reloadData()
         
-        let singapore = Place(lat: 1.3000, lng: 103.8000, name: "Singapore", formattedAddress: "Singapore", placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-        let sanFrancisco = Place(lat: 37.7833, lng: 122.4167, name: "SanFran", formattedAddress: "SanFran", placeType: nil, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-        
-        ForecastIOClient.sharedInstance.forecast(sanFrancisco.lat, longitude: sanFrancisco.lng) {(forecast: Forecast, forecastAPICalls) -> Void in
-            let hourly = forecast.hourly?.data
-            let dataPoint = hourly![0]
-            print(dataPoint)
-            let suggestions = sanFrancisco.suggestionsForDataPoint(dataPoint)
-            print(suggestions[0].name)
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
