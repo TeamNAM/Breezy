@@ -13,6 +13,8 @@
 		AA109A701BE07F2100EB8662 /* DailyWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA109A6F1BE07F2100EB8662 /* DailyWeatherDetailViewController.swift */; };
 		AA109A721BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA109A711BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard */; };
 		AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA328DF21BD064AD00ECFAAC /* Credentials.swift */; };
+		AA3F60B31BE12945005075BD /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3F60B21BE12945005075BD /* NavigationControllerDelegate.swift */; };
+		AA3F60B51BE12A4B005075BD /* TransitionAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3F60B41BE12A4B005075BD /* TransitionAnimators.swift */; };
 		AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */; };
 		AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */; };
 		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; };
@@ -25,7 +27,6 @@
 		AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAB34DF41BD9733A00C00CD4 /* TodayViewController.storyboard */; };
 		AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFF4F91BD94C3600349092 /* Assets.xcassets */; };
 		AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */; };
-		AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */; };
 		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; };
 		CB4EFDE41BDEFC0900C4AA24 /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */; };
 		CB4EFDE71BDF01FA00C4AA24 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4EFDE51BDF01FA00C4AA24 /* WeatherDayCell.swift */; };
@@ -46,7 +47,7 @@
 		DE35ABA61BD44C7400FD4035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA51BD44C7400FD4035 /* User.swift */; };
 		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; };
 		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; };
-		DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764B1BE0807C002AC372 /* Suggestion.swift */; settings = {ASSET_TAGS = (); }; };
+		DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764B1BE0807C002AC372 /* Suggestion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		AA109A6F1BE07F2100EB8662 /* DailyWeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWeatherDetailViewController.swift; sourceTree = "<group>"; };
 		AA109A711BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DailyWeatherDetailViewController.storyboard; sourceTree = "<group>"; };
 		AA328DF21BD064AD00ECFAAC /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		AA3F60B21BE12945005075BD /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		AA3F60B41BE12A4B005075BD /* TransitionAnimators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimators.swift; sourceTree = "<group>"; };
 		AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		AA44AA281BDEA11100E898C8 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AA570E431BD9B08B007F963B /* TodayViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewCell.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		AACFF4F91BD94C3600349092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD3B6AF1BCCA08E008FBC01 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Breezy.xcdatamodel; sourceTree = "<group>"; };
 		AAD3B6C11BCCA08E008FBC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		CB4EFDE31BDEFC0900C4AA24 /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
@@ -147,10 +149,11 @@
 				AAD3B6B21BCCA08E008FBC01 /* AppDelegate.swift */,
 				AACFF4F91BD94C3600349092 /* Assets.xcassets */,
 				AAD3B6C11BCCA08E008FBC01 /* Info.plist */,
-				AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */,
 				AA328DF21BD064AD00ECFAAC /* Credentials.swift */,
 				DE35ABA71BD44CFA00FD4035 /* Credentials.plist */,
 				DE35ABA01BD44B0E00FD4035 /* AppData.plist */,
+				AA3F60B21BE12945005075BD /* NavigationControllerDelegate.swift */,
+				AA3F60B41BE12A4B005075BD /* TransitionAnimators.swift */,
 				AA7687801BDF2D4B004BEEBA /* Breezy-Bridging-Header.h */,
 			);
 			path = Breezy;
@@ -359,12 +362,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA3F60B51BE12A4B005075BD /* TransitionAnimators.swift in Sources */,
 				AA0CA5411BD6F26700C643A9 /* PlaceLookupViewController.swift in Sources */,
 				DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */,
 				DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
+				AA3F60B31BE12945005075BD /* NavigationControllerDelegate.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
-				AAD3B6BB1BCCA08E008FBC01 /* Breezy.xcdatamodeld in Sources */,
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */,
 				AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */,
@@ -604,19 +608,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AAD3B6B91BCCA08E008FBC01 /* Breezy.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */,
-			);
-			currentVersion = AAD3B6BA1BCCA08E008FBC01 /* Breezy.xcdatamodel */;
-			path = Breezy.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AAD3B6A71BCCA08E008FBC01 /* Project object */;
 }

@@ -12,7 +12,6 @@ import UIKit
 class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // MARK: - Static initializer
-    
 
     static func instantiateFromStoryboard() -> PlaceLookupViewController {
         let vc = UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID) as! PlaceLookupViewController
