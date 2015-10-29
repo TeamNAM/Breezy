@@ -12,6 +12,7 @@ import GoogleMaps
 import UIKit
 
 var appData: NSMutableDictionary?
+var suggestionStrings: NSDictionary?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: App Life Cycle
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if let path = NSBundle.mainBundle().pathForResource("SuggestionStrings", ofType: "plist") {
+            suggestionStrings = NSDictionary(contentsOfFile: path)
+        }
         
         print("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
         _currentUser = self.dataFromDisk()

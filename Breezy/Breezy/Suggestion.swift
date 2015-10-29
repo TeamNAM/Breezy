@@ -16,9 +16,16 @@ class Suggestion {
     var name: String
     var imageName: String?
     var message: String?
+    var description: String?{
+        return message
+    }
     
     init(name: String) {
         self.name = name
         self.imageName = name
+        print(suggestionStrings)
+        if suggestionStrings != nil {
+            self.message = suggestionStrings![name] as? String
+        }
     }
 }
