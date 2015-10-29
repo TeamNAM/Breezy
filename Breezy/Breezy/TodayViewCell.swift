@@ -17,33 +17,10 @@ class TodayViewCell: UITableViewCell {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     
-    var data = Dictionary<String, Any?>() {
-        didSet {
-            self.placeType = self.data["placeType"] as! PlaceType
-            self.place = self.data["place"] as? Place
-            self.forecast = self.data["forecast"] as? Forecast
-            let imageName = self.getPlaceImageViewName(self.placeType)
-            self.placeImageView.image = UIImage(named: imageName)
-            self.placeNameLabel.text = self.getPlaceNameLabel(self.placeType, place: self.place)
-        }
-    }
+    var data = Dictionary<String, Any?>()
     var placeType: PlaceType!
     var place: Place?
-    var forecast: Forecast? {
-        didSet {
-            if let _ = self.place {
-                self.temperatureLabel.hidden = false
-                if let forecast = self.forecast {
-                    let currentTemperature = Int(round(forecast.currently!.temperature!))
-                    self.temperatureLabel.text = "\(currentTemperature)°"
-                } else {
-                    self.temperatureLabel.text = "--°"
-                }
-            } else {
-                self.temperatureLabel.hidden = true
-            }
-        }
-    }
+    var forecast: Forecast?
     
     func getPlaceImageViewName(placeType: PlaceType) -> String {
         switch placeType {
@@ -79,6 +56,24 @@ class TodayViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        self.placeType = self.data["placeType"] as! PlaceType
+        self.place = self.data["place"] as? Place
+        self.forecast = self.data["forecast"] as? Forecast
+        let imageName = self.getPlaceImageViewName(self.placeType)
+        self.placeImageView.image = UIImage(named: imageName)
+        self.placeNameLabel.text = self.getPlaceNameLabel(self.placeType, place: self.place)
+        if let _ = self.place {
+            self.temperatureLabel.hidden = false
+            if let forecast = self.forecast {
+                let currentTemperature = Int(round(forecast.currently!.temperature!))
+                self.temperatureLabel.text = "\(currentTemperature)°"
+            } else {
+                self.temperatureLabel.text = "--°"
+            }
+        } else {
+            self.temperatureLabel.hidden = true
+        }
         self.contentView.layoutIfNeeded()
     }
 
