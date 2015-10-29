@@ -36,20 +36,17 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.automaticallyAdjustsScrollViewInsets = false
-        
+                
         self.navigationController?.delegate = AppDelegate.sharedDelegate().navigationDelegate
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         tableView.reloadData()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
