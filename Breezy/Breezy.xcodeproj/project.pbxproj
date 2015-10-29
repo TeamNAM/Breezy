@@ -48,6 +48,7 @@
 		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; };
 		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; };
 		DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764B1BE0807C002AC372 /* Suggestion.swift */; };
+		DEFB764F1BE1B074002AC372 /* ForecastIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		DE35ABA71BD44CFA00FD4035 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		DEFB76451BD77F8C002AC372 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		DEFB764B1BE0807C002AC372 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastIOClient.swift; sourceTree = "<group>"; };
 		E6AFAE4023E97270ABAD6826 /* Pods-Breezy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.debug.xcconfig"; sourceTree = "<group>"; };
 		EB84D7D484F4D39031AFADDB /* Pods_Breezy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2228CF0FF26FD09B6A4677 /* Pods-Breezy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy/Pods-Breezy.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		AAD3B6B11BCCA08E008FBC01 /* Breezy */ = {
 			isa = PBXGroup;
 			children = (
+				DEFB764D1BE1B05F002AC372 /* API */,
 				CB1262091BD45A7F00BA11A7 /* Helpers */,
 				DE35ABA21BD44C3B00FD4035 /* Models */,
 				CBAED2FA1BD1DC25001993E3 /* View Controllers */,
@@ -226,6 +229,14 @@
 				DEFB764B1BE0807C002AC372 /* Suggestion.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		DEFB764D1BE1B05F002AC372 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +380,7 @@
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				AA3F60B31BE12945005075BD /* NavigationControllerDelegate.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
+				DEFB764F1BE1B074002AC372 /* ForecastIOClient.swift in Sources */,
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */,
 				AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */,
