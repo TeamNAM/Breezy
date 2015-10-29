@@ -133,43 +133,37 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let placeType = self.getPlaceTypeForIndexPath(indexPath)
-        guard [PlaceType.Home, PlaceType.Work].contains(placeType) else {
-            let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
-            let place = User.sharedInstance.otherPlaces[indexPath.row]
-            vc.place = place
-            vc.forecast = TodayForecastCache.forecastForPlace(place)
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
+        guard let place = cell.data["place"] as? Place else {
+            // A home or work cell without a work address
+            let placeType = self.getPlaceTypeForIndexPath(indexPath)
+            let vc = PlaceLookupViewController.instantiateFromStoryboard()
+            vc.lookupCanceledHandler = {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+                if placeType == PlaceType.Home {
+                    User.sharedInstance.home = selectedPlace
+                } else {
+                    User.sharedInstance.work = selectedPlace
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    self.loadWeatherForPlace(selectedPlace, forCellAtIndexPath: indexPath)
+                })
+                self.navigationController?.popViewControllerAnimated(true)
+            }
             self.navigationController?.pushViewController(vc, animated: true)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
             return
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = PlaceLookupViewController.instantiateFromStoryboard()
-        vc.lookupCanceledHandler = {
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
-            if placeType == PlaceType.Home {
-                User.sharedInstance.home = selectedPlace
-            } else {
-                User.sharedInstance.work = selectedPlace
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-                self.loadWeatherForPlace(selectedPlace, forCellAtIndexPath: indexPath)
-            })
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+
+        let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
+        vc.place = place
+        vc.forecast = TodayForecastCache.forecastForPlace(place)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let placeType = self.getPlaceTypeForIndexPath(indexPath)
-        if placeType == PlaceType.Other {
-            return indexPath
-        }
-        return self.tableViewCellIsEmptyHomeOrWork(indexPath) ? indexPath : nil
-    }
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
