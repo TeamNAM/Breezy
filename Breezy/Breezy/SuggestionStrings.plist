@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>hot</key>
+	<string>It&apos;s sweltering - stay cool with some shorts.</string>
+	<key>warm</key>
+	<string>T-shirt weather! Enjoy.</string>
+	<key>chilly</key>
+	<string>It&apos;s going to get chilly, bring a light jacket.</string>
+	<key>cold</key>
+	<string>It&apos;s going to be cold! Bring a jacket.</string>
+	<key>freezing</key>
+	<string>Brr - it&apos;s going to be freezing. Bring a coat and gloves.</string>
+	<key>snow</key>
+	<string>It&apos;s going to snow! Make sure you&apos;re protected.</string>
+	<key>sleet</key>
+	<string>There will be sleet. Bring a thick jacket.</string>
+	<key>hail</key>
+	<string>Oh no - it&apos;s going to hail.</string>
+	<key>rain</key>
+	<string>Bring an umbrella! It&apos;s going to rain.</string>
+</dict>
+</plist>
