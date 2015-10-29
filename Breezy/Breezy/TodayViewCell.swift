@@ -16,9 +16,10 @@ class TodayViewCell: UITableViewCell {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var suggestionsStackView: UIStackView!
+    @IBOutlet weak var suggestionsStackViewWidthConstraint: NSLayoutConstraint!
     
-    var data = Dictionary<String, Any?>()
-    var placeType: PlaceType!
+    var placeType: PlaceType?
     var place: Place?
     var forecast: Forecast?
     
@@ -56,25 +57,51 @@ class TodayViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        self.placeType = self.data["placeType"] as! PlaceType
-        self.place = self.data["place"] as? Place
-        self.forecast = self.data["forecast"] as? Forecast
-        let imageName = self.getPlaceImageViewName(self.placeType)
+        
+        guard let placeType = self.placeType else {
+            assert(false, "Missing place type")
+        }
+        
+        let imageName = self.getPlaceImageViewName(placeType)
         self.placeImageView.image = UIImage(named: imageName)
-        self.placeNameLabel.text = self.getPlaceNameLabel(self.placeType, place: self.place)
-        if let _ = self.place {
-            self.temperatureLabel.hidden = false
+        self.placeNameLabel.text = self.getPlaceNameLabel(placeType, place: self.place)
+        
+        if let place = self.place {
             if let forecast = self.forecast {
+                self.temperatureLabel.hidden = false
                 let currentTemperature = Int(round(forecast.currently!.temperature!))
                 self.temperatureLabel.text = "\(currentTemperature)°"
+                let dailyForecast = forecast.daily!.data![0]
+                self.renderSuggestionIcons(dailyForecast)
             } else {
                 self.temperatureLabel.text = "--°"
             }
-        } else {
+        } else  {
             self.temperatureLabel.hidden = true
         }
+        
         self.contentView.layoutIfNeeded()
     }
-
+    
+    func renderSuggestionIcons(dailyForecast: DataPoint) -> Void {
+        let suggestions = Set(dailyForecast.getSuggestions())
+        
+        for subview in self.suggestionsStackView.arrangedSubviews {
+            subview.removeFromSuperview()
+        }
+        for suggestion in suggestions {
+            let image = UIImage(named: suggestion.imageName!)
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .Center
+            self.suggestionsStackView.addArrangedSubview(imageView)
+        }
+        let iconCount = CGFloat(self.suggestionsStackView.arrangedSubviews.count)
+        if iconCount > 0 {
+            var stackViewWidth = (50.0 * (iconCount - 1.0)) + 32.0
+            if stackViewWidth > self.contentView.frame.width {
+                stackViewWidth = self.contentView.frame.width - 40.0
+            }
+            self.suggestionsStackViewWidthConstraint.constant = stackViewWidth
+        }
+    }
 }

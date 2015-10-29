@@ -86,10 +86,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
             place = User.sharedInstance.otherPlaces[indexPath.row]
         }
         (cell.selectionStyle, cell.accessoryType) = self.getTableViewCellSelectionStyleAndAccessoryType(placeType, place: place)
-        cell.data = ["placeType": placeType]
+        cell.placeType = placeType
         if let place = place {
-            cell.data["place"] = place
-            cell.data["forecast"] = TodayForecastCache.forecastForPlace(place)
+            cell.place = place
+            cell.forecast = TodayForecastCache.forecastForPlace(place)
         }
         return cell
     }
@@ -131,7 +131,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
-        guard let place = cell.data["place"] as? Place else {
+        guard let place = cell.place else {
             // A home or work cell without a work address
             let placeType = self.getPlaceTypeForIndexPath(indexPath)
             let vc = PlaceLookupViewController.instantiateFromStoryboard()
