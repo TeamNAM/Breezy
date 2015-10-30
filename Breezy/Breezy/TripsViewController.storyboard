@@ -146,65 +146,11 @@
                     <connections>
                         <outlet property="backgroundView" destination="74A-Vl-FAV" id="n71-RQ-dVL"/>
                         <outlet property="tripTableView" destination="WGs-re-nVi" id="JEe-GM-c3Z"/>
-                        <segue destination="2we-ao-eQa" kind="show" identifier="TripDetailSegue" id="Wgn-hM-UHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHi-e9-T7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1217" y="261"/>
-        </scene>
-        <!--Trip Detail View Controller-->
-        <scene sceneID="e4W-Q6-iph">
-            <objects>
-                <viewController id="2we-ao-eQa" customClass="TripDetailViewController" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ImK-vS-Muf"/>
-                        <viewControllerLayoutGuide type="bottom" id="D8s-4H-jOJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Co6-OB-SIb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oakland, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fma-GT-aWw">
-                                <rect key="frame" x="12" y="94" width="140" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CvL-lc-iRY">
-                                <rect key="frame" x="0.0" y="350" width="600" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="48w-ME-m2i"/>
-                                </constraints>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/2015 - 11/2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-kF-lwf">
-                                <rect key="frame" x="12" y="144" width="137" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CvL-lc-iRY" secondAttribute="trailing" id="74t-vZ-2aP"/>
-                            <constraint firstItem="Fma-GT-aWw" firstAttribute="top" secondItem="ImK-vS-Muf" secondAttribute="bottom" constant="30" id="N1r-tA-3Sp"/>
-                            <constraint firstItem="CvL-lc-iRY" firstAttribute="leading" secondItem="Co6-OB-SIb" secondAttribute="leading" id="Vfr-eT-TNc"/>
-                            <constraint firstItem="D8s-4H-jOJ" firstAttribute="top" secondItem="CvL-lc-iRY" secondAttribute="bottom" id="Vwv-m4-8E3"/>
-                            <constraint firstItem="Fma-GT-aWw" firstAttribute="leading" secondItem="Co6-OB-SIb" secondAttribute="leading" constant="12" id="YGK-VV-YBb"/>
-                            <constraint firstItem="Os3-kF-lwf" firstAttribute="top" secondItem="Fma-GT-aWw" secondAttribute="bottom" constant="20" id="hWa-eS-w1T"/>
-                            <constraint firstItem="Os3-kF-lwf" firstAttribute="leading" secondItem="Fma-GT-aWw" secondAttribute="leading" id="wjE-H4-bFc"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="datesLabel" destination="Os3-kF-lwf" id="0x0-vl-YuD"/>
-                        <outlet property="tripNameLabel" destination="Fma-GT-aWw" id="QNd-DW-d7n"/>
-                        <outlet property="weatherTableView" destination="CvL-lc-iRY" id="Yyl-Cp-W9o"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jlo-tm-gc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1904" y="261"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JgB-Pj-BGl">

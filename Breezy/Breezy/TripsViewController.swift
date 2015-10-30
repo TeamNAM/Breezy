@@ -88,9 +88,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if tableView.cellForRowAtIndexPath(indexPath) is TripCell {
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            self.performSegueWithIdentifier("TripDetailSegue", sender: cell)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell is TripCell {
+            goToTripDetailView(cell as! TripCell)
         } else {
             addNewTrip()
         }
@@ -123,6 +123,16 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    // MARK: - Trip detail view
+    
+    private func goToTripDetailView(cell: TripCell) {
+        let vc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
+        vc.trip = cell.trip
+        
+        let navVC = UINavigationController(rootViewController: vc)
+        presentViewController(navVC, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Adding trip
     
@@ -144,8 +154,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         presentViewController(navVC, animated: true, completion: nil)
     }
     
-    // MARK - Add New Trip
-    
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
         trips!.append(trip)
         //        loadWeatherForTrip(trip)
@@ -156,12 +164,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextVc = segue.destinationViewController
-        if nextVc is TripDetailViewController {
-            let tripDetailVc = nextVc as! TripDetailViewController
-            let cell = sender as! TripCell
-            tripDetailVc.trip = cell.trip
-        }
-        
     }
 }
 
