@@ -14,20 +14,17 @@ extension DataPoint {
         let dataPoint = self
         var suggestions = [Suggestion]()
         //Temperature
-        let temp = dataPoint.temperature!
-        switch temp {
-        case 0..<40:
-            suggestions.append(Suggestion(name: "freezing"))
-        case 40..<60:
-            suggestions.append(Suggestion(name: "cold"))
-        case 60..<65:
-            suggestions.append(Suggestion(name: "chilly"))
-        case 80..<85:
-            suggestions.append(Suggestion(name: "warm"))
-        case 85...200:
-            suggestions.append(Suggestion(name: "hot"))
-        default:
-            print("No temperature warnings added")
+        if let minTemp = dataPoint.temperatureMin {
+            if let warning = getTemperatureWarning(minTemp) {
+                suggestions.append(Suggestion(name: warning))
+            }
+            if let warning = getTemperatureWarning(dataPoint.temperatureMax!) {
+                suggestions.append(Suggestion(name: warning))
+            }
+        } else {
+            if let warning = getTemperatureWarning(dataPoint.temperature!){
+                suggestions.append(Suggestion(name: warning))
+            }
         }
         
         //Precip
@@ -61,4 +58,21 @@ func suggestionsForDataPoints(dataPoints: [DataPoint]) -> [Suggestion] {
         }
     }
     return suggestions
+}
+
+func getTemperatureWarning(temp: Double) -> (String?) {
+    switch temp {
+    case 0..<40:
+        return "freezing"
+    case 40..<60:
+        return "cold"
+    case 60..<65:
+        return "chilly"
+    case 80..<85:
+        return "warm"
+    case 85...200:
+        return "hot"
+    default:
+        return nil
+    }
 }

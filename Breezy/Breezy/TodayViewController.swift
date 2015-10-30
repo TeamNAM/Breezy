@@ -31,53 +31,41 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private let homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     private let workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-    private var forecastByUUID = [String: Forecast]()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.automaticallyAdjustsScrollViewInsets = false
-        
+                
         self.navigationController?.delegate = AppDelegate.sharedDelegate().navigationDelegate
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = 100
         tableView.allowsMultipleSelectionDuringEditing = false
         let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         tableView.reloadData()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         if let home = User.sharedInstance.home {
-            self.loadWeatherForPlace(home, atIndexPath: self.homeIndexPath)
+            self.loadWeatherForPlace(home, forCellAtIndexPath: self.homeIndexPath)
         }
         if let work = User.sharedInstance.work {
-            self.loadWeatherForPlace(work, atIndexPath: self.workIndexPath)
+            self.loadWeatherForPlace(work, forCellAtIndexPath: self.workIndexPath)
         }
         for (i, place) in User.sharedInstance.otherPlaces.enumerate() {
             let indexPath = NSIndexPath(forRow: i, inSection: 1)
-            self.loadWeatherForPlace(place, atIndexPath: indexPath)
+            self.loadWeatherForPlace(place, forCellAtIndexPath: indexPath)
         }
     }
     
     // MARK: - API Calls
     
-    func loadWeatherForPlace(place: Place, atIndexPath indexPath: NSIndexPath, withCompletion completionHandler: (() -> ())? = nil) {
-        // Only fetch weather if it's been longer than 5 minutes
-        if let storedForecast = forecastByUUID[place.uuid] where NSDate().timeIntervalSince1970 - Double(storedForecast.currently!.time) < (60.0 * 5) {
-            print("Using cached weather info")
-            return
-        }
-        
-        ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast: Forecast, forecastAPICalls) -> Void in
-            self.forecastByUUID[place.uuid] = forecast
-            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
+    func loadWeatherForPlace(place: Place, forCellAtIndexPath indexPath: NSIndexPath) {
+        TodayForecastCache.fetchForecastForPlace(place) { (forecast: Forecast) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             }
@@ -98,11 +86,11 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
             place = User.sharedInstance.otherPlaces[indexPath.row]
         }
         (cell.selectionStyle, cell.accessoryType) = self.getTableViewCellSelectionStyleAndAccessoryType(placeType, place: place)
-        cell.data = [
-            "placeType": placeType,
-            "place": place,
-            "forecast": place != nil ? forecastByUUID[place!.uuid] : nil
-        ]
+        cell.placeType = placeType
+        if let place = place {
+            cell.place = place
+            cell.forecast = TodayForecastCache.forecastForPlace(place)
+        }
         return cell
     }
     
@@ -142,43 +130,37 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let placeType = self.getPlaceTypeForIndexPath(indexPath)
-        guard [PlaceType.Home, PlaceType.Work].contains(placeType) else {
-            let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
-            let place = User.sharedInstance.otherPlaces[indexPath.row]
-            vc.place = place
-            vc.forecast = forecastByUUID[place.uuid]
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
+        guard let place = cell.place else {
+            // A home or work cell without a work address
+            let placeType = self.getPlaceTypeForIndexPath(indexPath)
+            let vc = PlaceLookupViewController.instantiateFromStoryboard()
+            vc.lookupCanceledHandler = {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
+                if placeType == PlaceType.Home {
+                    User.sharedInstance.home = selectedPlace
+                } else {
+                    User.sharedInstance.work = selectedPlace
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    self.loadWeatherForPlace(selectedPlace, forCellAtIndexPath: indexPath)
+                })
+                self.navigationController?.popViewControllerAnimated(true)
+            }
             self.navigationController?.pushViewController(vc, animated: true)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
             return
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = PlaceLookupViewController.instantiateFromStoryboard()
-        vc.lookupCanceledHandler = {
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-        vc.placeSelectedHandler = { (selectedPlace: Place) -> Void in
-            if placeType == PlaceType.Home {
-                User.sharedInstance.home = selectedPlace
-            } else {
-                User.sharedInstance.work = selectedPlace
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-                self.loadWeatherForPlace(selectedPlace, atIndexPath: indexPath)
-            })
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+
+        let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
+        vc.place = place
+        vc.forecast = TodayForecastCache.forecastForPlace(place)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let placeType = self.getPlaceTypeForIndexPath(indexPath)
-        if placeType == PlaceType.Other {
-            return indexPath
-        }
-        return self.tableViewCellIsEmptyHomeOrWork(indexPath) ? indexPath : nil
-    }
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
@@ -219,7 +201,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let indexPath = NSIndexPath(forRow: User.sharedInstance.otherPlaces.count - 1, inSection: 1)
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
-                self.loadWeatherForPlace(selectedPlace, atIndexPath: indexPath)
+                self.loadWeatherForPlace(selectedPlace, forCellAtIndexPath: indexPath)
             })
             self.dismissViewControllerAnimated(true, completion: nil)
         }

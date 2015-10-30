@@ -30,10 +30,10 @@ class ExpandTransitionAnimator: ExpandShrinkTransitionBase, UIViewControllerAnim
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView()!
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! TodayViewController
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        let originRect = self.selectedCellRectFromTodayViewController(fromVC as! TodayViewController)
+        let originRect = self.selectedCellRectFromTodayViewController(fromVC)
         let destinationRect = containerView.frame
         
         toVC.view.frame = originRect
@@ -64,21 +64,25 @@ class ShrinkTransitionAnimator: ExpandShrinkTransitionBase, UIViewControllerAnim
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView()!
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! TodayViewController
         
         let originRect = containerView.frame
-        let destinationRect = self.selectedCellRectFromTodayViewController(toVC as! TodayViewController)
+        let destinationRect = self.selectedCellRectFromTodayViewController(toVC)
         
         toVC.view.frame = originRect
+        toVC.view.alpha = 0.0
         containerView.addSubview(toVC.view)
         containerView.bringSubviewToFront(fromVC.view)
         
-        UIView.animateKeyframesWithDuration(ANIMATION_DURATION, delay: 0.0, options: [], animations: { () -> Void in
-            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: self.ANIMATION_DURATION, animations: { () -> Void in
+        UIView.animateKeyframesWithDuration(self.ANIMATION_DURATION, delay: 0.0, options: [], animations: { () -> Void in
+            UIView.addKeyframeWithRelativeStartTime(0.15, relativeDuration: 0.35, animations: { () -> Void in
+                toVC.view.alpha = 1.0
+            })
+            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.3, animations: { () -> Void in
                 fromVC.view.frame = destinationRect
             })
-            UIView.addKeyframeWithRelativeStartTime(0.35, relativeDuration: 0.05, animations: { () -> Void in
-                fromVC.view.alpha = 0.1
+            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: self.ANIMATION_DURATION, animations: { () -> Void in
+                fromVC.view.alpha = 0.01
             })
             
         }) { (finished: Bool) -> Void in
