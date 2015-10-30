@@ -64,7 +64,7 @@ class TodayViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        super.awakeFromNib()
+        super.prepareForReuse()
         
         self.place = nil
         self.placeType = nil
