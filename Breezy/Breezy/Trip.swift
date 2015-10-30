@@ -19,6 +19,8 @@ class Trip : NSObject, NSCoding {
     var place: Place?
     var startDateString: String?
     var endDateString: String?
+    var dateRange: [NSDate]?
+    var suggestions: [Suggestion]?
     var forecast = Dictionary<NSDate, Forecast>()
     
     let dateFormatter = NSDateFormatter()
@@ -33,6 +35,8 @@ class Trip : NSObject, NSCoding {
         if let name = name {
             place.name = name
         }
+        
+        self.dateRange = getDateRange(startDate, endDate: endDate)
 
         self.setupDateStrings()
     }
@@ -57,10 +61,9 @@ class Trip : NSObject, NSCoding {
     func loadForecast(completion: (() -> ())? = nil) {
         if startDate != nil && endDate != nil && place != nil {
             let place = self.place
-            let dateRange = getDateRange(self.startDate!, endDate: self.endDate!)
             let httpRequestGroup = dispatch_group_create()
             
-            for date in dateRange {
+            for date in self.dateRange! {
                 dispatch_group_enter(httpRequestGroup)
                 ForecastIOClient.sharedInstance.forecast(place!.lat, longitude: place!.lng, time: date, extendHourly: true, exclude: [ForecastBlocks.Currently, ForecastBlocks.Minutely], failure: { (error) -> Void in
                     print(error)
@@ -71,8 +74,15 @@ class Trip : NSObject, NSCoding {
             }
             
             dispatch_group_notify(httpRequestGroup, dispatch_get_main_queue()) {
-                print("start: \(self.startDate) end: \(self.endDate)")
-                print(self.forecast.count)
+                print("start: \(self.startDateString) end: \(self.endDateString)")
+                var dataPoints = [DataPoint]()
+                for date in self.dateRange! {
+                    let dataPoint = self.forecast[date]?.daily?.data?.first
+                    if let dp = dataPoint {
+                        dataPoints.append(dp)
+                    }
+                }
+                self.suggestions = suggestionsForDataPoints(dataPoints)
                 completion?()
             }
         } else {

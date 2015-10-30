@@ -117,10 +117,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.contentView.layer.masksToBounds = true
         cell.contentView.layer.borderWidth = 2
         cell.backgroundColor = UIColor.clearColor()
-//        cell.backgroundView.layer.cornerRadius = 7
-//        cell.backgroundView.layer.masksToBounds = true
-//        cell.backgroundView.layer.borderWidth = 2
-        
     }
     
     // MARK: - Trip detail view
@@ -142,7 +138,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let newTripController = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
             newTripController.place = selectedPlace
             newTripController.delegate = self
-            print(self.navigationController?.viewControllers)
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 self.navigationController?.pushViewController(newTripController, animated: true)
             })
@@ -162,9 +157,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nextVc = segue.destinationViewController
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let nextVc = segue.destinationViewController
+//    }
 }
 
 
@@ -176,10 +171,10 @@ func createFakeDays() -> [Trip] {
     let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
     let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
     
-    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
-    let endDate2 = NSDate(dateString: "2015-12-04", dateStringFormatter: dateFormatter)
-    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st",recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
+//    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
+//    let endDate2 = NSDate(dateString: "2015-12-04", dateStringFormatter: dateFormatter)
+//    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st",recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+//    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
     
     var fakeTrips = [Trip]()
     fakeTrips.append(trip1)

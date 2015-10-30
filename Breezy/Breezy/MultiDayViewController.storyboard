@@ -20,8 +20,50 @@
                                 <rect key="frame" x="0.0" y="284" width="600" height="316"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuggestionCell" rowHeight="141" id="oPf-vf-yD1" customClass="SuggestionCell" customModule="Breezy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayWeatherCell" id="I1z-vL-w6m" customClass="DayWeatherCell" customModule="Breezy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="141"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1z-vL-w6m" id="AM7-v6-0XL">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="140.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JUN 24 - JUN 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bO9-bc-wNa">
+                                                    <rect key="frame" x="12" y="60.5" width="131.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="63" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sS-ky-NAn">
+                                                    <rect key="frame" x="494" y="60" width="21" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Fl-ql-0p6">
+                                                    <rect key="frame" x="523" y="38" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="L9F-xv-OJe"/>
+                                                        <constraint firstAttribute="height" constant="65" id="U8j-3C-yM6"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bO9-bc-wNa" firstAttribute="leading" secondItem="AM7-v6-0XL" secondAttribute="leading" constant="12" id="HQz-0G-CHn"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Fl-ql-0p6" secondAttribute="trailing" constant="12" id="Lr3-7M-yHc"/>
+                                                <constraint firstItem="6Fl-ql-0p6" firstAttribute="centerY" secondItem="AM7-v6-0XL" secondAttribute="centerY" id="d87-Gg-Vqy"/>
+                                                <constraint firstItem="6Fl-ql-0p6" firstAttribute="leading" secondItem="1sS-ky-NAn" secondAttribute="trailing" constant="8" id="dE5-hF-WKD"/>
+                                                <constraint firstItem="bO9-bc-wNa" firstAttribute="centerY" secondItem="AM7-v6-0XL" secondAttribute="centerY" id="exg-dR-WaW"/>
+                                                <constraint firstItem="1sS-ky-NAn" firstAttribute="centerY" secondItem="AM7-v6-0XL" secondAttribute="centerY" id="tnA-uO-Dy7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datesLabel" destination="bO9-bc-wNa" id="rfw-oV-BN2"/>
+                                            <outlet property="iconImageView" destination="6Fl-ql-0p6" id="Wjv-Qf-7cG"/>
+                                            <outlet property="temperatureLabel" destination="1sS-ky-NAn" id="1nc-ew-AKE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuggestionCell" rowHeight="141" id="oPf-vf-yD1" customClass="SuggestionCell" customModule="Breezy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="233" width="600" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oPf-vf-yD1" id="3nP-7Y-GkZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="140.5"/>
@@ -37,7 +79,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Umbrella. Bring an umbrella cause its about to get wet!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hws-TG-eWU">
                                                     <rect key="frame" x="85" y="60" width="418.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

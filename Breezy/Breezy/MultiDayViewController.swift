@@ -19,11 +19,8 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var weatherTableView: UITableView!
     var dateFormatter: NSDateFormatter!
     
-    var trip: Trip! {
-        didSet {
-            setupDetailView()
-        }
-    }
+    var trip: Trip?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,22 +31,48 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        return tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath)
-        //        let cell = tableView.dequeueReusableCellWithIdentifier("WeatherDayCell", forIndexPath: indexPath) as! WeatherDayCell
-        //        cell.weather = trip.weather[indexPath.row]
-        //        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath) as! SuggestionCell
+            cell.suggestion = trip!.suggestions![indexPath.row]
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("DayWeatherCell", forIndexPath: indexPath) as! DayWeatherCell
+            if let trip = trip {
+                let date = trip.dateRange![indexPath.row]
+                cell.forecast = trip.forecast[date]
+            }
+            return cell
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 //trip.weather.count
+        if let trip = trip {
+            if section == 0 {
+                if let suggestions = trip.suggestions {
+                    return suggestions.count
+                }
+                
+                return 0
+            } else {
+                if let dates = trip.dateRange {
+                    return dates.count
+                }
+            }
+        }
+        return 0
     }
     
     func setupDetailView() {
-        if let label = tripNameLabel {
-            label.text = trip.place?.name
+        if let trip = trip {
+            tripNameLabel.text = trip.place?.name
             if let sDate = trip.startDateString {
                 if let eDate = trip.endDateString {
+                    print(sDate)
+                    print(eDate)
                     datesLabel.text = "\(sDate) - \(eDate)"
                 }
             }
