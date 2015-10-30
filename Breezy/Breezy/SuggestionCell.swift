@@ -9,12 +9,14 @@
 import UIKit
 
 class SuggestionCell: UITableViewCell {
-
-    @IBOutlet weak var iconImageView: UIView!
-    @IBOutlet weak var messageLabel: UIView!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     var suggestion: Suggestion! {
         didSet {
-
+            messageLabel.text = suggestion.message!
+            iconImageView.image = UIImage(named: suggestion.imageName!)
         }
     }
     override func awakeFromNib() {

@@ -21,6 +21,7 @@ class Trip : NSObject, NSCoding {
     var endDateString: String?
     var dateRange: [NSDate]?
     var suggestions: [Suggestion]?
+    var averageTemp: Double?
     var forecast = Dictionary<NSDate, Forecast>()
     
     let dateFormatter = NSDateFormatter()
@@ -75,19 +76,50 @@ class Trip : NSObject, NSCoding {
             
             dispatch_group_notify(httpRequestGroup, dispatch_get_main_queue()) {
                 print("start: \(self.startDateString) end: \(self.endDateString)")
-                var dataPoints = [DataPoint]()
-                for date in self.dateRange! {
-                    let dataPoint = self.forecast[date]?.daily?.data?.first
-                    if let dp = dataPoint {
-                        dataPoints.append(dp)
-                    }
-                }
-                self.suggestions = suggestionsForDataPoints(dataPoints)
+                self.setAverageTemp()
+                self.setSuggestions()
                 completion?()
             }
         } else {
             print("this is not a complete trip")
         }
+    }
+    
+    func setAverageTemp() {
+        let dataPoints = getDataPoints()
+        var totalTemp:Double = 0.0
+        var totalCount = 0
+        for point in dataPoints {
+            if let temp = point.temperature {
+                totalTemp += temp
+                ++totalCount
+            } else {
+                if let minTemp = point.temperatureMin {
+                    if let maxTemp = point.temperatureMax {
+                        let avgTemp = (minTemp + maxTemp)/Double(2)
+                        totalTemp += avgTemp
+                    }
+                }
+                ++totalCount
+            }
+        }
+        self.averageTemp = totalTemp/Double(totalCount)
+    }
+    
+    func setSuggestions() {
+        let dataPoints = getDataPoints()
+        self.suggestions = suggestionsForDataPoints(dataPoints)
+    }
+    
+    func getDataPoints() -> [DataPoint] {
+        var dataPoints = [DataPoint]()
+        for date in self.dateRange! {
+            let dataPoint = self.forecast[date]?.daily?.data?.first
+            if let dp = dataPoint {
+                dataPoints.append(dp)
+            }
+        }
+        return dataPoints
     }
     
     private func getDateRange(startDate: NSDate, endDate: NSDate) -> [NSDate] {

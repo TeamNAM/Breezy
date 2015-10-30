@@ -16,27 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-S0-P4k">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pXx-Lf-13B">
                                 <rect key="frame" x="0.0" y="284" width="600" height="316"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayWeatherCell" id="I1z-vL-w6m" customClass="DayWeatherCell" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="141"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1z-vL-w6m" id="AM7-v6-0XL">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="140.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JUN 24 - JUN 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bO9-bc-wNa">
-                                                    <rect key="frame" x="12" y="60.5" width="131.5" height="20.5"/>
+                                                    <rect key="frame" x="12" y="60" width="131.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="63" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sS-ky-NAn">
                                                     <rect key="frame" x="494" y="60" width="21" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.99753873309999996" green="1" blue="0.99997843789999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Fl-ql-0p6">
@@ -63,7 +67,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuggestionCell" rowHeight="141" id="oPf-vf-yD1" customClass="SuggestionCell" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="233" width="600" height="141"/>
+                                        <rect key="frame" x="0.0" y="169" width="600" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oPf-vf-yD1" id="3nP-7Y-GkZ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="140.5"/>
@@ -79,7 +83,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Umbrella. Bring an umbrella cause its about to get wet!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hws-TG-eWU">
                                                     <rect key="frame" x="85" y="60" width="418.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -94,8 +98,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="iconImageView" destination="3nP-7Y-GkZ" id="1Wc-pX-knY"/>
-                                            <outlet property="messageLabel" destination="3nP-7Y-GkZ" id="G20-DS-KYN"/>
+                                            <outlet property="iconImageView" destination="UxI-d4-oGD" id="EeL-Av-fPh"/>
+                                            <outlet property="messageLabel" destination="hws-TG-eWU" id="yvT-0q-HwN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -106,13 +110,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oakland, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNr-FM-HT7">
                                         <rect key="frame" x="15" y="17" width="139.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10/2015 - 11/2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EK5-hF-MdM">
                                         <rect key="frame" x="424" y="21" width="137" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -131,12 +135,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cZ2-S0-P4k" firstAttribute="leading" secondItem="Md2-rb-Uf3" secondAttribute="leading" id="8Gr-na-LGS"/>
+                            <constraint firstAttribute="trailing" secondItem="cZ2-S0-P4k" secondAttribute="trailing" id="E8d-XJ-PYW"/>
+                            <constraint firstItem="cZ2-S0-P4k" firstAttribute="top" secondItem="Md2-rb-Uf3" secondAttribute="top" id="MFE-5H-JQD"/>
                             <constraint firstItem="pXx-Lf-13B" firstAttribute="leading" secondItem="Md2-rb-Uf3" secondAttribute="leading" id="NYP-Ss-g9O"/>
                             <constraint firstItem="Qjq-61-N6I" firstAttribute="leading" secondItem="Md2-rb-Uf3" secondAttribute="leading" id="PR5-IQ-BLT"/>
                             <constraint firstAttribute="trailing" secondItem="r4w-vL-5eD" secondAttribute="trailing" id="ZHa-3p-olp"/>
                             <constraint firstItem="Qjq-61-N6I" firstAttribute="top" secondItem="rhM-RG-osM" secondAttribute="bottom" id="ZOR-bZ-eE0"/>
                             <constraint firstItem="pXx-Lf-13B" firstAttribute="top" secondItem="r4w-vL-5eD" secondAttribute="bottom" id="ceH-xp-jEB"/>
                             <constraint firstItem="r4w-vL-5eD" firstAttribute="top" secondItem="Qjq-61-N6I" secondAttribute="bottom" id="gS1-TV-Uv2"/>
+                            <constraint firstAttribute="bottom" secondItem="cZ2-S0-P4k" secondAttribute="bottom" id="hN2-P2-KwG"/>
                             <constraint firstItem="r4w-vL-5eD" firstAttribute="leading" secondItem="Md2-rb-Uf3" secondAttribute="leading" id="iwe-Xs-3o3"/>
                             <constraint firstAttribute="trailing" secondItem="Qjq-61-N6I" secondAttribute="trailing" id="lp3-fR-ATN"/>
                             <constraint firstItem="Npi-mE-ROo" firstAttribute="top" secondItem="pXx-Lf-13B" secondAttribute="bottom" id="oLv-h2-9WC"/>
@@ -145,7 +153,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="2XR-us-WMY"/>
                     <connections>
+                        <outlet property="backgroundView" destination="cZ2-S0-P4k" id="UGa-4b-bLG"/>
                         <outlet property="datesLabel" destination="EK5-hF-MdM" id="Yid-BT-j3y"/>
+                        <outlet property="detailsContainerView" destination="r4w-vL-5eD" id="1sq-d4-LAZ"/>
+                        <outlet property="graphView" destination="Qjq-61-N6I" id="zdt-D7-6aR"/>
                         <outlet property="tripNameLabel" destination="iNr-FM-HT7" id="mjs-Ga-YzE"/>
                         <outlet property="weatherTableView" destination="pXx-Lf-13B" id="Rsk-IY-QZ0"/>
                     </connections>
