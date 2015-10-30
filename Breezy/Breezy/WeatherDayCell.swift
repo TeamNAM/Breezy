@@ -7,19 +7,20 @@
 //
 
 import UIKit
+import ForecastIOClient
 
 class WeatherDayCell: UITableViewCell {
     
     @IBOutlet weak var temperatureLabel: UILabel!
-    var weather: Weather?
+    var forecast: Forecast?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let weather = weather {
+        if let forecast = forecast {
             
         
-            print(weather.temperature)
-            temperatureLabel.text = "\(weather.temperature)"
+//            print(forecast.temperature)
+//            temperatureLabel.text = "\(forecast.temperature)"
         }
     }
 

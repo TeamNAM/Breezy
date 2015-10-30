@@ -12,7 +12,7 @@ class TripCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var weatherImageView: UIImageView!
+
     let dateFormatter = NSDateFormatter()
     
     var trip: Trip! {
@@ -27,7 +27,6 @@ class TripCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

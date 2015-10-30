@@ -35,12 +35,8 @@
 		CB59F9801BDB2B7F007A2FB1 /* NewTripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */; };
 		CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59F9831BDC4986007A2FB1 /* DateHelpers.swift */; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; };
-		CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED2FE1BD1DC83001993E3 /* TripCell.xib */; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; };
 		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; };
-		CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */; };
-		CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */; };
-		CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC73F011BDD9C21008BFCC9 /* Weather.swift */; };
 		CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE221AE1BD755EF003652AB /* TodayViewController.swift */; };
 		DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA01BD44B0E00FD4035 /* AppData.plist */; };
 		DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35ABA31BD44C4800FD4035 /* Place.swift */; };
@@ -48,7 +44,7 @@
 		DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE35ABA71BD44CFA00FD4035 /* Credentials.plist */; };
 		DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB76451BD77F8C002AC372 /* Trip.swift */; };
 		DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764B1BE0807C002AC372 /* Suggestion.swift */; };
-		DEFB764F1BE1B074002AC372 /* ForecastIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */; settings = {ASSET_TAGS = (); }; };
+		DEFB764F1BE1B074002AC372 /* ForecastIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,12 +78,8 @@
 		CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTripViewController.storyboard; sourceTree = "<group>"; };
 		CB59F9831BDC4986007A2FB1 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
-		CBAED2FE1BD1DC83001993E3 /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
-		CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripCell.swift; sourceTree = "<group>"; };
-		CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTripCell.xib; sourceTree = "<group>"; };
-		CBC73F011BDD9C21008BFCC9 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CBE221AE1BD755EF003652AB /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		DE35ABA01BD44B0E00FD4035 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
 		DE35ABA31BD44C4800FD4035 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -177,9 +169,6 @@
 				AA570E431BD9B08B007F963B /* TodayViewCell.swift */,
 				AA570E441BD9B08B007F963B /* TodayViewCell.xib */,
 				CBAED2FD1BD1DC83001993E3 /* TripCell.swift */,
-				CBAED2FE1BD1DC83001993E3 /* TripCell.xib */,
-				CBAED30F1BD1DFE8001993E3 /* AddTripCell.swift */,
-				CBAED3101BD1DFE8001993E3 /* AddTripCell.xib */,
 				AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */,
 				AAADA9F21BD4261E00715557 /* PlacePredictionCell.xib */,
 				AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */,
@@ -225,7 +214,6 @@
 				DE35ABA31BD44C4800FD4035 /* Place.swift */,
 				DE35ABA51BD44C7400FD4035 /* User.swift */,
 				DEFB76451BD77F8C002AC372 /* Trip.swift */,
-				CBC73F011BDD9C21008BFCC9 /* Weather.swift */,
 				DEFB764B1BE0807C002AC372 /* Suggestion.swift */,
 			);
 			name = Models;
@@ -303,8 +291,6 @@
 				CB59F9801BDB2B7F007A2FB1 /* NewTripViewController.storyboard in Resources */,
 				CB59F97E1BDB2760007A2FB1 /* TripsViewController.storyboard in Resources */,
 				AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */,
-				CBAED3121BD1DFE8001993E3 /* AddTripCell.xib in Resources */,
-				CBAED3001BD1DC83001993E3 /* TripCell.xib in Resources */,
 				AAB34DF51BD9733A00C00CD4 /* TodayViewController.storyboard in Resources */,
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				CB4EFDE81BDF01FA00C4AA24 /* WeatherDayCell.xib in Resources */,
@@ -384,7 +370,6 @@
 				AA328DF31BD064AD00ECFAAC /* Credentials.swift in Sources */,
 				CBE221B01BD755EF003652AB /* TodayViewController.swift in Sources */,
 				AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */,
-				CBAED3111BD1DFE8001993E3 /* AddTripCell.swift in Sources */,
 				CB4EFDE41BDEFC0900C4AA24 /* TripDetailViewController.swift in Sources */,
 				AA109A701BE07F2100EB8662 /* DailyWeatherDetailViewController.swift in Sources */,
 				AAD3B6B31BCCA08E008FBC01 /* AppDelegate.swift in Sources */,
@@ -393,7 +378,6 @@
 				CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */,
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
 				CB4EFDE71BDF01FA00C4AA24 /* WeatherDayCell.swift in Sources */,
-				CBC73F021BDD9C21008BFCC9 /* Weather.swift in Sources */,
 				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 				CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */,

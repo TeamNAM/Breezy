@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ForecastIOClient
 
 let START_KEY = "startDate"
 let END_KEY = "endDate"
@@ -16,7 +17,7 @@ class Trip : NSObject, NSCoding {
     var startDate: NSDate?
     var endDate: NSDate?
     var place: Place?
-    var weather: [Weather] = [Weather]()
+    var forecast = Dictionary<NSDate, Forecast>()
     
     init(startDate: NSDate, endDate: NSDate, place: Place, name: String?){
         self.startDate = startDate
@@ -27,24 +28,46 @@ class Trip : NSObject, NSCoding {
         }
     }
     
-//    func setWeatherData(icon: ) {
-//        let weatherDay = weather[i]
-//        var icon: String?
-//        var precipProb: Double?
-//        var temp: Double?
-//        
-//        if let iconString = weatherDay["icon"] {
-//            icon = iconString as? String
-//        }
-//        if let precipProbDouble = weatherDay["precipProbability"] {
-//            precipProb = precipProbDouble as? Double
-//        }
-//        if let temperatureDouble = weatherDay["temperature"] {
-//            temp = temperatureDouble as? Double
-//        }
-//        
-//        self.weather.append(Weather(icon: icon, precipProb: precipProb, temp: temp))
-//    }
+    func loadForecast(completion: (() -> ())? = nil) {
+        if startDate != nil && endDate != nil && place != nil {
+            let place = self.place
+            let dateRange = getDateRange(self.startDate!, endDate: self.endDate!)
+            let httpRequestGroup = dispatch_group_create()
+            
+            for date in dateRange {
+                dispatch_group_enter(httpRequestGroup)
+                ForecastIOClient.sharedInstance.forecast(place!.lat, longitude: place!.lng, time: date, extendHourly: true, exclude: [ForecastBlocks.Currently, ForecastBlocks.Minutely], failure: { (error) -> Void in
+                    print(error)
+                    }) { (forecast, forecastAPICalls) -> Void in
+                        self.forecast[date] = forecast
+                        dispatch_group_leave(httpRequestGroup)
+                }
+            }
+            
+            dispatch_group_notify(httpRequestGroup, dispatch_get_main_queue()) {
+                print("start: \(self.startDate) end: \(self.endDate)")
+                print(self.forecast.count)
+                completion?()
+            }
+        } else {
+            print("this is not a complete trip")
+        }
+    }
+    
+    private func getDateRange(startDate: NSDate, endDate: NSDate) -> [NSDate] {
+        let cal = NSCalendar.currentCalendar()
+        
+        let components = cal.components(NSCalendarUnit.Day, fromDate: startDate, toDate: endDate, options: NSCalendarOptions.MatchStrictly)
+        
+        var dates = [NSDate]()
+        for var i=0; i<components.day; i++ {
+            let unixDay:NSTimeInterval = Double(86400*i)
+            let date = NSDate(timeInterval: unixDay, sinceDate: startDate)
+            dates.append(date)
+        }
+        
+        return dates
+    }
     
     required init?(coder aDecoder: NSCoder){
         self.startDate = aDecoder.decodeObjectForKey(START_KEY) as? NSDate
