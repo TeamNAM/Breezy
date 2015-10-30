@@ -17,15 +17,41 @@ class Trip : NSObject, NSCoding {
     var startDate: NSDate?
     var endDate: NSDate?
     var place: Place?
+    var startDateString: String?
+    var endDateString: String?
     var forecast = Dictionary<NSDate, Forecast>()
     
+    let dateFormatter = NSDateFormatter()
+    
     init(startDate: NSDate, endDate: NSDate, place: Place, name: String?){
+        super.init()
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        
         self.startDate = startDate
         self.endDate = endDate
         self.place = place
         if let name = name {
             place.name = name
         }
+
+        self.setupDateStrings()
+    }
+    
+    func setupDateStrings() {
+        if getYear(startDate!) == getYear(endDate!) {
+            dateFormatter.dateFormat = "MMM d"
+        } else {
+            dateFormatter.dateFormat = "MMM d yy"
+        }
+        self.startDateString = dateFormatter.stringFromDate(startDate!)
+        self.endDateString = dateFormatter.stringFromDate(endDate!)
+    }
+    
+    func getYear(date: NSDate) -> Int {
+        let flags = NSCalendarUnit.Year
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
+        
+        return components.year
     }
     
     func loadForecast(completion: (() -> ())? = nil) {

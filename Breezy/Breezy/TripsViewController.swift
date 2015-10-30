@@ -13,6 +13,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Properties
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var tripTableView: UITableView!
     var trips: [Trip]? = createFakeDays()
     
@@ -38,18 +39,35 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         
+        setupTableView()
+        setupBackgroundView()
+    }
+    
+    private func setupTableView() {
         tripTableView.delegate = self
         tripTableView.dataSource = self
-        
+        tripTableView.backgroundView = nil
+        tripTableView.backgroundColor = UIColor.clearColor()
         tripTableView.rowHeight = UITableViewAutomaticDimension
         tripTableView.estimatedRowHeight = 150
         tripTableView.reloadData()
     }
     
+    private func setupBackgroundView() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = backgroundView.bounds
+
+        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
+        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
+        gradient.colors = [blue.CGColor, tan.CGColor]
+        backgroundView.layer.insertSublayer(gradient, atIndex: 0)
+    }
     
     @IBAction func didTapAddNewTrip(sender: UIBarButtonItem) {
         addNewTrip()
     }
+    
+    // MARK: - Table View
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let trips = trips {
@@ -58,7 +76,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-                let trip = trips[indexPath.row]
+                let trip = trips[indexPath.section]
                 cell.trip = trip
                 return cell
             }
@@ -94,13 +112,19 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         headerView.backgroundColor = UIColor.clearColor()
         return headerView
     }
-    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.contentView.layer.cornerRadius = 7
         cell.contentView.layer.masksToBounds = true
         cell.contentView.layer.borderWidth = 2
+        cell.backgroundColor = UIColor.clearColor()
+//        cell.backgroundView.layer.cornerRadius = 7
+//        cell.backgroundView.layer.masksToBounds = true
+//        cell.backgroundView.layer.borderWidth = 2
+        
     }
     
+    
+    // MARK: - Adding trip
     
     private func addNewTrip() {
         let vc = PlaceLookupViewController.instantiateFromStoryboard()
@@ -146,7 +170,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 func createFakeDays() -> [Trip] {
     let dateFormatter = NSDateFormatter()
     let startDate1 = NSDate(dateString:"2015-11-06", dateStringFormatter: dateFormatter)
-    let endDate1 = NSDate(dateString:"2015-11-09", dateStringFormatter: dateFormatter)
+    let endDate1 = NSDate(dateString:"2015-11-07", dateStringFormatter: dateFormatter)
     let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
     let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
     
@@ -157,7 +181,7 @@ func createFakeDays() -> [Trip] {
     
     var fakeTrips = [Trip]()
     fakeTrips.append(trip1)
-    fakeTrips.append(trip2)
+//    fakeTrips.append(trip2)
     return fakeTrips
     
 }
