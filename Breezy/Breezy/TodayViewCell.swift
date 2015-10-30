@@ -63,6 +63,18 @@ class TodayViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.awakeFromNib()
+        
+        self.place = nil
+        self.placeType = nil
+        self.forecast = nil
+        self.placeNameLabel.text = ""
+        self.temperatureLabel.text = ""
+        self.summaryLabel.text = ""
+        self.suggestionsStackView.hidden = true
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -71,10 +83,6 @@ class TodayViewCell: UITableViewCell {
         }
         
         self.placeNameLabel.text = self.getPlaceNameLabel(placeType, place: self.place)
-        
-        self.summaryLabel.text = ""
-        self.temperatureLabel.text = ""
-        self.suggestionsStackView.hidden = true
         
         if let _ = self.place {
             if let forecast = self.forecast {
