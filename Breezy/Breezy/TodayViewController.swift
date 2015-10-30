@@ -31,6 +31,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private let homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     private let workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+    private let ROW_HEIGHT: CGFloat = 120.0
     
     // MARK: - View Life Cycle
     
@@ -42,7 +43,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = ROW_HEIGHT
         tableView.allowsMultipleSelectionDuringEditing = false
         let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
@@ -162,7 +163,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return ROW_HEIGHT
     }
     
     // MARK: - Table helpers

@@ -14,10 +14,11 @@ class TodayViewCell: UITableViewCell {
     static let reuseIdentifier = "TodayViewCell"
 
     @IBOutlet weak var placeNameLabel: UILabel!
-    @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var suggestionsStackView: UIStackView!
     @IBOutlet weak var suggestionsStackViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
     
     var placeType: PlaceType?
     var place: Place?
@@ -36,7 +37,14 @@ class TodayViewCell: UITableViewCell {
     
     func getPlaceNameLabel(placeType: PlaceType, place: Place?) -> String {
         if let place = place {
-            return place.name
+            switch placeType {
+            case .Home:
+                return "Home"
+            case .Work:
+                return "Work"
+            case .Other:
+                return place.name
+            }
         } else {
             switch placeType {
             case .Home:
@@ -62,42 +70,45 @@ class TodayViewCell: UITableViewCell {
             assert(false, "Missing place type")
         }
         
-        let imageName = self.getPlaceImageViewName(placeType)
-        self.placeImageView.image = UIImage(named: imageName)
         self.placeNameLabel.text = self.getPlaceNameLabel(placeType, place: self.place)
         
-        if let place = self.place {
+        self.summaryLabel.text = ""
+        self.temperatureLabel.text = ""
+        self.suggestionsStackView.hidden = true
+        
+        if let _ = self.place {
             if let forecast = self.forecast {
                 self.temperatureLabel.hidden = false
                 let currentTemperature = Int(round(forecast.currently!.temperature!))
                 self.temperatureLabel.text = "\(currentTemperature)°"
                 let dailyForecast = forecast.daily!.data![0]
+                self.summaryLabel.text = dailyForecast.summary
                 self.renderSuggestionIcons(dailyForecast)
-            } else {
-                self.temperatureLabel.text = "--°"
             }
-        } else  {
-            self.temperatureLabel.hidden = true
         }
-        
+
+        self.cardView.layer.cornerRadius = 5
         self.contentView.layoutIfNeeded()
     }
     
     func renderSuggestionIcons(dailyForecast: DataPoint) -> Void {
+        self.suggestionsStackView.hidden = false
         let suggestions = Set(dailyForecast.getSuggestions())
         
         for subview in self.suggestionsStackView.arrangedSubviews {
             subview.removeFromSuperview()
         }
         for suggestion in suggestions {
-            let image = UIImage(named: suggestion.imageName!)
+            var image = UIImage(named: suggestion.imageName!)
+            image = image?.imageWithRenderingMode(.AlwaysTemplate)
             let imageView = UIImageView(image: image)
-            imageView.contentMode = .Center
-            self.suggestionsStackView.addArrangedSubview(imageView)
+            imageView.contentMode = .ScaleAspectFit
+            imageView.tintColor = UIColor.whiteColor()
+        self.suggestionsStackView.addArrangedSubview(imageView)
         }
         let iconCount = CGFloat(self.suggestionsStackView.arrangedSubviews.count)
         if iconCount > 0 {
-            var stackViewWidth = (50.0 * (iconCount - 1.0)) + 32.0
+            var stackViewWidth = (42.0 * (iconCount - 1.0)) + 24.0
             if stackViewWidth > self.contentView.frame.width {
                 stackViewWidth = self.contentView.frame.width - 40.0
             }

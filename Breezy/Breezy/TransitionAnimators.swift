@@ -78,11 +78,11 @@ class ShrinkTransitionAnimator: ExpandShrinkTransitionBase, UIViewControllerAnim
             UIView.addKeyframeWithRelativeStartTime(0.15, relativeDuration: 0.35, animations: { () -> Void in
                 toVC.view.alpha = 1.0
             })
-            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.3, animations: { () -> Void in
+            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: self.ANIMATION_DURATION, animations: { () -> Void in
                 fromVC.view.frame = destinationRect
             })
-            UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: self.ANIMATION_DURATION, animations: { () -> Void in
-                fromVC.view.alpha = 0.01
+            UIView.addKeyframeWithRelativeStartTime(0.3, relativeDuration: self.ANIMATION_DURATION, animations: { () -> Void in
+                fromVC.view.alpha = 0.0
             })
             
         }) { (finished: Bool) -> Void in
