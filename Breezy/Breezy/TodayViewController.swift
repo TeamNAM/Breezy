@@ -55,7 +55,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.backgroundColor = UIColor.clearColor()
         
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = backgroundView.bounds
+        gradient.frame = self.view.bounds
         
         let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
         let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)

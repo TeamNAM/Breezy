@@ -149,7 +149,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
         trips!.append(trip)
-        //        loadWeatherForTrip(trip)
+        trip.loadForecast()
         tripTableView.reloadData()
     }
     
