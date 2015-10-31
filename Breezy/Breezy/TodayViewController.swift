@@ -60,7 +60,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
         let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
         gradient.colors = [blue.CGColor, tan.CGColor]
-        self.backgroundView.layer.addSublayer(gradient)
+//        self.backgroundView.layer.addSublayer(gradient)
     }
     
     override func viewWillAppear(animated: Bool) {
