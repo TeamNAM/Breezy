@@ -16,48 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Qh-E1-Bpu">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JjO-yr-feO">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aay-ut-lbS">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aay-ut-lbS" id="tfF-1v-Yql">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S01-W8-eO9">
-                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S01-W8-eO9" id="hbP-n8-OKB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="utF-BL-MlZ">
-                                        <rect key="frame" x="0.0" y="116" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="utF-BL-MlZ" id="tfa-tD-45o">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="JjO-yr-feO" secondAttribute="trailing" id="7gJ-MV-KoX"/>
                             <constraint firstItem="u1u-T6-o5R" firstAttribute="top" secondItem="JjO-yr-feO" secondAttribute="bottom" id="8de-RA-mez"/>
                             <constraint firstItem="JjO-yr-feO" firstAttribute="leading" secondItem="yzX-D4-KJW" secondAttribute="leading" id="Ibu-Q6-X1l"/>
+                            <constraint firstItem="5Qh-E1-Bpu" firstAttribute="leading" secondItem="yzX-D4-KJW" secondAttribute="leading" id="WaQ-xg-NQC"/>
+                            <constraint firstItem="5Qh-E1-Bpu" firstAttribute="top" secondItem="hRM-1w-BM8" secondAttribute="bottom" id="ZWZ-Lo-yTH"/>
+                            <constraint firstAttribute="trailing" secondItem="5Qh-E1-Bpu" secondAttribute="trailing" id="sEx-VK-iVy"/>
                             <constraint firstItem="JjO-yr-feO" firstAttribute="top" secondItem="hRM-1w-BM8" secondAttribute="bottom" id="shs-Wv-izq"/>
+                            <constraint firstItem="u1u-T6-o5R" firstAttribute="top" secondItem="5Qh-E1-Bpu" secondAttribute="bottom" id="xFz-LK-H3U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Today" id="aD1-65-94i">
@@ -68,6 +47,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="5Qh-E1-Bpu" id="evQ-D5-iVd"/>
                         <outlet property="tableView" destination="JjO-yr-feO" id="ROD-ZS-A4x"/>
                     </connections>
                 </viewController>
