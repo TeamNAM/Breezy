@@ -27,6 +27,7 @@ extension DataPoint {
             }
         }
         
+        
         //Precip
         if let precip = dataPoint.precipType {
             switch precip {
@@ -40,6 +41,12 @@ extension DataPoint {
                 suggestions.append(Suggestion(name: "snow"))
             }
         }
+        
+        //cloud cover
+        if let cloudCoverWarning = getCloudCoverWarning(cloudCover!) {
+            suggestions.append(Suggestion(name: cloudCoverWarning))
+        }
+        
         return suggestions
     }
 }
@@ -62,16 +69,31 @@ func suggestionsForDataPoints(dataPoints: [DataPoint]) -> [Suggestion] {
 
 func getTemperatureWarning(temp: Double) -> (String?) {
     switch temp {
-    case 0..<40:
+    case 0..<32:
         return "freezing"
-    case 40..<60:
+    case 32..<50:
         return "cold"
-    case 60..<65:
+    case 50..<60:
         return "chilly"
     case 80..<85:
         return "warm"
     case 85...200:
         return "hot"
+    default:
+        return nil
+    }
+}
+//
+//cloudCover: A numerical value between 0 and 1 (inclusive) representing the percentage of sky occluded by clouds. A value of 0 corresponds to clear sky, 0.4 to scattered clouds, 0.75 to broken cloud cover, and 1 to completely overcast skies.
+
+func getCloudCoverWarning(cloudCover: Double) -> (String?) {
+    switch cloudCover {
+    case 0..<0.4:
+        return "clear"
+    case 0.4..<0.75:
+        return "scattered_clouds"
+    case 0.75..<1:
+        return "overcast"
     default:
         return nil
     }
