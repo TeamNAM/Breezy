@@ -33,6 +33,7 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     weak var delegate: NewTripViewControllerDelegate?
 
     
+    @IBOutlet weak var formViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var mapTapperView: UIView!
     @IBOutlet weak var locationMapView: GMSMapView!
     @IBOutlet weak var endDateTextField: UITextField!
@@ -58,6 +59,8 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         registerValidationFields()
         
         setTripLocationTextField()
+        
+        setupKeyboard()
     }
     
     // MARK: - Date Management
@@ -170,21 +173,7 @@ class NewTripViewController: UIViewController, ValidationDelegate {
             }
         }
     }
-    
-//    func setWeatherForTrip() {
-//
-//            ForecastIOClient.sharedInstance.forecast(<#T##latitude: Double##Double#>, longitude: <#T##Double#>, time: <#T##NSDate?#>, extendHourly: <#T##Bool?#>, exclude: <#T##[ForecastBlocks]?#>, failure: <#T##FailureClosure?##FailureClosure?##(error: NSError) -> Void#>, success: <#T##SuccessClosure?##SuccessClosure?##(forecast: Forecast, forecastAPICalls: Int?) -> Void#>)
-//
-//
-//            ForecastIOClient.sharedInstance.forecast(place.lat, longitude: place.lng) { (forecast, forecastAPICalls) -> Void in
-//            let currentTemperature = Int(round(forecast.currently!.temperature!))
-//            self.temperaturesByUUID[place.uuid] = currentTemperature
-//            print("\(1000 - forecastAPICalls!) Forecast API calls left today")
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-//            }
-//    }
-    
+
     // MARK: - Saving Trip
     
     @IBAction func saveTrip(sender: AnyObject) {
@@ -211,6 +200,30 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         validator.registerField(tripNameTextField, rules: [RequiredRule()])
         validator.registerField(beginDateTextField, rules: [RequiredRule()])
         validator.registerField(endDateTextField, rules: [RequiredRule()])
+    }
+    
+    // MARK: - Keyboard
+    
+    func setupKeyboard() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.formViewBottomConstraint.constant = keyboardFrame.size.height + 20
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.formViewBottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        })
     }
     
     // MARK: - Navigation

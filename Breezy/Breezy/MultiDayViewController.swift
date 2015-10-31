@@ -34,6 +34,7 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         weatherTableView.backgroundColor = UIColor.clearColor()
         detailsContainerView.backgroundColor = UIColor.clearColor()
         graphView.backgroundColor = UIColor.clearColor()
+    
         
         setupBackgroundView()
     }
@@ -44,10 +45,13 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // MARK: Table View
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath) as! SuggestionCell
             cell.suggestion = trip!.suggestions![indexPath.row]
+            setCellBorderColor(cell)
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("DayWeatherCell", forIndexPath: indexPath) as! DayWeatherCell
@@ -55,8 +59,27 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
                 let date = trip.dateRange![indexPath.row]
                 cell.forecast = trip.forecast[date]
             }
+            setCellBorderColor(cell)
             return cell
         }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label.center = CGPointMake(160, 284)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "Day to Day"
+        headerView.addSubview(label)
+        return headerView
+    }
+    
+    func setCellBorderColor(cell: UITableViewCell) {
+        cell.contentView.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -102,5 +125,4 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
 }

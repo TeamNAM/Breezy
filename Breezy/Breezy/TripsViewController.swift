@@ -124,9 +124,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func goToTripDetailView(cell: TripCell) {
         let vc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
         vc.trip = cell.trip
-        
-        let navVC = UINavigationController(rootViewController: vc)
-        presentViewController(navVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
