@@ -40,7 +40,7 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     
     func setupBackgroundView() {
         if let trip = trip {
-            backgroundView.backgroundColor = ColorPalette().getAverageColorForTemp(trip.averageTemp!)
+            backgroundView.backgroundColor = ColorPalette.getAverageColorForTemp(trip.averageTemp!)
         }
     }
     

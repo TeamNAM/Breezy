@@ -18,11 +18,11 @@ class TodayViewCell: UITableViewCell {
     @IBOutlet weak var suggestionsStackView: UIStackView!
     @IBOutlet weak var suggestionsStackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
     
     var placeType: PlaceType?
     var place: Place?
     var forecast: Forecast?
+    var fillColor: UIColor?
     
     func getPlaceImageViewName(placeType: PlaceType) -> String {
         switch placeType {
@@ -69,10 +69,6 @@ class TodayViewCell: UITableViewCell {
         self.place = nil
         self.placeType = nil
         self.forecast = nil
-        self.placeNameLabel.text = ""
-        self.temperatureLabel.text = ""
-        self.summaryLabel.text = ""
-        self.suggestionsStackView.hidden = true
     }
     
     override func layoutSubviews() {
@@ -81,6 +77,10 @@ class TodayViewCell: UITableViewCell {
         guard let placeType = self.placeType else {
             assert(false, "Missing place type")
         }
+        self.placeNameLabel.text = ""
+        self.temperatureLabel.text = ""
+        self.summaryLabel.text = ""
+        self.suggestionsStackView.hidden = true
         
         self.placeNameLabel.text = self.getPlaceNameLabel(placeType, place: self.place)
         
@@ -94,8 +94,7 @@ class TodayViewCell: UITableViewCell {
                 self.renderSuggestionIcons(dailyForecast)
             }
         }
-
-        self.cardView.layer.cornerRadius = 5
+        
         self.contentView.layoutIfNeeded()
     }
     
