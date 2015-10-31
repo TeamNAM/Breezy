@@ -22,8 +22,8 @@ class ColorPalette : NSObject {
         case -100..<32:
             return UIColor(red: 0.09, green: 0.306, blue: 0.391, alpha: 1)
         case 32..<60:
-            let gValue = CGFloat(round((133-93)/28*(temp-32)+93))
-            return UIColor(red: 6/255, green: gValue/255 , blue: 135/255, alpha: 1)
+            let gValue = CGFloat(round((115-93)/28*(temp-32)+93))
+            return UIColor(red: 0/255, green: gValue/255 , blue: 207/255, alpha: 1)
         case 60..<70:
             return yellow
         case 70..<120:

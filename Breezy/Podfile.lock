@@ -24,18 +24,21 @@ PODS:
     - AFNetworking (~> 2.3)
     - SwiftyJSON
   - GoogleMaps (1.10.4)
+  - ImageEffects (1.0.0)
   - SwiftValidator (3.0.1)
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
   - ForecastIOClient
   - GoogleMaps
+  - ImageEffects
   - SwiftValidator (= 3.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   ForecastIOClient: 6e05ea0b011df040fb2fcc334798fff427446805
   GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
+  ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   SwiftValidator: c59223144754045d7691febdc3b3ecc2e73b609c
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
 

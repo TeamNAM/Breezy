@@ -189,7 +189,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let fillColorRect = CGRect(x: cell.bounds.origin.x + cellMargin, y: cell.bounds.origin.y + cellMargin, width: cell.bounds.width - (cellMargin * 2), height: cell.bounds.height - cellMargin)
         let fillColorView = UIView(frame: fillColorRect)
         fillColorView.backgroundColor = fillColor
-        fillColorView.alpha = 0.6
+        fillColorView.alpha = 0.5
         fillColorView.layer.cornerRadius = 10
         let imgView = UIImageView(frame: fillColorRect)
         imgView.image = backgroundImage

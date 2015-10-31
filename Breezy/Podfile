@@ -6,5 +6,6 @@ target 'Breezy' do
     pod 'ForecastIOClient'
     pod 'GoogleMaps'
     pod 'BEMSimpleLineGraph'
+    pod 'ImageEffects'
 end
 
