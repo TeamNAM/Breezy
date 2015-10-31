@@ -85,7 +85,7 @@ class Trip : NSObject, NSCoding {
         }
     }
     
-    func setAverageTemp() {
+    private func setAverageTemp() {
         let dataPoints = getDataPoints()
         var totalTemp:Double = 0.0
         var totalCount = 0

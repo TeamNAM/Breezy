@@ -19,7 +19,6 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var detailsContainerView: UIView!
     @IBOutlet weak var weatherTableView: UITableView!
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var graphView: UIView!
     var dateFormatter: NSDateFormatter!
     
     var trip: Trip?
@@ -33,7 +32,6 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         weatherTableView.dataSource = self
         weatherTableView.backgroundColor = UIColor.clearColor()
         detailsContainerView.backgroundColor = UIColor.clearColor()
-        graphView.backgroundColor = UIColor.clearColor()
     
         
         setupBackgroundView()

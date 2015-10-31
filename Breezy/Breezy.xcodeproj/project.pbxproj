@@ -32,6 +32,8 @@
 		CB036EDE1BE33574002F77A2 /* MultiDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB036EDD1BE33574002F77A2 /* MultiDayViewController.swift */; };
 		CB036EE01BE3358B002F77A2 /* MultiDayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB036EDF1BE3358B002F77A2 /* MultiDayViewController.storyboard */; };
 		CB036EE21BE33DAA002F77A2 /* DayWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB036EE11BE33DAA002F77A2 /* DayWeatherCell.swift */; };
+		CB0B70EE1BE561FB009436DF /* ForecastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B70ED1BE561FB009436DF /* ForecastDetailViewController.swift */; };
+		CB0B70F01BE5621B009436DF /* ForecastDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0B70EF1BE5621B009436DF /* ForecastDetailViewController.storyboard */; };
 		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; };
 		CB59F97E1BDB2760007A2FB1 /* TripsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */; };
 		CB59F9801BDB2B7F007A2FB1 /* NewTripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */; };
@@ -79,6 +81,8 @@
 		CB036EDD1BE33574002F77A2 /* MultiDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiDayViewController.swift; sourceTree = "<group>"; };
 		CB036EDF1BE3358B002F77A2 /* MultiDayViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MultiDayViewController.storyboard; sourceTree = "<group>"; };
 		CB036EE11BE33DAA002F77A2 /* DayWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeatherCell.swift; sourceTree = "<group>"; };
+		CB0B70ED1BE561FB009436DF /* ForecastDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDetailViewController.swift; sourceTree = "<group>"; };
+		CB0B70EF1BE5621B009436DF /* ForecastDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForecastDetailViewController.storyboard; sourceTree = "<group>"; };
 		CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
 		CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripsViewController.storyboard; sourceTree = "<group>"; };
 		CB59F97F1BDB2B7F007A2FB1 /* NewTripViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTripViewController.storyboard; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 				CB59F97D1BDB2760007A2FB1 /* TripsViewController.storyboard */,
 				AA44AA261BDEA0E100E898C8 /* WelcomeViewController.storyboard */,
 				CB036EDF1BE3358B002F77A2 /* MultiDayViewController.storyboard */,
+				CB0B70ED1BE561FB009436DF /* ForecastDetailViewController.swift */,
+				CB0B70EF1BE5621B009436DF /* ForecastDetailViewController.storyboard */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				DE35ABA81BD44CFA00FD4035 /* Credentials.plist in Resources */,
 				AA109A721BE07F3F00EB8662 /* DailyWeatherDetailViewController.storyboard in Resources */,
 				DE35ABA11BD44B0E00FD4035 /* AppData.plist in Resources */,
+				CB0B70F01BE5621B009436DF /* ForecastDetailViewController.storyboard in Resources */,
 				AA0CA53F1BD6F19A00C643A9 /* PlaceLookupViewController.storyboard in Resources */,
 				AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */,
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
@@ -378,6 +385,7 @@
 				DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
 				AA3F60B31BE12945005075BD /* NavigationControllerDelegate.swift in Sources */,
+				CB0B70EE1BE561FB009436DF /* ForecastDetailViewController.swift in Sources */,
 				CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */,
 				CB036EE21BE33DAA002F77A2 /* DayWeatherCell.swift in Sources */,
 				DEFB764F1BE1B074002AC372 /* ForecastIOClient.swift in Sources */,

@@ -122,7 +122,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Trip detail view
     
     private func goToTripDetailView(cell: TripCell) {
-        let vc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
+        let vc = ForecastDetailViewController.instantiateFromStoryboard() as! ForecastDetailViewController
         vc.trip = cell.trip
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -149,7 +149,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
         trips!.append(trip)
-        //        loadWeatherForTrip(trip)
+        trip.loadForecast()
         tripTableView.reloadData()
     }
     
