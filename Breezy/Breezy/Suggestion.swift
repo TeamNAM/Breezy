@@ -22,6 +22,9 @@ let suggestionIndex = [
     "chilly",
     "warm",
     "hot",
+    "clear",
+    "scattered_clouds",
+    "overcast",
 ]
 
 class Suggestion: Hashable {

@@ -20,6 +20,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
     }
+    @IBOutlet weak var backgroundView: UIView!
     
     // MARK: Static properties
     
@@ -51,6 +52,15 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let todayViewCellNib = UINib(nibName: TodayViewCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         tableView.registerNib(todayViewCellNib, forCellReuseIdentifier: TodayViewCell.reuseIdentifier)
         tableView.reloadData()
+        tableView.backgroundColor = UIColor.clearColor()
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        
+        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
+        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
+        gradient.colors = [blue.CGColor, tan.CGColor]
+        self.backgroundView.layer.addSublayer(gradient)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -174,17 +184,19 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func drawCellBackground(cell: UITableViewCell, fillColor: UIColor) -> Void {
-        let cellMargin: CGFloat = 4.0
+        let cellMargin: CGFloat = 10.0
         let fillColorRect = CGRect(x: cell.bounds.origin.x + cellMargin, y: cell.bounds.origin.y + cellMargin, width: cell.bounds.width - (cellMargin * 2), height: cell.bounds.height - cellMargin)
         let fillColorView = UIView(frame: fillColorRect)
         fillColorView.backgroundColor = fillColor
         fillColorView.layer.cornerRadius = 10
         let bgView = UIView(frame: cell.frame)
+        bgView.backgroundColor = UIColor.clearColor()
         bgView.addSubview(fillColorView)
         cell.backgroundView = bgView
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
         guard let _ = indexPathToPlace[indexPath] else {
             self.drawCellBackground(cell, fillColor: UIColor(red: 52/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1.0)
 )
