@@ -39,7 +39,7 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
     
     private func addGraphView() {
         graphView = UIView()
-        graphView!.backgroundColor = ColorPalette.orange
+        graphView!.backgroundColor = ColorPalette.blue
         graphView!.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(graphView!)
     }

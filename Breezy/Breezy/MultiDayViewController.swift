@@ -114,6 +114,8 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setupDetailView() {
+        tripNameLabel.textColor = UIColor.whiteColor()
+        datesLabel.textColor = UIColor.whiteColor()
         if let trip = trip {
             tripNameLabel.text = trip.place?.name
             if let sDate = trip.startDateString {
