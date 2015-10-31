@@ -67,6 +67,8 @@ class DailyWeatherDetailViewController: UIViewController {
             self.placeLabel.text = place.name
         }
         if let forecast = self.forecast {
+            let temperature = forecast.currently?.temperature as Double!
+            self.view.backgroundColor = ColorPalette.getAverageColorForTemp(temperature)
             self.currentTempLabel.text = String(Temperature(fromValue: (forecast.currently?.temperature)!))
             let dailyWeather = forecast.daily?.data?[0] as DataPoint!
             self.summaryLabel.text = dailyWeather.summary as String!

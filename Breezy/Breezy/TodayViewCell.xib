@@ -14,10 +14,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBD-UL-dO0">
-                        <rect key="frame" x="8" y="6" width="304" height="107"/>
-                        <color key="backgroundColor" red="0.27058823529411763" green="0.69803921568627447" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-91-qVh">
                         <rect key="frame" x="271" y="16" width="29" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,40 +42,27 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ChN-91-qVh" secondAttribute="trailing" constant="20" id="1Gj-w9-By0"/>
-                    <constraint firstItem="hBD-UL-dO0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="8nY-pp-TL0"/>
                     <constraint firstAttribute="trailing" secondItem="EmV-MQ-f1d" secondAttribute="trailing" constant="8" id="AQ2-Ui-92A"/>
                     <constraint firstItem="f1q-WG-UGi" firstAttribute="top" secondItem="EmV-MQ-f1d" secondAttribute="bottom" constant="8" id="CoF-Kw-e2e"/>
-                    <constraint firstItem="hBD-UL-dO0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Fw1-qU-Iij"/>
-                    <constraint firstAttribute="bottom" secondItem="hBD-UL-dO0" secondAttribute="bottom" constant="8" id="GFy-16-9b1"/>
-                    <constraint firstAttribute="trailing" secondItem="hBD-UL-dO0" secondAttribute="trailing" constant="8" id="Gir-8W-7rB"/>
                     <constraint firstItem="edu-di-pKy" firstAttribute="leading" secondItem="EmV-MQ-f1d" secondAttribute="leading" id="HnA-wl-neO"/>
                     <constraint firstAttribute="bottom" secondItem="edu-di-pKy" secondAttribute="bottom" constant="20" id="IQc-Zc-Vd8"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Lwp-nO-9YV"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OJz-vm-X44"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="f1q-WG-UGi" secondAttribute="trailing" constant="20" id="PdD-I6-7Qm"/>
-                    <constraint firstAttribute="bottom" secondItem="hBD-UL-dO0" secondAttribute="bottom" constant="6" id="Ppb-8n-x37"/>
                     <constraint firstItem="edu-di-pKy" firstAttribute="top" secondItem="EmV-MQ-f1d" secondAttribute="bottom" constant="8" id="Ref-b2-ptW"/>
                     <constraint firstItem="ChN-91-qVh" firstAttribute="top" secondItem="EmV-MQ-f1d" secondAttribute="top" id="UE5-Aj-39o"/>
-                    <constraint firstItem="hBD-UL-dO0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="YCh-Uz-pfz"/>
                     <constraint firstAttribute="trailing" secondItem="edu-di-pKy" secondAttribute="trailing" constant="50" id="arW-yA-R06"/>
                     <constraint firstItem="edu-di-pKy" firstAttribute="top" secondItem="f1q-WG-UGi" secondAttribute="bottom" constant="11" id="eW3-wt-BkU"/>
                     <constraint firstItem="f1q-WG-UGi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="gAN-ZF-TUs"/>
                     <constraint firstItem="ChN-91-qVh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gP1-Yo-0AF"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gaV-Hg-4lF"/>
-                    <constraint firstItem="ChN-91-qVh" firstAttribute="leading" secondItem="hBD-UL-dO0" secondAttribute="trailing" constant="8" id="kH6-cm-9Az"/>
-                    <constraint firstItem="hBD-UL-dO0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lRh-VV-btO"/>
                     <constraint firstItem="f1q-WG-UGi" firstAttribute="leading" secondItem="EmV-MQ-f1d" secondAttribute="leading" id="obB-vy-sa1"/>
                     <constraint firstItem="ChN-91-qVh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EmV-MQ-f1d" secondAttribute="trailing" constant="8" id="paA-q9-eh6"/>
                     <constraint firstItem="edu-di-pKy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pul-iG-Ina"/>
                     <constraint firstItem="EmV-MQ-f1d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rhC-4D-Y7b"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hBD-UL-dO0" secondAttribute="trailing" constant="8" id="vCC-LP-9rZ"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="8nY-pp-TL0"/>
-                        <exclude reference="Fw1-qU-Iij"/>
-                        <exclude reference="GFy-16-9b1"/>
-                        <exclude reference="vCC-LP-9rZ"/>
                         <exclude reference="AQ2-Ui-92A"/>
                         <exclude reference="gaV-Hg-4lF"/>
                         <exclude reference="rhC-4D-Y7b"/>
@@ -88,13 +71,12 @@
                         <exclude reference="arW-yA-R06"/>
                         <exclude reference="pul-iG-Ina"/>
                         <exclude reference="gP1-Yo-0AF"/>
-                        <exclude reference="kH6-cm-9Az"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+            <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
             <connections>
-                <outlet property="cardView" destination="hBD-UL-dO0" id="Uxx-cs-27S"/>
                 <outlet property="placeNameLabel" destination="EmV-MQ-f1d" id="1Mj-VZ-Fpn"/>
                 <outlet property="suggestionsStackView" destination="edu-di-pKy" id="cvW-27-RxJ"/>
                 <outlet property="suggestionsStackViewWidthConstraint" destination="KcJ-cT-26b" id="n0T-5Z-fvU"/>

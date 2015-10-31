@@ -32,6 +32,9 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private let homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     private let workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
     private let ROW_HEIGHT: CGFloat = 120.0
+    private var indexPathToCellFillColor = [NSIndexPath: UIColor]()
+    private var indexPathToCellForecast = [NSIndexPath: Forecast]()
+    private var indexPathToPlace = [NSIndexPath: Place]()
     
     // MARK: - View Life Cycle
     
@@ -67,6 +70,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func loadWeatherForPlace(place: Place, forCellAtIndexPath indexPath: NSIndexPath) {
         TodayForecastCache.fetchForecastForPlace(place) { (forecast: Forecast) -> Void in
+            self.indexPathToCellForecast[indexPath] = forecast
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             }
@@ -89,8 +93,16 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         (cell.selectionStyle, cell.accessoryType) = self.getTableViewCellSelectionStyleAndAccessoryType(placeType, place: place)
         cell.placeType = placeType
         if let place = place {
+            indexPathToPlace[indexPath] = place
             cell.place = place
-            cell.forecast = TodayForecastCache.forecastForPlace(place)
+            if let forecast = TodayForecastCache.forecastForPlace(place) {
+                indexPathToCellForecast[indexPath] = forecast
+                cell.forecast = forecast
+            } else {
+                indexPathToCellForecast.removeValueForKey(indexPath)
+            }
+        } else {
+            indexPathToPlace.removeValueForKey(indexPath)
         }
         return cell
     }
@@ -131,8 +143,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! TodayViewCell
-        guard let place = cell.place else {
+        guard let place = indexPathToPlace[indexPath] else {
             // A home or work cell without a work address
             let placeType = self.getPlaceTypeForIndexPath(indexPath)
             let vc = PlaceLookupViewController.instantiateFromStoryboard()
@@ -161,6 +172,37 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         vc.forecast = TodayForecastCache.forecastForPlace(place)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func drawCellBackground(cell: UITableViewCell, fillColor: UIColor) -> Void {
+        let cellMargin: CGFloat = 4.0
+        let fillColorRect = CGRect(x: cell.bounds.origin.x + cellMargin, y: cell.bounds.origin.y + cellMargin, width: cell.bounds.width - (cellMargin * 2), height: cell.bounds.height - cellMargin)
+        let fillColorView = UIView(frame: fillColorRect)
+        fillColorView.backgroundColor = fillColor
+        fillColorView.layer.cornerRadius = 10
+        let bgView = UIView(frame: cell.frame)
+        bgView.addSubview(fillColorView)
+        cell.backgroundView = bgView
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        guard let _ = indexPathToPlace[indexPath] else {
+            self.drawCellBackground(cell, fillColor: UIColor(red: 52/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1.0)
+)
+            return
+        }
+        guard let forecast = indexPathToCellForecast[indexPath] else {
+            return
+        }
+        let temperature = forecast.currently?.temperature as Double!
+        let fillColor = ColorPalette.getAverageColorForTemp(temperature)
+        guard indexPathToCellFillColor[indexPath] != fillColor else {
+            return
+        }
+
+        self.drawCellBackground(cell, fillColor: fillColor)
+    }
+    
+
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return ROW_HEIGHT
