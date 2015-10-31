@@ -6,6 +6,7 @@
 //  Copyright © 2015 TeamNAM. All rights reserved.
 //
 
+import ImageEffects
 import ForecastIOClient
 import UIKit
 
@@ -67,8 +68,25 @@ class DailyWeatherDetailViewController: UIViewController {
             self.placeLabel.text = place.name
         }
         if let forecast = self.forecast {
-            let temperature = forecast.currently?.temperature as Double!
-            self.view.backgroundColor = ColorPalette.getAverageColorForTemp(temperature)
+            let currentForecast = forecast.currently!
+            
+            let bgRect = self.view.bounds
+            let backgroundView = UIView(frame: bgRect)
+            let imgView = UIImageView(frame: backgroundView.bounds)
+            var img = currentForecast.getBackground()
+            imgView.image = img.blurredImageWithRadius(50.0)
+            imgView.contentMode = .ScaleAspectFill
+            backgroundView.addSubview(imgView)
+            let fillColorView = UIView(frame: bgRect)
+            let temperature = currentForecast.temperature as Double!
+            fillColorView.backgroundColor = ColorPalette.getAverageColorForTemp(temperature)
+            fillColorView.alpha = 0.5
+            backgroundView.addSubview(fillColorView)
+            
+            self.view.addSubview(backgroundView)
+            self.view.sendSubviewToBack(backgroundView)
+            
+            
             self.currentTempLabel.text = String(Temperature(fromValue: (forecast.currently?.temperature)!))
             let dailyWeather = forecast.daily?.data?[0] as DataPoint!
             self.summaryLabel.text = dailyWeather.summary as String!
