@@ -21,7 +21,14 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var backgroundView: UIView!
     var dateFormatter: NSDateFormatter!
     
-    var trip: Trip?
+    var trip: Trip? {
+        didSet {
+            if self.isViewLoaded() {
+                weatherTableView.reloadData()
+                setupDetailView()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,20 +68,6 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
             return cell
         }
     }
-    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 24
-//    }
-    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-//        label.center = CGPointMake(160, 284)
-//        label.textAlignment = NSTextAlignment.Center
-//        label.text = "Day to Day"
-//        headerView.addSubview(label)
-//        return headerView
-//    }
     
     func setCellBorderColor(cell: UITableViewCell) {
         cell.contentView.layer.borderColor = UIColor.whiteColor().CGColor

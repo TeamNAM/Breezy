@@ -32,6 +32,7 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     
     var activeField: UITextField?
     var isEditingExistingTrip: Bool = false
+    var isBeginDate: Bool = true
     
     weak var delegate: NewTripViewControllerDelegate?
 
@@ -84,14 +85,11 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     // MARK: - Date Management
     
     @IBAction func endDateEdit(input: UITextField) {
+        isBeginDate = false
         let datePickerView = getDatePickerView(input)
         currentDatePickerView = datePickerView
         if endDate == nil {
-            if beginDate != nil {
-                
-            } else {
-                endDateValueChanged(datePickerView)
-            }
+            endDateValueChanged(datePickerView)
         } else {
             datePickerView.date = endDate!
         }
@@ -99,7 +97,8 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     }
 
     @IBAction func beginDateEdit(input: UITextField) {
-        let datePickerView = getDatePickerView(input, isBeginDate: true)
+        isBeginDate = true
+        let datePickerView = getDatePickerView(input)
         currentDatePickerView = datePickerView
         if beginDate == nil {
             beginDateValueChanged(datePickerView)
@@ -119,15 +118,15 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         endDate = datePicker.date
     }
     
-    private func getDatePickerView(input: UITextField, isBeginDate: Bool = false) -> UIDatePicker {
+    private func getDatePickerView(input: UITextField) -> UIDatePicker {
         let datePickerView = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
         input.inputView = datePickerView
-        input.inputAccessoryView = getUiToolbar(isBeginDate)
+        input.inputAccessoryView = getUiToolbar()
         return datePickerView
     }
     
-    private func getUiToolbar(isBeginDate: Bool) -> UIToolbar {
+    private func getUiToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 40))
         var toolbarClose: UIBarButtonItem!
         
@@ -150,8 +149,11 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     func selectToday(sender: UIBarButtonItem) {
         let today = NSDate()
         currentDatePickerView?.setDate(today, animated: true)
-        endDateTextField.resignFirstResponder()
-        beginDateTextField.resignFirstResponder()
+        if isBeginDate {
+            beginDateTextField.text = dateFormatter.stringFromDate(today)
+        } else {
+            endDateTextField.text = dateFormatter.stringFromDate(today)
+        }
     }
     
     func closeDatePicker(sender: AnyObject) {
@@ -206,6 +208,7 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     
     @IBAction func saveTrip(sender: AnyObject) {
         validator.validate(self)
+        // if validation is successful this will call validationSuccessful()
     }
     
     func validationSuccessful() {

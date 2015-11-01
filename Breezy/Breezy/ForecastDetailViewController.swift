@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
+class ForecastDetailViewController: UIViewController, UIScrollViewDelegate, NewTripViewControllerDelegate {
     static let storyboardID = "ForecastDetailViewController"
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
@@ -18,6 +18,7 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
     var graphView: UIView?
     var detailsView: UIView?
     var trip: Trip?
+    var detailsVc: MultiDayViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,13 +54,15 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func addDetailsView() {
-        let detailsVc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
-        detailsVc.trip = trip
-        self.addChildViewController(detailsVc)
-        detailsView = detailsVc.view
-        detailsView!.translatesAutoresizingMaskIntoConstraints = false
-        detailsVc.didMoveToParentViewController(self)
-        scrollView.addSubview(detailsView!)
+        detailsVc = MultiDayViewController.instantiateFromStoryboard() as? MultiDayViewController
+        if let detailsVc = detailsVc {
+            detailsVc.trip = trip
+            self.addChildViewController(detailsVc)
+            detailsView = detailsVc.view
+            detailsView!.translatesAutoresizingMaskIntoConstraints = false
+            detailsVc.didMoveToParentViewController(self)
+            scrollView.addSubview(detailsView!)
+        }
     }
     
     private func createContraints() {
@@ -81,11 +84,21 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[graphView(==graphViewHeight)][detailsView(==view)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
     }
     
+    
+    // MARK - Editing trip
+    
     func editTrip(sender: AnyObject) {
         let vc = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
         if let trip = trip {
             vc.editTrip(trip)
         }
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
+        trip.loadForecast() {
+            self.detailsVc!.trip = trip
+        }
     }
 }
