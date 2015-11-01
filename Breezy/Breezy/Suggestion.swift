@@ -50,6 +50,16 @@ class Suggestion: Hashable {
         } else {
             assert(false, "Invalid suggestion name supplied: \(self.name)")
         }
+        return 0
+    }
+    
+    func getWhiteImage(named: String) -> UIImageView {
+        var image = UIImage(named: named)
+        image = image?.imageWithRenderingMode(.AlwaysTemplate)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .ScaleAspectFit
+        imageView.tintColor = UIColor.whiteColor()
+        return imageView
     }
 }
 

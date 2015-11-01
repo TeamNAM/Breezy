@@ -23,6 +23,7 @@ class Trip : NSObject, NSCoding {
     var suggestions: [Suggestion]?
     var averageTemp: Double?
     var forecast = Dictionary<NSDate, Forecast>()
+    var hasLoadedForecast = false
     
     let dateFormatter = NSDateFormatter()
     
@@ -78,6 +79,7 @@ class Trip : NSObject, NSCoding {
                 print("start: \(self.startDateString) end: \(self.endDateString)")
                 self.setAverageTemp()
                 self.setSuggestions()
+                self.hasLoadedForecast = true
                 completion?()
             }
         } else {

@@ -122,6 +122,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="EK5-hF-MdM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iNr-FM-HT7" secondAttribute="trailing" constant="12" id="BgD-9P-8Tn"/>
                                     <constraint firstAttribute="trailing" secondItem="EK5-hF-MdM" secondAttribute="trailing" constant="12" id="I9V-Qn-VcA"/>
                                     <constraint firstItem="iNr-FM-HT7" firstAttribute="leading" secondItem="r4w-vL-5eD" secondAttribute="leading" constant="18" id="M3P-Dh-iRm"/>
                                     <constraint firstItem="EK5-hF-MdM" firstAttribute="centerY" secondItem="r4w-vL-5eD" secondAttribute="centerY" id="aCJ-UX-K2f"/>

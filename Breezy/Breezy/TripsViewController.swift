@@ -35,7 +35,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let trips = trips {
             for var i = 0; i < trips.count; ++i {
                 let trip = trips[i]
-                trip.loadForecast()
+                trip.loadForecast() {
+                    self.tripTableView.reloadData()
+                }
             }
         }
         
@@ -75,10 +77,17 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddTripCell", forIndexPath: indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
                 let trip = trips[indexPath.section]
-                cell.trip = trip
-                return cell
+
+                if trip.hasLoadedForecast == true {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
+
+                    cell.trip = trip
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCellWithIdentifier("LoadingCell", forIndexPath: indexPath) as! LoadingCell
+                    return cell
+                }
             }
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("AddTripCell", forIndexPath: indexPath)
@@ -91,6 +100,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if cell is TripCell {
             goToTripDetailView(cell as! TripCell)
+        } else if cell is LoadingCell {
         } else {
             addNewTrip()
         }
@@ -149,7 +159,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
         trips!.append(trip)
-        trip.loadForecast()
+        trip.loadForecast() {
+            self.tripTableView.reloadData()
+        }
         tripTableView.reloadData()
     }
     

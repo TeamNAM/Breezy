@@ -43,8 +43,10 @@ extension DataPoint {
         }
         
         //cloud cover
-        if let cloudCoverWarning = getCloudCoverWarning(cloudCover!) {
-            suggestions.append(Suggestion(name: cloudCoverWarning))
+        if let cloudCover = cloudCover {
+            if let cloudCoverWarning = getCloudCoverWarning(cloudCover) {
+                suggestions.append(Suggestion(name: cloudCoverWarning))
+            }
         }
         
         return suggestions

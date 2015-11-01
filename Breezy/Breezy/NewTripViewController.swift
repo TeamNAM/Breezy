@@ -29,11 +29,12 @@ class NewTripViewController: UIViewController, ValidationDelegate {
             setTripLocationTextField()
         }
     }
+    var activeField: UITextField?
     
     weak var delegate: NewTripViewControllerDelegate?
 
     
-    @IBOutlet weak var formViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapTapperView: UIView!
     @IBOutlet weak var locationMapView: GMSMapView!
     @IBOutlet weak var endDateTextField: UITextField!
@@ -60,7 +61,11 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         
         setTripLocationTextField()
         
-        setupKeyboard()
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        deregisterFromKeyboardNotifications()
     }
     
     // MARK: - Date Management
@@ -204,27 +209,81 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     
     // MARK: - Keyboard
     
-    func setupKeyboard() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+    func registerForKeyboardNotifications() {
+        //Adding notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        var info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+    
+    func deregisterFromKeyboardNotifications() {
+        //Removing notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.scrollEnabled = true
+        let info : NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
         
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.formViewBottomConstraint.constant = keyboardFrame.size.height + 20
-            self.view.layoutIfNeeded()
-        })
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let _ = activeField {
+            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
+            {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.formViewBottomConstraint.constant = 0
-            self.view.layoutIfNeeded()
-        })
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        //Once keyboard disappears, restore original positions
+        let info : NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.scrollEnabled = false
+        
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField!) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField!) {
+        activeField = nil
+    }
+    
+//    func setupKeyboard() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+//    }
+//    
+//    func keyboardWillShow(notification: NSNotification) {
+//        var info = notification.userInfo!
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+//        
+//        UIView.animateWithDuration(0.1, animations: { () -> Void in
+//            self.formViewBottomConstraint.constant = keyboardFrame.size.height + 20
+//            self.view.layoutIfNeeded()
+//        })
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        UIView.animateWithDuration(0.1, animations: { () -> Void in
+//            self.formViewBottomConstraint.constant = 0
+//            self.view.layoutIfNeeded()
+//        })
+//    }
     
     // MARK: - Navigation
     
