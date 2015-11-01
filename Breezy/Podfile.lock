@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BEMSimpleLineGraph (4.1)
   - ForecastIOClient (0.1.0):
     - AFNetworking (~> 2.3)
     - SwiftyJSON
@@ -29,6 +30,7 @@ PODS:
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
+  - BEMSimpleLineGraph
   - ForecastIOClient
   - GoogleMaps
   - ImageEffects
@@ -36,6 +38,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
+  BEMSimpleLineGraph: 44fd451f27f8e9cf96f2da5bea27603093576dd1
   ForecastIOClient: 6e05ea0b011df040fb2fcc334798fff427446805
   GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9

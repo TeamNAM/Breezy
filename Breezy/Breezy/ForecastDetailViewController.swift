@@ -23,10 +23,18 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         
+        addSettings()
+        
         addScrollView()
         addGraphView()
         addDetailsView()
         createContraints()
+    }
+    
+    private func addSettings() {
+        let gear = UIImage(named: "gear")
+        let rightBarButton = UIBarButtonItem(image: gear, style: .Plain, target: self, action: "editTrip:")
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
     private func addScrollView() {
@@ -71,6 +79,13 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[detailsView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[graphView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[graphView(==graphViewHeight)][detailsView(==view)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-
+    }
+    
+    func editTrip(sender: AnyObject) {
+        let vc = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
+        if let trip = trip {
+            vc.editTrip(trip)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

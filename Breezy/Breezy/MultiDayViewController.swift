@@ -62,19 +62,19 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 24
-    }
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 24
+//    }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-        label.center = CGPointMake(160, 284)
-        label.textAlignment = NSTextAlignment.Center
-        label.text = "Day to Day"
-        headerView.addSubview(label)
-        return headerView
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+//        label.center = CGPointMake(160, 284)
+//        label.textAlignment = NSTextAlignment.Center
+//        label.text = "Day to Day"
+//        headerView.addSubview(label)
+//        return headerView
+//    }
     
     func setCellBorderColor(cell: UITableViewCell) {
         cell.contentView.layer.borderColor = UIColor.whiteColor().CGColor

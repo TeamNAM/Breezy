@@ -29,7 +29,9 @@ class NewTripViewController: UIViewController, ValidationDelegate {
             setTripLocationTextField()
         }
     }
+    
     var activeField: UITextField?
+    var isEditingExistingTrip: Bool = false
     
     weak var delegate: NewTripViewControllerDelegate?
 
@@ -46,6 +48,9 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollEnabled = false
         
         dateFormatter =  NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
@@ -62,6 +67,14 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         setTripLocationTextField()
         
         registerForKeyboardNotifications()
+        
+        if isEditingExistingTrip {
+            setTripLocationTextField()
+            beginDateTextField.text = dateFormatter.stringFromDate(beginDate!)
+            endDateTextField.text = dateFormatter.stringFromDate(endDate!)
+        } else {
+            beginDateTextField.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -86,7 +99,7 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     }
 
     @IBAction func beginDateEdit(input: UITextField) {
-        let datePickerView = getDatePickerView(input)
+        let datePickerView = getDatePickerView(input, isBeginDate: true)
         currentDatePickerView = datePickerView
         if beginDate == nil {
             beginDateValueChanged(datePickerView)
@@ -106,25 +119,31 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         endDate = datePicker.date
     }
     
-    private func getDatePickerView(input: UITextField) -> UIDatePicker {
+    private func getDatePickerView(input: UITextField, isBeginDate: Bool = false) -> UIDatePicker {
         let datePickerView = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
         input.inputView = datePickerView
-        input.inputAccessoryView = getUiToolbar()
+        input.inputAccessoryView = getUiToolbar(isBeginDate)
         return datePickerView
     }
     
-    private func getUiToolbar() -> UIToolbar {
+    private func getUiToolbar(isBeginDate: Bool) -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 40))
+        var toolbarClose: UIBarButtonItem!
+        
         toolbar.barStyle = UIBarStyle.Default
         toolbar.tintColor = UIColor.blackColor()
-        toolbar.backgroundColor = UIColor.greenColor()
+        toolbar.backgroundColor = ColorPalette.orange
         
-        let toolbarClose = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "closeDatePicker:")
+        if isBeginDate == true {
+            toolbarClose = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Done, target: self, action: "goToEndDate:")
+        } else {
+            toolbarClose = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "closeDatePicker:")
+        }
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let toolbarToday = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Done, target: self, action: "selectToday:")
         
-        toolbar.items = [toolbarClose, flexSpace, toolbarToday]
+        toolbar.items = [toolbarToday, flexSpace, toolbarClose]
         return toolbar
     }
     
@@ -133,6 +152,16 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         currentDatePickerView?.setDate(today, animated: true)
         endDateTextField.resignFirstResponder()
         beginDateTextField.resignFirstResponder()
+    }
+    
+    func closeDatePicker(sender: AnyObject) {
+        // todo: mgoo Do I need both?
+        endDateTextField.resignFirstResponder()
+        beginDateTextField.resignFirstResponder()
+    }
+    
+    func goToEndDate(sender: AnyObject) {
+        endDateTextField.becomeFirstResponder()
     }
     
     // MARK: - Location
@@ -155,12 +184,6 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     
     func didTapMapView(sender: UIView) {
         editLocation()
-    }
-    
-    func closeDatePicker(sender: UIBarButtonItem) {
-        // todo: mgoo Do I need both?
-        endDateTextField.resignFirstResponder()
-        beginDateTextField.resignFirstResponder()
     }
     
     func setTripLocationTextField() {
@@ -207,41 +230,46 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         validator.registerField(endDateTextField, rules: [RequiredRule()])
     }
     
+    // MARK: - Edit Trip
+    
+    func editTrip(trip: Trip) {
+        place = trip.place
+        beginDate = trip.startDate
+        endDate = trip.endDate
+        isEditingExistingTrip = true
+    }
+    
     // MARK: - Keyboard
     
     func registerForKeyboardNotifications() {
-        //Adding notifies on keyboard appearing
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     
     func deregisterFromKeyboardNotifications() {
-        //Removing notifies on keyboard appearing
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWasShown(notification: NSNotification) {
         //Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.scrollEnabled = true
+        scrollView.scrollEnabled = true
         let info : NSDictionary = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
         
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
         if let _ = activeField {
-            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
-            {
+            if (!CGRectContainsPoint(aRect, activeField!.frame.origin)) {
                 self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
             }
         }
     }
-    
     
     func keyboardWillBeHidden(notification: NSNotification) {
         //Once keyboard disappears, restore original positions
@@ -252,7 +280,6 @@ class NewTripViewController: UIViewController, ValidationDelegate {
         self.scrollView.scrollIndicatorInsets = contentInsets
         self.view.endEditing(true)
         self.scrollView.scrollEnabled = false
-        
     }
     
     func textFieldDidBeginEditing(textField: UITextField!) {
@@ -262,28 +289,6 @@ class NewTripViewController: UIViewController, ValidationDelegate {
     func textFieldDidEndEditing(textField: UITextField!) {
         activeField = nil
     }
-    
-//    func setupKeyboard() {
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-//    }
-//    
-//    func keyboardWillShow(notification: NSNotification) {
-//        var info = notification.userInfo!
-//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-//        
-//        UIView.animateWithDuration(0.1, animations: { () -> Void in
-//            self.formViewBottomConstraint.constant = keyboardFrame.size.height + 20
-//            self.view.layoutIfNeeded()
-//        })
-//    }
-//    
-//    func keyboardWillHide(notification: NSNotification) {
-//        UIView.animateWithDuration(0.1, animations: { () -> Void in
-//            self.formViewBottomConstraint.constant = 0
-//            self.view.layoutIfNeeded()
-//        })
-//    }
     
     // MARK: - Navigation
     
