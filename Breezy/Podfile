@@ -5,5 +5,7 @@ target 'Breezy' do
     pod 'SwiftValidator', '3.0.1'
     pod 'ForecastIOClient'
     pod 'GoogleMaps'
+    pod 'BEMSimpleLineGraph'
+    pod 'ImageEffects'
 end
 

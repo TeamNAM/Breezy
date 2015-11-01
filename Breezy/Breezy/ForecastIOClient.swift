@@ -10,6 +10,26 @@ import Foundation
 import ForecastIOClient
 
 extension DataPoint {
+    func getBackground() -> UIImage {
+        if let precip = self.precipType {
+            switch precip {
+            case .Rain:
+                return UIImage(named: "rainbg")!
+            default:
+                return UIImage(named: "snowbg")!
+            }
+        }
+            
+        if let cloudCoverWarning = getCloudCoverWarning(self.cloudCover!) {
+            if cloudCoverWarning == "overcast" {
+                return  UIImage(named: "cloudbg")!
+            }
+        }
+        
+        return  UIImage(named: "sunbg")!
+
+    }
+    
     func getSuggestions() -> [Suggestion] {
         let dataPoint = self
         var suggestions = [Suggestion]()
@@ -26,7 +46,6 @@ extension DataPoint {
                 suggestions.append(Suggestion(name: warning))
             }
         }
-        
         
         //Precip
         if let precip = dataPoint.precipType {
