@@ -74,13 +74,13 @@ class DailyWeatherDetailViewController: UIViewController {
             let backgroundView = UIView(frame: bgRect)
             let imgView = UIImageView(frame: backgroundView.bounds)
             var img = currentForecast.getBackground()
-            imgView.image = img.blurredImageWithRadius(50.0)
+            imgView.image = img.blurredImageWithRadius(40.0)
             imgView.contentMode = .ScaleAspectFill
             backgroundView.addSubview(imgView)
             let fillColorView = UIView(frame: bgRect)
             let temperature = currentForecast.temperature as Double!
             fillColorView.backgroundColor = ColorPalette.getAverageColorForTemp(temperature)
-            fillColorView.alpha = 0.5
+            fillColorView.alpha = 0.7
             backgroundView.addSubview(fillColorView)
             
             self.view.addSubview(backgroundView)
