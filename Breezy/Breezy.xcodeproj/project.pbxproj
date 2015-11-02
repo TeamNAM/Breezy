@@ -34,7 +34,6 @@
 		CB036EE21BE33DAA002F77A2 /* DayWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB036EE11BE33DAA002F77A2 /* DayWeatherCell.swift */; };
 		CB0B70EE1BE561FB009436DF /* ForecastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B70ED1BE561FB009436DF /* ForecastDetailViewController.swift */; };
 		CB0B70F01BE5621B009436DF /* ForecastDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0B70EF1BE5621B009436DF /* ForecastDetailViewController.storyboard */; };
-		CB0B70F31BE58668009436DF /* spinner.gif in Resources */ = {isa = PBXBuildFile; fileRef = CB0B70F21BE58668009436DF /* spinner.gif */; };
 		CB0B70F51BE58797009436DF /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B70F41BE58797009436DF /* LoadingCell.swift */; };
 		CB0B70F71BE59DE8009436DF /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B70F61BE59DE8009436DF /* Gif.swift */; };
 		CB12620B1BD45B2C00BA11A7 /* MapHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */; };
@@ -88,7 +87,6 @@
 		CB036EE11BE33DAA002F77A2 /* DayWeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeatherCell.swift; sourceTree = "<group>"; };
 		CB0B70ED1BE561FB009436DF /* ForecastDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDetailViewController.swift; sourceTree = "<group>"; };
 		CB0B70EF1BE5621B009436DF /* ForecastDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForecastDetailViewController.storyboard; sourceTree = "<group>"; };
-		CB0B70F21BE58668009436DF /* spinner.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = spinner.gif; path = ../../../../../../Desktop/spinner.gif; sourceTree = "<group>"; };
 		CB0B70F41BE58797009436DF /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		CB0B70F61BE59DE8009436DF /* Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		CB12620A1BD45B2C00BA11A7 /* MapHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelpers.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 		CB0B70F11BE58639009436DF /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CB0B70F21BE58668009436DF /* spinner.gif */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 				AAADA9F41BD4261E00715557 /* PlacePredictionCell.xib in Resources */,
 				AA44AA271BDEA0E100E898C8 /* WelcomeViewController.storyboard in Resources */,
 				CB036EE01BE3358B002F77A2 /* MultiDayViewController.storyboard in Resources */,
-				CB0B70F31BE58668009436DF /* spinner.gif in Resources */,
 				AACFF4FA1BD94C3600349092 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

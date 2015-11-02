@@ -18,8 +18,8 @@ class LoadingCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        let spinnerGif = UIImage.gifWithName("spinner")
-        spinnerImageView.image = spinnerGif
+        //let spinnerGif = UIImage.gifWithName("spinner")
+       // spinnerImageView.image = spinnerGif
     }
 
 
