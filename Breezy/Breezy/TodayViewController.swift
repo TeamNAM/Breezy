@@ -153,9 +153,10 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let placeType = self.getPlaceTypeForIndexPath(indexPath)
         guard let place = indexPathToPlace[indexPath] else {
             // A home or work cell without a work address
-            let placeType = self.getPlaceTypeForIndexPath(indexPath)
+            
             let vc = PlaceLookupViewController.instantiateFromStoryboard()
             vc.lookupCanceledHandler = {
                 self.navigationController?.popViewControllerAnimated(true)
@@ -178,6 +179,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
 
         let vc = DailyWeatherDetailViewController.instantiateFromStoryboard()
+        vc.placeType = placeType
         vc.place = place
         vc.forecast = TodayForecastCache.forecastForPlace(place)
         self.navigationController?.pushViewController(vc, animated: true)

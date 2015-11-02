@@ -108,7 +108,7 @@ func getTemperatureWarning(temp: Double) -> (String?) {
 //cloudCover: A numerical value between 0 and 1 (inclusive) representing the percentage of sky occluded by clouds. A value of 0 corresponds to clear sky, 0.4 to scattered clouds, 0.75 to broken cloud cover, and 1 to completely overcast skies.
 
 func getCloudCoverWarning(cloudCover: Double) -> (String?) {
-    print(cloudCover)
+//    print(cloudCover)
     switch cloudCover {
     case 0..<0.2:
         return "clear"
