@@ -38,7 +38,7 @@ struct PrecipitationChance: CustomStringConvertible {
     }
 }
 
-class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource {
+class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource, UITableViewDataSource {
     
     // MARK: - Static initializer
     
@@ -55,7 +55,9 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
 
     var placeType: PlaceType!
     var place: Place!
-    var todayHourly = [DataPoint]()
+    
+    private var todayHourly = [DataPoint]()
+    private var suggestions = [Suggestion]()
 
     var forecast: Forecast?
     @IBOutlet weak var hourlyTempGraph: BEMSimpleLineGraphView!
@@ -85,6 +87,11 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
         }
         
         if let forecast = self.forecast {
+            let todayForecast = forecast.daily?.data?[0] as DataPoint!
+            
+            // Initialize suggestions
+            self.suggestions = Array(Set(todayForecast.getSuggestions()))
+            
             // Draw graph
             let timezone = NSTimeZone(name: forecast.timezone)!
             let calendar = NSCalendar.currentCalendar()
@@ -119,13 +126,16 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
 
             // Add weather text
             self.currentTempLabel.text = String(Temperature(fromValue: currentForecast.temperature!))
-            let dailyWeather = forecast.daily?.data?[0] as DataPoint!
-            self.summaryLabel.text = dailyWeather.summary as String!
-
+            self.summaryLabel.text = todayForecast.summary as String!
         }
         
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
+        let suggestionCellNib = UINib(nibName: DailyWeatherSuggestionCell.reuseIdentifier, bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(suggestionCellNib, forCellReuseIdentifier: DailyWeatherSuggestionCell.reuseIdentifier)
+        self.tableView.dataSource = self
     }
     
     // MARK: - BEMSimpleLineGraphDataSource
@@ -136,5 +146,17 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
     
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
         return CGFloat(todayHourly[index].temperature!)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(DailyWeatherSuggestionCell.reuseIdentifier) as! DailyWeatherSuggestionCell
+        cell.suggestion = self.suggestions[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.suggestions.count
     }
 }
