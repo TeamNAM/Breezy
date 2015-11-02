@@ -42,7 +42,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-//        self.navigationController?.delegate = AppDelegate.sharedDelegate().navigationDelegate
+        self.navigationController?.delegate = AppDelegate.sharedDelegate().navigationDelegate
         
         tableView.delegate = self
         tableView.dataSource = self
