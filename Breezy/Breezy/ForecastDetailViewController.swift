@@ -47,10 +47,19 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate, NewT
     }
     
     private func addGraphView() {
-        graphView = UIView()
-        graphView!.backgroundColor = ColorPalette.blue
+//        graphView = UIView()
+//        graphView!.backgroundColor = ColorPalette.blue
+//        graphView!.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.addSubview(graphView!)
+//        
+        let graphVC = GraphViewController.instantiateFromStoryboard() as! GraphViewController
+        graphVC.trip = trip
+        self.addChildViewController(graphVC)
+        graphView = graphVC.view
         graphView!.translatesAutoresizingMaskIntoConstraints = false
+        graphVC.didMoveToParentViewController(self)
         scrollView.addSubview(graphView!)
+        
     }
     
     private func addDetailsView() {

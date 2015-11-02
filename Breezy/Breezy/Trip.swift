@@ -12,6 +12,7 @@ import ForecastIOClient
 let START_KEY = "startDate"
 let END_KEY = "endDate"
 let PLACE_KEY = "place"
+//let DATE_RANGE_KEY = "dateRange"
 
 class Trip : NSObject, NSCoding {
     var startDate: NSDate?
@@ -140,13 +141,16 @@ class Trip : NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder){
+        print("decoding")
         self.startDate = aDecoder.decodeObjectForKey(START_KEY) as? NSDate
         self.endDate = aDecoder.decodeObjectForKey(END_KEY) as? NSDate
         self.place = aDecoder.decodeObjectForKey(PLACE_KEY) as? Place
         super.init()
+        self.dateRange = getDateRange(self.startDate!, endDate: self.endDate!)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        print("encoding")
         aCoder.encodeObject(self.startDate, forKey: START_KEY)
         aCoder.encodeObject(self.endDate, forKey: END_KEY)
         aCoder.encodeObject(self.place, forKey: PLACE_KEY)

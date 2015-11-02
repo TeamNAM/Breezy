@@ -15,7 +15,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var tripTableView: UITableView!
-    var trips: [Trip]? = createFakeDays()
+    var trips: [Trip]? = User.sharedInstance.trips
     
     // MARK: - Static initializer
     
@@ -32,7 +32,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let trips = trips {
+        if let trips = User.sharedInstance.trips {
             for var i = 0; i < trips.count; ++i {
                 let trip = trips[i]
                 trip.loadForecast() {
@@ -72,7 +72,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Table View
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let trips = trips {
+        if let trips = User.sharedInstance.trips {
             if trips.count == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddTripCell", forIndexPath: indexPath)
                 return cell
@@ -106,7 +106,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let trips = trips {
+        if let trips = User.sharedInstance.trips {
             return trips.count > 0 ? trips.count : 1
         }
         return 1
@@ -158,10 +158,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
-        trips!.append(trip)
-        trip.loadForecast() {
-            self.tripTableView.reloadData()
-        }
+       User.sharedInstance.addTrip(trip)
+//        trips!.append(trip)
+        trip.loadForecast()
         tripTableView.reloadData()
     }
     
