@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Daily Weather Detail View Controller-->
@@ -122,7 +121,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="31L-98-AhR" secondAttribute="bottom" id="9n8-SM-oid"/>
+                            <constraint firstItem="OSv-jc-FiP" firstAttribute="top" secondItem="31L-98-AhR" secondAttribute="bottom" id="21q-JU-5dP"/>
                             <constraint firstItem="31L-98-AhR" firstAttribute="top" secondItem="bh7-sa-4FP" secondAttribute="bottom" id="Ask-4S-3no"/>
                             <constraint firstItem="31L-98-AhR" firstAttribute="leading" secondItem="nUN-a7-lf4" secondAttribute="leading" id="KmC-Vb-2dZ"/>
                             <constraint firstAttribute="trailing" secondItem="31L-98-AhR" secondAttribute="trailing" id="uci-CN-bdP"/>

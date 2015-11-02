@@ -56,7 +56,7 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
     var placeType: PlaceType!
     var place: Place!
     
-    private var todayHourly = [DataPoint]()
+    private var hourlyDataPoints = [DataPoint]()
     private var suggestions = [Suggestion]()
 
     var forecast: Forecast?
@@ -93,15 +93,16 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
             self.suggestions = Array(Set(todayForecast.getSuggestions()))
             
             // Draw graph
-            let timezone = NSTimeZone(name: forecast.timezone)!
-            let calendar = NSCalendar.currentCalendar()
-            let todayComponents = calendar.componentsInTimeZone(timezone, fromDate: NSDate())
-            self.todayHourly = forecast.hourly!.data!.filter({ (dataPoint) -> Bool in
-                let time = Double(dataPoint.time)
-                let date = NSDate(timeIntervalSince1970: time)
-                let dateComponents = calendar.componentsInTimeZone(timezone, fromDate: date)
-                return (todayComponents.year == dateComponents.year && todayComponents.month == dateComponents.month && todayComponents.day == dateComponents.day)
-            })
+//            let timezone = NSTimeZone(name: forecast.timezone)!
+//            let calendar = NSCalendar.currentCalendar()
+//            let todayComponents = calendar.componentsInTimeZone(timezone, fromDate: NSDate())
+//            self.hourlyDataPoints = forecast.hourly!.data!.filter({ (dataPoint) -> Bool in
+//                let time = Double(dataPoint.time)
+//                let date = NSDate(timeIntervalSince1970: time)
+//                let dateComponents = calendar.componentsInTimeZone(timezone, fromDate: date)
+//                return (todayComponents.year == dateComponents.year && todayComponents.month == dateComponents.month && todayComponents.day == dateComponents.day)
+//            })
+            self.hourlyDataPoints = Array(forecast.hourly!.data![0..<24])
             self.hourlyTempGraph.dataSource = self
             self.hourlyTempGraph.delegate = self
             self.hourlyTempGraph.animationGraphStyle = .Draw
@@ -129,34 +130,57 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
             self.summaryLabel.text = todayForecast.summary as String!
         }
         
+        
+        // Set up table view
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50
         let suggestionCellNib = UINib(nibName: DailyWeatherSuggestionCell.reuseIdentifier, bundle: NSBundle.mainBundle())
         self.tableView.registerNib(suggestionCellNib, forCellReuseIdentifier: DailyWeatherSuggestionCell.reuseIdentifier)
+        let hourlyCellNib = UINib(nibName: HourlyWeatherCell.reuseIdentifier, bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(hourlyCellNib, forCellReuseIdentifier: HourlyWeatherCell.reuseIdentifier)
         self.tableView.dataSource = self
     }
     
     // MARK: - BEMSimpleLineGraphDataSource
 
     func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
-        return self.todayHourly.count
+        return self.hourlyDataPoints.count
     }
     
     func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
-        return CGFloat(todayHourly[index].temperature!)
+        return CGFloat(hourlyDataPoints[index].temperature!)
     }
     
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(DailyWeatherSuggestionCell.reuseIdentifier) as! DailyWeatherSuggestionCell
-        cell.suggestion = self.suggestions[indexPath.row]
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier(DailyWeatherSuggestionCell.reuseIdentifier) as! DailyWeatherSuggestionCell
+            cell.suggestion = self.suggestions[indexPath.row]
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier(HourlyWeatherCell.reuseIdentifier) as! HourlyWeatherCell
+            cell.hourlyDataPoint = self.hourlyDataPoints[indexPath.row]
+            cell.timezoneString = self.forecast?.timezone
+            return cell
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.suggestions.count
+        switch section {
+        case 0:
+            return self.suggestions.count
+        case 1:
+            return self.hourlyDataPoints.count
+        default:
+            return 0
+        }
     }
 }
