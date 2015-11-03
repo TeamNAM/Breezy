@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             suggestionStrings = NSDictionary(contentsOfFile: path)
         }
         
-        print("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
+//        print("Documents Directory: \(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!)")
         _currentUser = self.dataFromDisk()
         
         // Set API keys from Credentials.plist file
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func saveToDisk(){
-        print("saved to disk")
+//        print("saved to disk")
         NSKeyedArchiver.archiveRootObject(User.sharedInstance, toFile: pathForKeyedArchive)
     }
     

@@ -19,6 +19,7 @@ class SuggestionCell: UITableViewCell {
             iconImageView.image = UIImage(named: suggestion.imageName!)
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
