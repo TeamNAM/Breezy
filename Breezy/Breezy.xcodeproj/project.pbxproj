@@ -23,6 +23,7 @@
 		AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570E431BD9B08B007F963B /* TodayViewCell.swift */; };
 		AA570E461BD9B08B007F963B /* TodayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA570E441BD9B08B007F963B /* TodayViewCell.xib */; };
 		AA6719A41BD459C800C911BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6719A31BD459C800C911BF /* CoreLocation.framework */; };
+		AA9666C61BE86CE600609CAC /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9666C51BE86CE600609CAC /* WeatherIcon.swift */; };
 		AAACA1D41BD72FD8003E4BC6 /* SavedPlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */; };
 		AAACA1D51BD72FD8003E4BC6 /* SavedPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */; };
 		AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */; };
@@ -80,6 +81,7 @@
 		AA570E441BD9B08B007F963B /* TodayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewCell.xib; sourceTree = "<group>"; };
 		AA6719A31BD459C800C911BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA7687801BDF2D4B004BEEBA /* Breezy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Breezy-Bridging-Header.h"; sourceTree = "<group>"; };
+		AA9666C51BE86CE600609CAC /* WeatherIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
 		AAACA1D21BD72FD8003E4BC6 /* SavedPlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPlaceCell.swift; sourceTree = "<group>"; };
 		AAACA1D31BD72FD8003E4BC6 /* SavedPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedPlaceCell.xib; sourceTree = "<group>"; };
 		AAADA9F11BD4261E00715557 /* PlacePredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				DE35ABA31BD44C4800FD4035 /* Place.swift */,
+				AA9666C51BE86CE600609CAC /* WeatherIcon.swift */,
 				AA3E2CCF1BE1B30D00D20827 /* TodayForecastCache.swift */,
 				DE35ABA51BD44C7400FD4035 /* User.swift */,
 				DEFB76451BD77F8C002AC372 /* Trip.swift */,
@@ -454,6 +457,7 @@
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 				CBED6BE71BE34BBD00D44C69 /* ColorPalette.swift in Sources */,
 				CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */,
+				AA9666C61BE86CE600609CAC /* WeatherIcon.swift in Sources */,
 				AA44AA291BDEA11100E898C8 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
