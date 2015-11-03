@@ -121,11 +121,12 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath.section == 1 {
             let date = trip!.dateRange![indexPath.row]
             let dataPoints = trip?.forecast[date]?.daily?.data
-            if let point = dataPoints!.first {
-                let temperature = Double(point.temperatureMax!)
-                let fillColor = ColorPalette.getAverageColorForTemp(temperature)
-                CellHelpers.drawCellBackground(cell, fillColor: fillColor, backgroundImage: nil)
-            }
+//            if let point = dataPoints!.first {
+//                let temperature = Double(point.temperatureMax!)
+//                let fillColor = ColorPalette.getAverageColorForTemp(temperature)
+//                CellHelpers.drawCellBackground(cell, fillColor: fillColor, backgroundImage: nil)
+//            }
+            cell.backgroundColor = UIColor.clearColor()
         } else {
             cell.backgroundColor = UIColor.clearColor()
         }
