@@ -147,6 +147,7 @@ class Trip : NSObject, NSCoding {
         self.place = aDecoder.decodeObjectForKey(PLACE_KEY) as? Place
         super.init()
         self.dateRange = getDateRange(self.startDate!, endDate: self.endDate!)
+        setupDateStrings()
     }
     
     func encodeWithCoder(aCoder: NSCoder) {

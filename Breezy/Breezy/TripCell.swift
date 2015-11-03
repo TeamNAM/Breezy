@@ -15,7 +15,6 @@ class TripCell: UITableViewCell {
     
     var trip: Trip! {
         didSet {
-            
             nameLabel.text = trip.place!.name
             if let sDate = trip.startDateString {
                 if let eDate = trip.endDateString {
@@ -24,6 +23,5 @@ class TripCell: UITableViewCell {
             }
         }
     }
-
 }
 

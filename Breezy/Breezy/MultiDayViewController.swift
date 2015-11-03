@@ -99,7 +99,18 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.backgroundColor = UIColor.clearColor()
+        if indexPath.section == 1 {
+            let date = trip!.dateRange![indexPath.row]
+            let dataPoints = trip?.forecast[date]?.daily?.data
+            if let point = dataPoints!.first {
+                let temperature = Double(point.temperatureMax!)
+                let fillColor = ColorPalette.getAverageColorForTemp(temperature)
+    //            let bgImage = forecast.currently!.getBackground()
+                CellHelpers.drawCellBackground(cell, fillColor: fillColor, backgroundImage: nil)
+            }
+        } else {
+            cell.backgroundColor = UIColor.clearColor()
+        }
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

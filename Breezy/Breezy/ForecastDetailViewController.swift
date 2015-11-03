@@ -44,6 +44,7 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate, NewT
         scrollView.showsVerticalScrollIndicator = false
         scrollView.bounces = false
         scrollView.alwaysBounceVertical = false
+        scrollView.backgroundColor = UIColor.redColor()
     }
     
     private func addGraphView() {
@@ -78,10 +79,10 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate, NewT
         let graphViewHeight = self.view.frame.height/3
         
         let views = [
-        "detailsView": detailsView!,
-        "graphView": graphView!,
-        "scrollView": scrollView!,
-        "view": view!
+            "detailsView": detailsView!,
+            "graphView": graphView!,
+            "scrollView": scrollView!,
+            "view": view!
         ]
         
         let metrics = [
@@ -90,7 +91,7 @@ class ForecastDetailViewController: UIViewController, UIScrollViewDelegate, NewT
         
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[detailsView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[graphView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[graphView(==graphViewHeight)][detailsView(==view)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[graphView(graphViewHeight)][detailsView(==view)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
     }
     
     
