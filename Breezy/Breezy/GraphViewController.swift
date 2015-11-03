@@ -51,6 +51,8 @@ class GraphViewController: UIViewController, BEMSimpleLineGraphDataSource, BEMSi
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         return dateFormatter.stringFromDate(date)
     }
+    
+    
 
     /*
     // MARK: - Navigation

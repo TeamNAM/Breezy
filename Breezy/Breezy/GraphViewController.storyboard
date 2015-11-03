@@ -20,9 +20,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="352" height="206"/>
                                 <color key="backgroundColor" red="0.91550290584564209" green="0.0073737511411309242" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableYAxisLabel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableYAxisLabel" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="enableXAxisLabel" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="colorXaxisLabel">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="colorYaxisLabel">
                                         <color key="value" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
