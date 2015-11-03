@@ -51,7 +51,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tripTableView.backgroundView = nil
         tripTableView.backgroundColor = UIColor.clearColor()
         tripTableView.rowHeight = UITableViewAutomaticDimension
-        tripTableView.estimatedRowHeight = 100
+        tripTableView.estimatedRowHeight = 75
         tripTableView.reloadData()
     }
     
@@ -140,7 +140,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Trip detail view
     
     private func goToTripDetailView(cell: TripCell) {
-        let vc = ForecastDetailViewController.instantiateFromStoryboard() as! ForecastDetailViewController
+        let vc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
         vc.trip = cell.trip
         self.navigationController?.pushViewController(vc, animated: true)
     }
