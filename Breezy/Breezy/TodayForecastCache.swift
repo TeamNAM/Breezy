@@ -11,14 +11,18 @@ import UIKit
 
 class TodayForecastCache {
  
-    static let sharedCache = TodayForecastCache()
     private init() {}
     
     // A map from `place.uuid` to `Forecast`
     static private var cache = [String: Forecast]()
+    static private var currentLocationForecast: Forecast? = nil
     
     static func forecastForPlace(place: Place) -> Forecast? {
         return self.cache[place.uuid]
+    }
+
+    static func forecastForCurrentLocation() -> Forecast? {
+        return self.currentLocationForecast
     }
     
     static func fetchForecastForPlace(place: Place, completion: ((Forecast) -> Void)?) {
@@ -32,6 +36,22 @@ class TodayForecastCache {
 //                print("\(1000 - forecastAPICalls!) Forecast API calls left today")
 //                print("Fetched weather info for \(place.name)")
                 self.cache[place.uuid] = forecast
+                completion?(forecast)
+            }
+        }
+    }
+    
+    static func fetchForecastForCurrentLocation(location: CLLocation, completion: ((Forecast) -> Void)?) {
+        // Only fetch weather if it's been longer than 5 seconds
+        let now = NSDate().timeIntervalSince1970
+        if let cachedForecast = self.currentLocationForecast where now - Double(cachedForecast.currently!.time) < 30.0 {
+            //            print("Loaded cached weather info for \(place.name)")
+            completion?(cachedForecast)
+        } else  {
+            ForecastIOClient.sharedInstance.forecast(location.coordinate.latitude, longitude: location.coordinate.longitude) { (forecast: Forecast, forecastAPICalls) -> Void in
+                //                print("\(1000 - forecastAPICalls!) Forecast API calls left today")
+                //                print("Fetched weather info for \(place.name)")
+                self.currentLocationForecast = forecast
                 completion?(forecast)
             }
         }

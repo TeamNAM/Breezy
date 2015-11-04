@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.sharedInstance.hasViewedWelcome {
             self.showTabViewController()
         } else {
-            self.window?.rootViewController = WelcomeViewController.instantiateFromStoryboard()
+            self.showWelcomeFlow()
         }
         
         
@@ -93,6 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveToDisk()
+    }
+    
+    func showWelcomeFlow() {
+        self.window?.rootViewController = UIStoryboard(name: "Welcome Flow", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("WelcomeFlowNavigationController")
     }
     
     func showTabViewController() {

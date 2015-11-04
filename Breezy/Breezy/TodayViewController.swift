@@ -13,7 +13,7 @@ enum PlaceType: Int {
     case Home, Work, Other
 }
 
-class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     // MARK: - Static initializer
     
@@ -30,12 +30,14 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     
-    private let homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-    private let workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+    private var locationManager: CLLocationManager!
+    private var homeIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+    private var workIndexPath = NSIndexPath(forRow: 1, inSection: 0)
     private let ROW_HEIGHT: CGFloat = 120.0
     private var indexPathToCellFillColor = [NSIndexPath: UIColor]()
     private var indexPathToCellForecast = [NSIndexPath: Forecast]()
     private var indexPathToPlace = [NSIndexPath: Place]()
+    private var showCurrentLocationForecast = false
     
     // MARK: - View Life Cycle
     
@@ -59,10 +61,9 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let blue = UIColor(red: 0.934, green: 0.998, blue: 1, alpha: 1)
         
-//        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
         let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
         gradient.colors = [blue.CGColor, tan.CGColor]
-//        self.backgroundView.layer.addSublayer(gradient)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,6 +77,8 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let indexPath = NSIndexPath(forRow: i, inSection: 1)
             self.loadWeatherForPlace(place, forCellAtIndexPath: indexPath)
         }
+//        self.locationManager = CLLocationManager()
+//        self.locationManager.delegate = self
     }
     
     // MARK: - API Calls
@@ -203,8 +206,6 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         CellHelpers.drawCellBackground(cell, fillColor: fillColor, backgroundImage: bgImage)
     }
     
-
-
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return ROW_HEIGHT
     }
@@ -251,5 +252,24 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         let navVC = UINavigationController(rootViewController: vc)
         self.presentViewController(navVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            self.showCurrentLocationForecast = true
+            manager.startUpdatingLocation()
+        default:
+            self.showCurrentLocationForecast = false
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        TodayForecastCache.fetchForecastForCurrentLocation(newLocation) { (forecast: Forecast) -> Void in
+            print(forecast)
+            manager.stopUpdatingLocation()
+        }
     }
 }
