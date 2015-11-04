@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Trips-->
@@ -28,11 +28,11 @@
                                         <rect key="frame" x="0.0" y="28" width="576" height="161"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S6X-gJ-cYa" id="5HG-tT-SOM">
-                                            <rect key="frame" x="0.0" y="0.0" width="576" height="150.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="576" height="160.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oakland" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ott-sq-0SL">
-                                                    <rect key="frame" x="12" y="67" width="82" height="26.5"/>
+                                                    <rect key="frame" x="24" y="67" width="82" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                                     <rect key="frame" x="540" y="68.5" width="24" height="24"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msv-dn-Pvn">
-                                                    <rect key="frame" x="12" y="129" width="24" height="24"/>
+                                                    <rect key="frame" x="24" y="129" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="soc-jJ-wbA"/>
                                                         <constraint firstAttribute="width" constant="24" id="swI-jb-5y0"/>
@@ -60,7 +60,7 @@
                                             <constraints>
                                                 <constraint firstItem="ott-sq-0SL" firstAttribute="centerY" secondItem="5HG-tT-SOM" secondAttribute="centerY" id="0s2-1Z-xHI"/>
                                                 <constraint firstItem="7Rc-r4-JZt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ott-sq-0SL" secondAttribute="trailing" constant="12" id="5ra-Fx-TCH"/>
-                                                <constraint firstItem="ott-sq-0SL" firstAttribute="leading" secondItem="5HG-tT-SOM" secondAttribute="leading" constant="12" id="9bo-MS-J5F"/>
+                                                <constraint firstItem="ott-sq-0SL" firstAttribute="leading" secondItem="5HG-tT-SOM" secondAttribute="leading" constant="24" id="9bo-MS-J5F"/>
                                                 <constraint firstItem="Msv-dn-Pvn" firstAttribute="leading" secondItem="ott-sq-0SL" secondAttribute="leading" id="Kha-Wz-eaf"/>
                                                 <constraint firstAttribute="trailing" secondItem="e8T-oh-qCP" secondAttribute="trailing" constant="12" id="LQ4-Fb-CkI"/>
                                                 <constraint firstAttribute="bottom" secondItem="Msv-dn-Pvn" secondAttribute="bottom" constant="8" id="Q9j-pT-MF0"/>
@@ -82,10 +82,10 @@
                                         <rect key="frame" x="0.0" y="189" width="576" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z0k-QZ-lVt" id="jJq-1b-nPf">
-                                            <rect key="frame" x="0.0" y="0.0" width="576" height="150.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="576" height="167.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-JM-dVD">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYV-JM-dVD">
                                                     <rect key="frame" x="0.0" y="31" width="576" height="90"/>
                                                     <subviews>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron6" translatesAutoresizingMaskIntoConstraints="NO" id="y5G-Jx-gLE">
