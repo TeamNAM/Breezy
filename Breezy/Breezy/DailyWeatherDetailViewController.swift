@@ -183,4 +183,8 @@ class DailyWeatherDetailViewController: UIViewController, BEMSimpleLineGraphDele
             return 0
         }
     }
+    
+    func numberOfYAxisLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
+        return 2
+    }
 }
