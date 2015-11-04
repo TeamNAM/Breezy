@@ -44,6 +44,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     private var predictions = [GMSAutocompletePrediction]()
     private var searchBar: UISearchBar!
     private var selectedGMSPlace: GMSPlace?
+    private var selectedPlacePhotoUrl: NSURL?
     private var startOverButton: UIBarButtonItem!
     private var saveButton: UIBarButtonItem!
     private var cancelButton: UIBarButtonItem!
@@ -124,7 +125,7 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     func onSavePlace(sender: AnyObject) {
         if let selectedGMSPlace = self.selectedGMSPlace {
-            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+            let selectedPlace = Place(lat: selectedGMSPlace.coordinate.latitude, lng: selectedGMSPlace.coordinate.longitude, name: selectedGMSPlace.name, formattedAddress: selectedGMSPlace.formattedAddress, recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil, photoUrl: self.selectedPlacePhotoUrl)
             self.placeSelectedHandler?(selectedPlace)
         }
     }
@@ -173,6 +174,9 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
     
     func selectPlace(placeIndex: Int) {
         let placeID = self.predictions[placeIndex].placeID
+        GooglePlaceDetailClient().getPhotoFromPlaceId(placeID) { (photoUrl: NSURL?, error: NSError?) -> Void in
+            self.selectedPlacePhotoUrl = photoUrl
+        }
         self.placesClient.lookUpPlaceID(placeID) { (place: GMSPlace?, error: NSError?) -> Void in
             if let error = error {
                 print("Error looking up place: \(error.localizedDescription)")
@@ -181,7 +185,6 @@ class PlaceLookupViewController: UIViewController, UITableViewDataSource, UITabl
             
             if let place = place {
                 print("Place name \(place.name)")
-                print("Place address \(place.formattedAddress)")
                
                 self.selectedGMSPlace = place
                 

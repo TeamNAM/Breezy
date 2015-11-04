@@ -19,6 +19,7 @@ let PLACE_ID_KEY = "placeId"
 let REC_ICON_KEY = "recommendationIcon"
 let REC_MSG_KEY = "recommendationMessage"
 let DET_MSG_KEY = "detailedMessage"
+let PHOTO_URL_KEY = "photoUrl"
 
 class Place : NSObject, NSCoding{
     let uuid: String!
@@ -30,8 +31,9 @@ class Place : NSObject, NSCoding{
     var recommendationIcon: UIImage?
     var recommendationMessage: String?
     var detailedMessage: String?
+    var photoUrl: NSURL?
     
-    init(lat: Double, lng: Double, name: String, formattedAddress: String, recommendationIcon: UIImage?, recommendationMessage: String?, detailedMessage: String?) {
+    init(lat: Double, lng: Double, name: String, formattedAddress: String, recommendationIcon: UIImage?, recommendationMessage: String?, detailedMessage: String?, photoUrl: NSURL?) {
         self.uuid = NSUUID().UUIDString
         self.lat = lat
         self.lng = lng
@@ -46,6 +48,9 @@ class Place : NSObject, NSCoding{
         if let detailedMessage = detailedMessage {
             self.detailedMessage = detailedMessage
         }
+        if let photoUrl = photoUrl {
+            self.photoUrl = photoUrl
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +62,7 @@ class Place : NSObject, NSCoding{
         self.placeId = aDecoder.decodeObjectForKey(PLACE_ID_KEY) as? Int
         self.recommendationMessage = aDecoder.decodeObjectForKey(REC_MSG_KEY) as? String
         self.detailedMessage = aDecoder.decodeObjectForKey(DET_MSG_KEY) as? String
+        self.photoUrl = aDecoder.decodeObjectForKey(PHOTO_URL_KEY) as? NSURL
         super.init()
     }
     
@@ -70,5 +76,6 @@ class Place : NSObject, NSCoding{
         aCoder.encodeObject(self.recommendationIcon, forKey: REC_ICON_KEY)
         aCoder.encodeObject(self.recommendationMessage, forKey: REC_MSG_KEY)
         aCoder.encodeObject(self.detailedMessage, forKey: DET_MSG_KEY)
+        aCoder.encodeObject(self.photoUrl, forKey: PHOTO_URL_KEY)
     }
 }

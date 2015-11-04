@@ -30,6 +30,7 @@ PODS:
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - BEMSimpleLineGraph
   - ForecastIOClient
   - GoogleMaps

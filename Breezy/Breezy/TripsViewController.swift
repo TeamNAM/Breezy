@@ -51,18 +51,22 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tripTableView.backgroundView = nil
         tripTableView.backgroundColor = UIColor.clearColor()
         tripTableView.rowHeight = UITableViewAutomaticDimension
-        tripTableView.estimatedRowHeight = 75
+        tripTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tripTableView.estimatedRowHeight = 120
         tripTableView.reloadData()
     }
     
     private func setupBackgroundView() {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = view.bounds
+//        let gradient: CAGradientLayer = CAGradientLayer()
+//        gradient.frame = view.bounds
+//
+//        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
+//        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
+//        gradient.colors = [blue.CGColor, tan.CGColor]
+//        backgroundView.layer.insertSublayer(gradient, atIndex: 0)
+        let color = UIColor(red: 115/255, green: 183/255, blue: 230/255, alpha: 1)
 
-        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
-        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
-        gradient.colors = [blue.CGColor, tan.CGColor]
-        backgroundView.layer.insertSublayer(gradient, atIndex: 0)
+        backgroundView.backgroundColor = color
     }
     
     @IBAction func didTapAddNewTrip(sender: UIBarButtonItem) {
@@ -114,26 +118,35 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clearColor()
-        return headerView
-    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.contentView.layer.cornerRadius = 7
-        cell.contentView.layer.masksToBounds = true
-        cell.contentView.layer.borderWidth = 2
         cell.backgroundColor = UIColor.clearColor()
-    }
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "What to Pack"
-        default:
-            return "Daily Average Temperatures"
+
+        if cell is TripCell {
+            let tripCell = (cell as! TripCell)
+            let imageUrl = tripCell.trip.place?.photoUrl
+            let color = ColorPalette.getAverageColorForTemp(tripCell.trip.averageTemp!)
+            print(imageUrl)
+            
+            if let imageUrl = imageUrl {
+                if let data = NSData(contentsOfURL: imageUrl){
+                    let imageView = UIImageView()
+                    imageView.contentMode = UIViewContentMode.ScaleAspectFit
+                    imageView.image = UIImage(data: data)
+                    CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: imageView.image)
+                } else {
+                    CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: nil)
+                }
+            } else {
+                CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: nil)
+            }
+        } else {
+            cell.contentView.layer.cornerRadius = 7
+            cell.contentView.layer.masksToBounds = true
+            cell.contentView.layer.borderWidth = 1
+            cell.backgroundColor = ColorPalette.blue
+            CellHelpers.drawCellBackground(cell, fillColor: ColorPalette.blue, backgroundImage: nil)
+//            cell.backgroundView?.backgroundColor = UIColor.clearColor()
         }
     }
     
@@ -185,13 +198,15 @@ func createFakeDays() -> [Trip] {
     let dateFormatter = NSDateFormatter()
     let startDate1 = NSDate(dateString:"2015-11-06", dateStringFormatter: dateFormatter)
     let endDate1 = NSDate(dateString:"2015-11-07", dateStringFormatter: dateFormatter)
-    let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil, photoUrl: nil)
     let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
     
 //    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
 //    let endDate2 = NSDate(dateString: "2015-12-04", dateStringFormatter: dateFormatter)
 //    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st",recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
 //    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
+    
+ 
     
     var fakeTrips = [Trip]()
     fakeTrips.append(trip1)
