@@ -57,7 +57,9 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.view.bounds
         
-        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
+        let blue = UIColor(red: 0.934, green: 0.998, blue: 1, alpha: 1)
+        
+//        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
         let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
         gradient.colors = [blue.CGColor, tan.CGColor]
 //        self.backgroundView.layer.addSublayer(gradient)

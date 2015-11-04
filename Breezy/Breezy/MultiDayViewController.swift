@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import BEMSimpleLineGraph
 
-class MultiDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MultiDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource {
     static let storyboardID = "MultiDayViewController"
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
     }
     
+    @IBOutlet weak var graphView: BEMSimpleLineGraphView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
@@ -35,9 +37,11 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         setupDetailView()
-        
+        self.edgesForExtendedLayout = UIRectEdge.None
         weatherTableView.delegate = self
         weatherTableView.dataSource = self
+        graphView.dataSource = self
+        graphView.delegate = self
         weatherTableView.rowHeight = UITableViewAutomaticDimension
         weatherTableView.estimatedRowHeight = 50
         weatherTableView.backgroundColor = UIColor.clearColor()
@@ -51,8 +55,10 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         let backgroundView = UIView(frame: bgRect)
         let imgView = UIImageView(frame: backgroundView.bounds)
         if let trip = trip {
-            let firstDay = trip.dateRange!.first
-            let point = trip.forecast[firstDay!]!.daily!.data!.first!
+            let firstDay = trip.dateRange![0]
+            let forecast = trip.forecast
+            print(firstDay)
+            let point = forecast[firstDay]!.daily!.data!.first!
             
             let img = point.getBackground()
             imgView.image = img.blurredImageWithRadius(10.0)
@@ -135,6 +141,36 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: CGRectZero)
     }
+    
+    
+    func numberOfPointsInLineGraph(graph: BEMSimpleLineGraphView) -> Int {
+        return (trip!.dateRange?.count)!
+    }
+    
+    func lineGraph(graph: BEMSimpleLineGraphView, valueForPointAtIndex index: Int) -> CGFloat {
+        let date = trip!.dateRange![index]
+        let dailyForecast = trip!.forecast[date]?.daily!.data![0]
+        let maxTemp = dailyForecast?.temperatureMax
+        let minTemp = dailyForecast?.temperatureMin
+        let temp = (maxTemp! + minTemp!)/2
+        return CGFloat(temp)
+    }
+    
+    func lineGraph(graph: BEMSimpleLineGraphView, labelOnXAxisForIndex index: Int) -> String {
+        return printDate((trip?.dateRange![index])!)
+    }
+    
+    func numberOfYAxisLabelsOnLineGraph(graph: BEMSimpleLineGraphView) -> Int {
+        return 2
+    }
+    
+    func printDate(date:NSDate) -> (String){
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    
     
     func setupDetailView() {
         tripNameLabel.textColor = UIColor.whiteColor()
