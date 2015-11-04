@@ -12,6 +12,7 @@ class PlaceDetail : NSObject{
     var name: String?
     var photos: [GooglePhoto]?
 //    var addressComponents: [NSDictionary]
+    var types: String?
 
     
     init(dictionary: NSDictionary) {

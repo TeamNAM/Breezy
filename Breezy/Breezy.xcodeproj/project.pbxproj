@@ -46,6 +46,8 @@
 		CBAAD7D51BE9CE2A00437831 /* GooglePlaceDetailClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAD7D41BE9CE2A00437831 /* GooglePlaceDetailClient.swift */; };
 		CBAAD7D71BE9D20400437831 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAD7D61BE9D20400437831 /* PlaceDetail.swift */; };
 		CBAAD7DB1BE9D74F00437831 /* GooglePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAD7DA1BE9D74F00437831 /* GooglePhoto.swift */; };
+		CBAAD7DD1BE9F37900437831 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAD7DC1BE9F37900437831 /* Flickr.swift */; };
+		CBAAD7E11BE9F8F300437831 /* FlickrModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAD7E01BE9F8F300437831 /* FlickrModel.swift */; };
 		CBAED2FF1BD1DC83001993E3 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED2FD1BD1DC83001993E3 /* TripCell.swift */; };
 		CBAED3051BD1DCA8001993E3 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */; };
 		CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */; };
@@ -107,6 +109,8 @@
 		CBAAD7D41BE9CE2A00437831 /* GooglePlaceDetailClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceDetailClient.swift; sourceTree = "<group>"; };
 		CBAAD7D61BE9D20400437831 /* PlaceDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
 		CBAAD7DA1BE9D74F00437831 /* GooglePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePhoto.swift; sourceTree = "<group>"; };
+		CBAAD7DC1BE9F37900437831 /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
+		CBAAD7E01BE9F8F300437831 /* FlickrModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrModel.swift; sourceTree = "<group>"; };
 		CBAED2FD1BD1DC83001993E3 /* TripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		CBAED3031BD1DCA8001993E3 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		CBAED3071BD1DD01001993E3 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				DEFB764B1BE0807C002AC372 /* Suggestion.swift */,
 				CBAAD7D61BE9D20400437831 /* PlaceDetail.swift */,
 				CBAAD7DA1BE9D74F00437831 /* GooglePhoto.swift */,
+				CBAAD7E01BE9F8F300437831 /* FlickrModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				DEFB764E1BE1B074002AC372 /* ForecastIOClient.swift */,
 				CBAAD7D41BE9CE2A00437831 /* GooglePlaceDetailClient.swift */,
+				CBAAD7DC1BE9F37900437831 /* Flickr.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				DEFB764C1BE0807C002AC372 /* Suggestion.swift in Sources */,
 				CBAAD7D71BE9D20400437831 /* PlaceDetail.swift in Sources */,
 				CBE46F791BE84FD800DD9E39 /* CellHelpers.swift in Sources */,
+				CBAAD7DD1BE9F37900437831 /* Flickr.swift in Sources */,
 				DEFB76461BD77F8C002AC372 /* Trip.swift in Sources */,
 				AA2B7A931BE80B29000227AD /* HourlyWeatherCell.swift in Sources */,
 				AAADA9F31BD4261E00715557 /* PlacePredictionCell.swift in Sources */,
@@ -458,6 +465,7 @@
 				DE35ABA41BD44C4800FD4035 /* Place.swift in Sources */,
 				AA570E451BD9B08B007F963B /* TodayViewCell.swift in Sources */,
 				AA3E2CD01BE1B30D00D20827 /* TodayForecastCache.swift in Sources */,
+				CBAAD7E11BE9F8F300437831 /* FlickrModel.swift in Sources */,
 				CBAED3091BD1DD01001993E3 /* NewTripViewController.swift in Sources */,
 				CBED6BE71BE34BBD00D44C69 /* ColorPalette.swift in Sources */,
 				CB59F9841BDC4986007A2FB1 /* DateHelpers.swift in Sources */,
