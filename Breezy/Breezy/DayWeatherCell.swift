@@ -24,8 +24,6 @@ class DayWeatherCell: UITableViewCell {
                     if let weather = data.first {
                         let time: Double = Double(weather.time)
                         let date = NSDate(timeIntervalSince1970: time)
-//                        let suggestions = weather.getSuggestions()
-//
                         datesLabel.text = getMonthAndDay(date)
                         
                         var img = getImageForWeatherIcon(weather.icon!)
@@ -43,7 +41,7 @@ class DayWeatherCell: UITableViewCell {
     func getMonthAndDay(date: NSDate) -> String {
         let flags: NSCalendarUnit = [NSCalendarUnit.Month, NSCalendarUnit.Day]
         let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
-        return "\(components.month)/\(components.day)"
+        return "\(components.month)/\(components.day+1)"
     }
     
     override func awakeFromNib() {

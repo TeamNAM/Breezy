@@ -13,24 +13,17 @@ class SuggestionCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     
-    var suggestion: Suggestion! {
-        didSet {
-            messageLabel.text = suggestion.message!
-            iconImageView.image = UIImage(named: suggestion.imageName!)
-            iconImageView.contentMode = .ScaleAspectFit
-            iconImageView.tintColor = UIColor.whiteColor()
-        }
+    var suggestion: Suggestion!
+    
+    override func layoutSubviews() {
+        var image = UIImage(named: suggestion.imageName!)
+        image = image?.imageWithRenderingMode(.AlwaysTemplate)
+//        let imageView = UIImageView(image: image)
+        iconImageView.image = image
+        iconImageView.contentMode = .ScaleAspectFit
+        iconImageView.tintColor = UIColor.whiteColor()
+        messageLabel.text = suggestion.description
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

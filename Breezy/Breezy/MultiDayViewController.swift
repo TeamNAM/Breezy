@@ -9,7 +9,7 @@
 import UIKit
 import BEMSimpleLineGraph
 
-class MultiDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource {
+class MultiDayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BEMSimpleLineGraphDelegate, BEMSimpleLineGraphDataSource, NewTripViewControllerDelegate {
     static let storyboardID = "MultiDayViewController"
     static func instantiateFromStoryboard() -> UIViewController {
         return UIStoryboard(name: storyboardID, bundle: nil).instantiateViewControllerWithIdentifier(storyboardID)
@@ -46,6 +46,8 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
         weatherTableView.estimatedRowHeight = 50
         weatherTableView.backgroundColor = UIColor.clearColor()
         detailsContainerView.backgroundColor = UIColor.clearColor()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"gear"), style: .Plain, target: self, action: "editTrip:")
     
         setupBackgroundView()
     }
@@ -185,6 +187,23 @@ class MultiDayViewController: UIViewController, UITableViewDelegate, UITableView
                     datesLabel.text = "\(sDate) - \(eDate)"
                 }
             }
+        }
+    }
+    
+    // MARK - Editing trip
+    
+    func editTrip(sender: AnyObject) {
+        let vc = NewTripViewController.instantiateFromStoryboard() as! NewTripViewController
+        if let trip = trip {
+            vc.editTrip(trip)
+        }
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
+        trip.loadForecast() {
+            self.trip = trip
         }
     }
 }

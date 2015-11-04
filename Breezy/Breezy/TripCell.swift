@@ -27,25 +27,18 @@ class TripCell: UITableViewCell {
                     dateLabel.text = "\(sDate) - \(eDate)"
                 }
             }
-//            var suggestions = [Suggestion]()
-            let dates = trip.dateRange
-            if let dates = dates {
-                for date in dates {
-                    if let daily = trip.forecast[date]?.daily {
-                        if let points = daily.data {
-                            let dataPoint = points.first
-                            self.renderSuggestionIcons(dataPoint!)
-                        }
-                    }
-                }
+            
+            if let _ = trip.suggestions {
+                renderSuggestionIcons()
             }
         }
     }
     
     
-    func renderSuggestionIcons(forecast: DataPoint) -> Void {
+    func renderSuggestionIcons() -> Void {
         self.suggestionStackView.hidden = false
-        let suggestions = Set(forecast.getSuggestions())
+        
+        let suggestions = trip.suggestions!
         
         for subview in self.suggestionStackView.arrangedSubviews {
             subview.removeFromSuperview()
@@ -60,7 +53,7 @@ class TripCell: UITableViewCell {
         }
         let iconCount = CGFloat(self.suggestionStackView.arrangedSubviews.count)
         if iconCount > 0 {
-            var stackViewWidth = (42.0 * (iconCount - 1.0)) + 24.0
+            var stackViewWidth = (42.0 * (iconCount - 1.0)) + iconCount
             if stackViewWidth > self.contentView.frame.width {
                 stackViewWidth = self.contentView.frame.width - 40.0
             }

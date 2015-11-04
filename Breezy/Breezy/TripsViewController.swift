@@ -138,15 +138,12 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: nil)
                 }
             } else {
-                CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: nil)
+                let fakeBg = UIImage(named: "sunbg")!
+                CellHelpers.drawCellBackground(cell, fillColor: color, backgroundImage: fakeBg)
             }
         } else {
-            cell.contentView.layer.cornerRadius = 7
-            cell.contentView.layer.masksToBounds = true
-            cell.contentView.layer.borderWidth = 1
-            cell.backgroundColor = ColorPalette.blue
+            cell.contentView.backgroundColor = UIColor.clearColor()
             CellHelpers.drawCellBackground(cell, fillColor: ColorPalette.blue, backgroundImage: nil)
-//            cell.backgroundView?.backgroundColor = UIColor.clearColor()
         }
     }
     

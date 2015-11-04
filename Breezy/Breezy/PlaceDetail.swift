@@ -19,7 +19,7 @@ class PlaceDetail : NSObject{
         if let name = dictionary["name"] as? String {
             self.name = name
         }
-        print(dictionary)
+//        print(dictionary)
         if let photos = dictionary["photos"] as? [NSDictionary]{
             let googlePhotos = GooglePhoto.getPhotosFromArray(photos)
             self.photos = googlePhotos
@@ -28,7 +28,7 @@ class PlaceDetail : NSObject{
     
     func getFirstPhotoRef() -> String? {
         if let photos = self.photos {
-            print(photos.count)
+            print("number of photos found \(photos.count)")
             return photos.first?.photoReference
         }
         return ""
