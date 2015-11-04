@@ -70,6 +70,11 @@ extension DataPoint {
         
         return suggestions
     }
+    
+    func getAverageDailyTemp() -> Double {
+        let totalTemp = self.temperatureMax! + self.temperatureMin!
+        return totalTemp/2
+    }
 }
 
 //Put in an array of data points of hourly data.

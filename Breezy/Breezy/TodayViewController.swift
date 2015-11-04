@@ -184,29 +184,12 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         vc.forecast = TodayForecastCache.forecastForPlace(place)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func drawCellBackground(cell: UITableViewCell, fillColor: UIColor, backgroundImage: UIImage?) -> Void {
-        let bgView = UIView(frame: cell.frame)        
-        let cellMargin: CGFloat = 10.0
-        let fillColorRect = CGRect(x: cell.bounds.origin.x + cellMargin, y: cell.bounds.origin.y + cellMargin, width: cell.bounds.width - (cellMargin * 2), height: cell.bounds.height - cellMargin)
-        let fillColorView = UIView(frame: fillColorRect)
-        fillColorView.backgroundColor = fillColor
-        fillColorView.alpha = 0.7
-        fillColorView.layer.cornerRadius = 10
-        let imgView = UIImageView(frame: fillColorRect)
-        imgView.image = backgroundImage
-        imgView.contentMode = .ScaleAspectFill
-        imgView.layer.cornerRadius = 10
-        imgView.layer.masksToBounds = true
-        bgView.addSubview(imgView)
-        bgView.addSubview(fillColorView)
-        cell.backgroundView = bgView
-    }
+
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
         guard let _ = indexPathToPlace[indexPath] else {
-            self.drawCellBackground(cell, fillColor: UIColor(red: 52/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1.0), backgroundImage: nil)
+            CellHelpers.drawCellBackground(cell, fillColor: UIColor(red: 52/255.0, green: 61/255.0, blue: 70/255.0, alpha: 1.0), backgroundImage: nil)
             return
         }
         guard let forecast = indexPathToCellForecast[indexPath] else {
@@ -215,7 +198,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let temperature = forecast.currently?.temperature as Double!
         let fillColor = ColorPalette.getAverageColorForTemp(temperature)
         let bgImage = forecast.currently!.getBackground()
-        self.drawCellBackground(cell, fillColor: fillColor, backgroundImage: bgImage)
+        CellHelpers.drawCellBackground(cell, fillColor: fillColor, backgroundImage: bgImage)
     }
     
 

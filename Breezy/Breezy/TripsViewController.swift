@@ -51,13 +51,13 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tripTableView.backgroundView = nil
         tripTableView.backgroundColor = UIColor.clearColor()
         tripTableView.rowHeight = UITableViewAutomaticDimension
-        tripTableView.estimatedRowHeight = 150
+        tripTableView.estimatedRowHeight = 75
         tripTableView.reloadData()
     }
     
     private func setupBackgroundView() {
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = backgroundView.bounds
+        gradient.frame = view.bounds
 
         let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
         let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
@@ -74,7 +74,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let trips = User.sharedInstance.trips {
             if trips.count == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("AddTripCell", forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddTripCell", forIndexPath:indexPath)
                 return cell
             } else {
                 let trip = trips[indexPath.section]
@@ -115,7 +115,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return 1
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 20
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -128,11 +128,19 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.contentView.layer.borderWidth = 2
         cell.backgroundColor = UIColor.clearColor()
     }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "What to Pack"
+        default:
+            return "Daily Average Temperatures"
+        }
+    }
     
     // MARK: - Trip detail view
     
     private func goToTripDetailView(cell: TripCell) {
-        let vc = ForecastDetailViewController.instantiateFromStoryboard() as! ForecastDetailViewController
+        let vc = MultiDayViewController.instantiateFromStoryboard() as! MultiDayViewController
         vc.trip = cell.trip
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -159,9 +167,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
        User.sharedInstance.addTrip(trip)
-//        trips!.append(trip)
-        trip.loadForecast()
-        tripTableView.reloadData()
+        trip.loadForecast() {
+            self.tripTableView.reloadData()
+        }
     }
     
     // MARK: - Navigation

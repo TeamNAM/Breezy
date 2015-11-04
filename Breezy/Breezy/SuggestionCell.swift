@@ -17,6 +17,8 @@ class SuggestionCell: UITableViewCell {
         didSet {
             messageLabel.text = suggestion.message!
             iconImageView.image = UIImage(named: suggestion.imageName!)
+            iconImageView.contentMode = .ScaleAspectFit
+            iconImageView.tintColor = UIColor.whiteColor()
         }
     }
     

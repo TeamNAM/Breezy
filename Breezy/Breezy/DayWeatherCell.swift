@@ -13,22 +13,28 @@ class DayWeatherCell: UITableViewCell {
     
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var iconImageView: UIImageView!
+    
+    @IBOutlet weak var weatherIconImageView: UIImageView!
     
     var forecast: Forecast! {
         didSet {
             if let daily = forecast.daily {
                 if let data = daily.data {
+                    temperatureLabel.text = "\(Int(data.first!.getAverageDailyTemp()))"
                     if let weather = data.first {
                         let time: Double = Double(weather.time)
                         let date = NSDate(timeIntervalSince1970: time)
-                        let suggestions = weather.getSuggestions()
-
+//                        let suggestions = weather.getSuggestions()
+//
                         datesLabel.text = getMonthAndDay(date)
-                        if let temp = weather.temperature {
-                            temperatureLabel.text = "\(Int(temp))"
-                        }
-                        iconImageView.image = UIImage(named: suggestions.first!.imageName!)
+                        
+                        var img = getImageForWeatherIcon(weather.icon!)
+                        img = img?.imageWithRenderingMode(.AlwaysTemplate)
+                        print(weather.icon)
+                        weatherIconImageView.image = img
+                        weatherIconImageView.contentMode = .ScaleAspectFit
+                        weatherIconImageView.tintColor = UIColor.whiteColor()
+                        
                     }
                 }
             }
@@ -39,6 +45,7 @@ class DayWeatherCell: UITableViewCell {
         let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
         return "\(components.month)/\(components.day)"
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

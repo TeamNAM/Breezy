@@ -15,6 +15,7 @@ class HourlyWeatherCell: UITableViewCell {
     
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var hourlyTempLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
     
     var hourlyDataPoint: DataPoint?
     var timezoneString: String?
@@ -27,6 +28,7 @@ class HourlyWeatherCell: UITableViewCell {
         guard let timezone = NSTimeZone(name: tzString) else { return }
         guard let dataPoint = self.hourlyDataPoint else { return }
     
+        // Time label
         let date = NSDate(timeIntervalSince1970: Double(dataPoint.time))
         let calendar = NSCalendar.currentCalendar()
         let dateComponents = calendar.componentsInTimeZone(timezone, fromDate: date)
@@ -43,6 +45,12 @@ class HourlyWeatherCell: UITableViewCell {
         
         // Temperature
         self.hourlyTempLabel.text = "\(Temperature(fromValue: dataPoint.temperature!))"
+        
+        var img = getImageForWeatherIcon(dataPoint.icon!)
+        img = img?.imageWithRenderingMode(.AlwaysTemplate)
+        self.weatherImageView.image = img
+        self.weatherImageView.contentMode = .ScaleAspectFit
+        self.weatherImageView.tintColor = UIColor.whiteColor()
    }
 
     override func awakeFromNib() {
