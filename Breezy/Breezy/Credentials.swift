@@ -15,7 +15,6 @@ struct Credentials {
     let forecastKey: String
     let googleKey: String
     let placeDetailKey: String
-    let flickrApiKey: String
     
     private static func loadFromPropertyListNamed(name: String) -> Credentials {
         let path = NSBundle.mainBundle().pathForResource(name, ofType: "plist")!
@@ -23,7 +22,6 @@ struct Credentials {
         let forecastKey = dictionary["ForecastApiKey"] as! String
         let googleKey = dictionary["GoogleApiKey"] as! String
         let googlePlaceDetailKey = dictionary["GooglePlaceApiKey"] as! String
-        let flickrApiKey = dictionary["FlickrApiKey"] as! String
-        return Credentials(forecastKey: forecastKey, googleKey: googleKey, placeDetailKey: googlePlaceDetailKey, flickrApiKey: flickrApiKey)
+        return Credentials(forecastKey: forecastKey, googleKey: googleKey, placeDetailKey: googlePlaceDetailKey)
     }
 }
