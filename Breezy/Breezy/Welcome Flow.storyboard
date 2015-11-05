@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Breezy!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-2c-cSK">
-                                <rect key="frame" x="64" y="70" width="192" height="24"/>
+                                <rect key="frame" x="64" y="70" width="191.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-30-Gdb">
-                                <rect key="frame" x="20" y="174" width="280" height="82"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-30-Gdb">
+                                <rect key="frame" x="20" y="174" width="280" height="81.5"/>
                                 <string key="text">Breezy makes it easy to see the weather headed your way, wherever you are. To enable this, Breezy needs access to your location.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,21 +49,31 @@
                                     <action selector="onLocationAllowed:" destination="D2q-Hl-LfL" eventType="touchUpInside" id="WDZ-42-wwn"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-wind" translatesAutoresizingMaskIntoConstraints="NO" id="Guf-p2-Icm">
+                                <rect key="frame" x="96" y="267.5" width="128" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fzz-f6-C91" firstAttribute="centerX" secondItem="OuG-oc-HnK" secondAttribute="centerX" id="1Ey-Sf-6ZK"/>
+                            <constraint firstItem="Guf-p2-Icm" firstAttribute="centerX" secondItem="OuG-oc-HnK" secondAttribute="centerX" id="ATc-TA-sjv"/>
                             <constraint firstItem="Pyf-30-Gdb" firstAttribute="top" secondItem="a0a-2c-cSK" secondAttribute="bottom" constant="80" id="Af8-9I-ZgD"/>
                             <constraint firstItem="a0a-2c-cSK" firstAttribute="top" secondItem="mJu-rd-rCQ" secondAttribute="bottom" constant="50" id="CK3-SR-Yzy"/>
                             <constraint firstItem="fzz-f6-C91" firstAttribute="top" secondItem="dv5-Li-aMC" secondAttribute="bottom" constant="30" id="PgI-jS-GUL"/>
                             <constraint firstItem="a0a-2c-cSK" firstAttribute="centerX" secondItem="OuG-oc-HnK" secondAttribute="centerX" id="X1w-UJ-DN1"/>
                             <constraint firstItem="Ngt-sR-yRB" firstAttribute="top" secondItem="fzz-f6-C91" secondAttribute="bottom" constant="80" id="ZeI-Cs-W28"/>
                             <constraint firstAttribute="trailing" secondItem="Pyf-30-Gdb" secondAttribute="trailing" constant="20" id="cbk-vi-faH"/>
+                            <constraint firstItem="Guf-p2-Icm" firstAttribute="top" secondItem="Pyf-30-Gdb" secondAttribute="bottom" constant="12" id="he0-eR-gbR"/>
                             <constraint firstItem="dv5-Li-aMC" firstAttribute="centerX" secondItem="OuG-oc-HnK" secondAttribute="centerX" id="o6l-cR-Yvj"/>
                             <constraint firstItem="Pyf-30-Gdb" firstAttribute="leading" secondItem="OuG-oc-HnK" secondAttribute="leading" constant="20" id="rDL-K8-LWd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mAF-OH-LyS"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="Guf-p2-Icm" id="T8v-S3-i78"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9U-B7-eYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,8 +112,8 @@
                                     <action selector="onLocationAllowed:" destination="D2q-Hl-LfL" eventType="touchUpInside" id="BTZ-SA-N1W"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy can let you know what kind of weather to expect on your way home so you can plan ahead of time." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U84-Aq-nMe">
-                                <rect key="frame" x="20" y="174" width="280" height="82"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy can let you know what kind of weather to expect on your way home so you can plan ahead of time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U84-Aq-nMe">
+                                <rect key="frame" x="20" y="174" width="280" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -114,21 +124,34 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-rain" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-wB-Npy">
+                                <rect key="frame" x="110" y="276" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7ce-GE-dDl"/>
+                                    <constraint firstAttribute="height" constant="100" id="bpd-cc-NMQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.80466482440015485" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="U84-Aq-nMe" firstAttribute="leading" secondItem="h0w-WB-WJV" secondAttribute="leading" constant="20" id="0v9-9v-CY2"/>
                             <constraint firstItem="U84-Aq-nMe" firstAttribute="top" secondItem="mFC-hb-vYH" secondAttribute="bottom" constant="80" id="2zE-v3-N0I"/>
                             <constraint firstAttribute="trailing" secondItem="U84-Aq-nMe" secondAttribute="trailing" constant="20" id="4bN-gP-ao9"/>
+                            <constraint firstItem="kbC-wB-Npy" firstAttribute="centerX" secondItem="h0w-WB-WJV" secondAttribute="centerX" id="4h6-a1-Uw2"/>
                             <constraint firstItem="Kii-TN-TAy" firstAttribute="top" secondItem="8YQ-ei-oTt" secondAttribute="bottom" constant="30" id="8aw-Gi-BgJ"/>
                             <constraint firstItem="Kii-TN-TAy" firstAttribute="centerX" secondItem="h0w-WB-WJV" secondAttribute="centerX" id="Cva-t7-bxR"/>
+                            <constraint firstItem="8YQ-ei-oTt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kbC-wB-Npy" secondAttribute="bottom" constant="10" id="Qsk-3O-1Ms"/>
                             <constraint firstItem="oMA-hf-BEG" firstAttribute="top" secondItem="Kii-TN-TAy" secondAttribute="bottom" constant="80" id="c2G-bi-ByY"/>
                             <constraint firstItem="mFC-hb-vYH" firstAttribute="top" secondItem="IFX-9X-1Ld" secondAttribute="bottom" constant="50" id="dvZ-W9-SuP"/>
                             <constraint firstItem="mFC-hb-vYH" firstAttribute="centerX" secondItem="h0w-WB-WJV" secondAttribute="centerX" id="nYD-pA-ZlA"/>
+                            <constraint firstItem="kbC-wB-Npy" firstAttribute="top" secondItem="U84-Aq-nMe" secondAttribute="bottom" constant="20" id="u2J-y6-zSm"/>
                             <constraint firstItem="8YQ-ei-oTt" firstAttribute="centerX" secondItem="h0w-WB-WJV" secondAttribute="centerX" id="zRa-fB-B1N"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nb0-PA-Tw7"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="kbC-wB-Npy" id="nWM-mf-eE6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q35-Jq-9uV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,8 +175,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy will suggest what to wear or bring to work so you'll never be unprepared for unpleasant weather on your way to work." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-b8-TpM">
-                                <rect key="frame" x="20" y="169" width="280" height="82"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy will suggest what to wear or bring to work so you'll never be unprepared for unpleasant weather on your way to work." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-b8-TpM">
+                                <rect key="frame" x="20" y="169" width="280" height="81.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -180,21 +203,30 @@
                                     <action selector="onSkipWorkAddress:" destination="D2q-Hl-LfL" eventType="touchUpInside" id="jKA-Em-gkQ"/>
                                 </connections>
                             </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="parka" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-F4-zr3">
+                                <rect key="frame" x="115" y="274.5" width="90" height="90"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZB0-z0-ryb" firstAttribute="centerX" secondItem="zh7-lQ-GAC" secondAttribute="centerX" id="5XL-dB-FhF"/>
                             <constraint firstItem="egn-SZ-6Vy" firstAttribute="top" secondItem="qM8-zY-WXZ" secondAttribute="bottom" constant="46" id="Dam-CB-Qxo"/>
                             <constraint firstItem="eAD-Iq-3Fx" firstAttribute="top" secondItem="DIv-h3-FyM" secondAttribute="bottom" constant="80" id="GUX-kY-BTM"/>
+                            <constraint firstItem="jM5-F4-zr3" firstAttribute="top" secondItem="a4N-b8-TpM" secondAttribute="bottom" constant="24" id="Jlu-DH-jGb"/>
                             <constraint firstItem="DIv-h3-FyM" firstAttribute="centerX" secondItem="zh7-lQ-GAC" secondAttribute="centerX" id="PmR-4Q-tzI"/>
                             <constraint firstItem="egn-SZ-6Vy" firstAttribute="centerX" secondItem="zh7-lQ-GAC" secondAttribute="centerX" id="WyO-g2-z81"/>
                             <constraint firstItem="a4N-b8-TpM" firstAttribute="leading" secondItem="zh7-lQ-GAC" secondAttribute="leading" constant="20" id="aic-BR-NEa"/>
                             <constraint firstAttribute="trailing" secondItem="a4N-b8-TpM" secondAttribute="trailing" constant="20" id="baD-Mb-rWm"/>
                             <constraint firstItem="DIv-h3-FyM" firstAttribute="top" secondItem="ZB0-z0-ryb" secondAttribute="bottom" constant="30" id="eAf-DQ-1sR"/>
                             <constraint firstItem="a4N-b8-TpM" firstAttribute="top" secondItem="egn-SZ-6Vy" secondAttribute="bottom" constant="80" id="hNH-cO-gZX"/>
+                            <constraint firstItem="ZB0-z0-ryb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jM5-F4-zr3" secondAttribute="bottom" constant="10" id="stu-FD-rTD"/>
+                            <constraint firstItem="jM5-F4-zr3" firstAttribute="centerX" secondItem="zh7-lQ-GAC" secondAttribute="centerX" id="wqB-6s-TKx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kaT-J5-4bM"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="jM5-F4-zr3" id="8J5-JK-XsF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzc-IN-Vxs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,4 +251,9 @@
             <point key="canvasLocation" x="115" y="442"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-rain" width="160" height="160"/>
+        <image name="icon-wind" width="128" height="128"/>
+        <image name="parka" width="90" height="90"/>
+    </resources>
 </document>

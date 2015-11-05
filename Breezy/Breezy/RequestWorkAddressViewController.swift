@@ -9,6 +9,14 @@
 import UIKit
 
 class RequestWorkAddressViewController: UIViewController {
+    @IBOutlet weak var iconImageView: UIImageView!
+    override func viewDidLoad() {
+        var image = iconImageView.image
+        image = image?.imageWithRenderingMode(.AlwaysTemplate)
+        iconImageView.image = image
+        iconImageView.contentMode = .ScaleAspectFit
+        iconImageView.tintColor = UIColor.whiteColor()
+    }
     
     @IBAction func addWorkAddress(sender: UIButton) {
         let vc = PlaceLookupViewController.instantiateFromStoryboard()
