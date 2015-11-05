@@ -120,13 +120,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ih-xh-LJH">
-                                                    <rect key="frame" x="12" y="62" width="97" height="27"/>
+                                                    <rect key="frame" x="24" y="62.5" width="97" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4rn-vx-QVJ">
-                                                    <rect key="frame" x="514" y="50" width="50" height="50"/>
+                                                    <rect key="frame" x="502" y="50" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="0x4-CR-NTX"/>
                                                         <constraint firstAttribute="height" constant="50" id="s8i-sP-hD9"/>
@@ -134,12 +134,12 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1ih-xh-LJH" firstAttribute="leading" secondItem="muq-4A-0yh" secondAttribute="leading" constant="12" id="Bfe-Qf-Ce5"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4rn-vx-QVJ" secondAttribute="bottom" constant="8" id="JwR-PH-g7S"/>
-                                                <constraint firstItem="4rn-vx-QVJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="muq-4A-0yh" secondAttribute="top" constant="8" id="bQc-Hp-uh3"/>
+                                                <constraint firstItem="1ih-xh-LJH" firstAttribute="leading" secondItem="muq-4A-0yh" secondAttribute="leading" constant="24" id="Bfe-Qf-Ce5"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4rn-vx-QVJ" secondAttribute="bottom" constant="24" id="JwR-PH-g7S"/>
+                                                <constraint firstItem="4rn-vx-QVJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="muq-4A-0yh" secondAttribute="top" constant="24" id="bQc-Hp-uh3"/>
                                                 <constraint firstItem="4rn-vx-QVJ" firstAttribute="centerY" secondItem="muq-4A-0yh" secondAttribute="centerY" id="ckA-AE-s35"/>
                                                 <constraint firstItem="1ih-xh-LJH" firstAttribute="centerY" secondItem="muq-4A-0yh" secondAttribute="centerY" id="ln0-UB-HBx"/>
-                                                <constraint firstAttribute="trailing" secondItem="4rn-vx-QVJ" secondAttribute="trailing" constant="12" id="qSl-Dt-HwZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="4rn-vx-QVJ" secondAttribute="trailing" constant="24" id="qSl-Dt-HwZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

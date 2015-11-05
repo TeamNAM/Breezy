@@ -57,15 +57,15 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     private func setupBackgroundView() {
-//        let gradient: CAGradientLayer = CAGradientLayer()
-//        gradient.frame = view.bounds
-//
-//        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
-//        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
-//        gradient.colors = [blue.CGColor, tan.CGColor]
-//        backgroundView.layer.insertSublayer(gradient, atIndex: 0)
+        //        let gradient: CAGradientLayer = CAGradientLayer()
+        //        gradient.frame = view.bounds
+        //
+        //        let blue = UIColor(red: 141/255, green: 204/255, blue: 229/255, alpha: 1)
+        //        let tan = UIColor(red: 223/255, green: 207/255, blue: 186/255, alpha: 1)
+        //        gradient.colors = [blue.CGColor, tan.CGColor]
+        //        backgroundView.layer.insertSublayer(gradient, atIndex: 0)
         let color = UIColor(red: 115/255, green: 183/255, blue: 230/255, alpha: 1)
-
+        
         backgroundView.backgroundColor = color
     }
     
@@ -82,10 +82,10 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 return cell
             } else {
                 let trip = trips[indexPath.section]
-
+                
                 if trip.hasLoadedForecast == true {
                     let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripCell
-
+                    
                     cell.trip = trip
                     return cell
                 } else {
@@ -121,7 +121,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.backgroundColor = UIColor.clearColor()
-
+        
         if cell is TripCell {
             let tripCell = (cell as! TripCell)
             let imageUrl = tripCell.trip.place?.photoUrl
@@ -176,7 +176,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func newTripViewController(newTripViewController: NewTripViewController, addNewTrip trip: Trip) {
-       User.sharedInstance.addTrip(trip)
+        User.sharedInstance.addTrip(trip)
+        self.tripTableView.reloadData()
+        
         trip.loadForecast() {
             self.tripTableView.reloadData()
         }
@@ -184,9 +186,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Navigation
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let nextVc = segue.destinationViewController
-//    }
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //        let nextVc = segue.destinationViewController
+    //    }
 }
 
 
@@ -198,16 +200,16 @@ func createFakeDays() -> [Trip] {
     let place1 = Place(lat: 32, lng: 121, name: "Mexico", formattedAddress: "707 Mexico", recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil, photoUrl: nil)
     let trip1 = Trip(startDate: startDate1, endDate: endDate1, place: place1, name: "Mexico")
     
-//    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
-//    let endDate2 = NSDate(dateString: "2015-12-04", dateStringFormatter: dateFormatter)
-//    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st",recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
-//    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
+    //    let startDate2 = NSDate(dateString: "2015-12-02", dateStringFormatter: dateFormatter)
+    //    let endDate2 = NSDate(dateString: "2015-12-04", dateStringFormatter: dateFormatter)
+    //    let place2 = Place(lat: 43, lng: 135, name: "Oakland", formattedAddress: "707 Okalhoma st",recommendationIcon: nil, recommendationMessage: nil, detailedMessage: nil)
+    //    let trip2 = Trip(startDate: startDate2, endDate: endDate2, place: place2, name: "Oakland")
     
- 
+    
     
     var fakeTrips = [Trip]()
     fakeTrips.append(trip1)
-//    fakeTrips.append(trip2)
+    //    fakeTrips.append(trip2)
     return fakeTrips
     
 }
