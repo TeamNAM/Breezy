@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Breezy!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0a-2c-cSK">
-                                <rect key="frame" x="64" y="70" width="191.5" height="24"/>
+                                <rect key="frame" x="64" y="70" width="192" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyf-30-Gdb">
-                                <rect key="frame" x="20" y="174" width="280" height="81.5"/>
+                                <rect key="frame" x="20" y="174" width="280" height="82"/>
                                 <string key="text">Breezy makes it easy to see the weather headed your way, wherever you are. To enable this, Breezy needs access to your location.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-wind" translatesAutoresizingMaskIntoConstraints="NO" id="Guf-p2-Icm">
-                                <rect key="frame" x="96" y="267.5" width="128" height="128"/>
+                                <rect key="frame" x="96" y="268" width="128" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy can let you know what kind of weather to expect on your way home so you can plan ahead of time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U84-Aq-nMe">
-                                <rect key="frame" x="20" y="174" width="280" height="81.5"/>
+                                <rect key="frame" x="20" y="174" width="280" height="82"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -176,7 +176,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breezy will suggest what to wear or bring to work so you'll never be unprepared for unpleasant weather on your way to work." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-b8-TpM">
-                                <rect key="frame" x="20" y="169" width="280" height="81.5"/>
+                                <rect key="frame" x="20" y="169" width="280" height="82"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -204,7 +204,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="parka" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-F4-zr3">
-                                <rect key="frame" x="115" y="274.5" width="90" height="90"/>
+                                <rect key="frame" x="115" y="275" width="90" height="90"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
