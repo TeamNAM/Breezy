@@ -124,5 +124,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static func sharedDelegate() -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        // Rescrict app to portrait orientation
+        return UIInterfaceOrientationMask.Portrait
+    }
 }
 
